@@ -1,0 +1,111 @@
+---
+---
+
+<div class="fixed inset-0 pointer-events-none -z-20 overflow-hidden bg-slate-950" id="heart-rhythm-bg">
+  <svg class="h-full w-full opacity-40" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      
+      <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="rgba(99, 102, 241, 0)" />
+        <stop offset="50%" stop-color="rgba(99, 102, 241, 0.3)" />
+        <stop offset="100%" stop-color="rgba(99, 102, 241, 0)" />
+      </linearGradient>
+
+      <radialGradient id="pulse-glow">
+        <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.8" />
+        <stop offset="100%" stop-color="#22d3ee" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+
+    {/* The Static Rhythm Line */}
+    <path id="ekg-path" 
+      d="M-50,200 L100,200 L120,190 L140,210 L160,200 L300,200 L320,100 L340,300 L360,200 L500,200 L520,195 L540,205 L560,200 L750,200 L770,100 L790,300 L810,200 L950,200 L1050,200" 
+      fill="none" 
+      stroke="url(#line-gradient)" 
+      stroke-width="1.5" 
+    />
+
+    {/* The Moving Light/Pulse */}
+    <circle id="ekg-pulse" r="4" fill="#22d3ee" filter="url(#glow)" />
+    <circle id="ekg-pulse-outer" r="20" fill="url(#pulse-glow)" />
+
+  </svg>
+  
+  {/* WebGL-like noise overlay for texture */}
+  <div class="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+  import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+
+  gsap.registerPlugin(MotionPathPlugin);
+
+  window.addEventListener('load', () => {
+    const path = document.querySelector('#ekg-path');
+    const pulse = document.querySelector('#ekg-pulse');
+    const pulseOuter = document.querySelector('#ekg-pulse-outer');
+    const bg = document.querySelector('#heart-rhythm-bg');
+
+    if (!path || !pulse || !pulseOuter) return;
+
+    const mainTl = gsap.timeline({ repeat: -1 });
+
+    // Animate the light following the path
+    mainTl.to([pulse, pulseOuter], {
+      duration: 4,
+      repeat: -1,
+      ease: "none",
+      motionPath: {
+        path: "#ekg-path",
+        align: "#ekg-path",
+        alignOrigin: [0.5, 0.5],
+        autoRotate: true
+      }
+    });
+
+    // Add rhythmic "beat" scaling when hitting spikes
+    // We'll sync this with the motion path progress
+    const beatTl = gsap.timeline({ repeat: -1 });
+    
+    // Rhythmic "lub-dub" beat
+    beatTl.to(pulseOuter, {
+      scale: 1.5,
+      opacity: 1,
+      duration: 0.1,
+      ease: "power2.out"
+    })
+    .to(pulseOuter, {
+      scale: 1,
+      opacity: 0.4,
+      duration: 0.4,
+      ease: "power2.in"
+    }, "+=0.1")
+    .to(bg, {
+       backgroundColor: '#0f172a',
+       duration: 0.1,
+    }, 0)
+    .to(bg, {
+       backgroundColor: '#020617',
+       duration: 1,
+    }, 0.2);
+
+    // Sync beat with the QRS complex spikes in the path (approximate timing)
+    // 4s total loop, 2 spikes in the path.
+    beatTl.repeatDelay(1.5); // Adjust to feel like a real heart rate (approx 60bpm)
+
+  });
+</script>
+
+<style>
+  #heart-rhythm-bg {
+    will-change: background-color;
+  }
+</style>
