@@ -1,34 +1,73 @@
 ---
 ---
 
-<div class="relative w-full" id="journey-container">
-  {/* The pinned element needs to be the one that stays in view */}
-  <div id="scrolly-target" class="h-screen flex flex-col justify-center items-center overflow-hidden bg-slate-950">
-    
-    {/* Background Bridge Element */}
-    <div id="bridge-visual" class="absolute w-[200%] h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 opacity-0 blur-md -rotate-12 scale-x-50"></div>
-    
-    {/* Story Sections */}
-    <div class="relative z-10 w-full max-w-4xl px-6 text-center">
-      <div class="story-step invisible" id="step-1">
-        <h3 class="text-4xl md:text-7xl font-black text-white mb-6 tracking-tighter">THE DISCONNECT</h3>
-        <p class="text-xl md:text-2xl text-slate-400 font-medium">You're in a job that feels flat. You have the ambition, but the barrier to MedTech feels insurmountable.</p>
-      </div>
+<div class="relative w-full overflow-hidden bg-slate-950" id="narrative-container">
+  {/* The Thread (SVG) */}
+  <svg class="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 pointer-events-none z-0" overflow="visible">
+    <path id="mentorship-thread" d="" fill="none" stroke="url(#thread-gradient)" stroke-width="2" stroke-linecap="round" />
+    <defs>
+      <linearGradient id="thread-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#6366f1" stop-opacity="0" />
+        <stop offset="20%" stop-color="#6366f1" stop-opacity="1" />
+        <stop offset="80%" stop-color="#22d3ee" stop-opacity="1" />
+        <stop offset="100%" stop-color="#22d3ee" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  {/* Pinned Content Section */}
+  <div id="narrative-target" class="h-screen flex flex-col justify-center items-center px-6">
+    <div class="relative z-10 w-full max-w-5xl text-center space-y-24">
       
-      <div class="story-step invisible absolute inset-0 flex flex-col justify-center items-center px-6" id="step-2">
-        <h3 class="text-4xl md:text-7xl font-black text-white mb-6 tracking-tighter uppercase italic">The Bridge</h3>
-        <p class="text-xl md:text-2xl text-slate-400 font-medium">VPA isn't a course. It's an direct line to the industry. 1-on-1 mentorship from the experts who built the field.</p>
+      {/* Section 2: The Problem */}
+      <div class="narrative-step opacity-0" id="step-problem">
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight tracking-tight">
+          Asynchronous online learning <span class="text-indigo-400">is inefficient.</span>
+        </h2>
+        <p class="mt-8 text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          Brick-and-mortar schools cost $30,000+ and a year of your life. 
+          Standard online courses leave you isolated. 
+          <span class="block mt-4 text-white font-semibold italic">It just doesn't work well.</span>
+        </p>
       </div>
-      
-      <div class="story-step invisible absolute inset-0 flex flex-col justify-center items-center px-6" id="step-3">
-        <h3 class="text-4xl md:text-7xl font-black bg-gradient-to-br from-white to-slate-400 bg-clip-text text-transparent mb-6 tracking-tighter uppercase">Clinical Mastery</h3>
-        <p class="text-xl md:text-2xl text-slate-400 font-medium">Transform from an outsider to a specialist. Lifesaving technology. A network that opens every door.</p>
+
+      {/* Section 3: The Turning Point */}
+      <div class="narrative-step absolute inset-0 flex flex-col justify-center items-center opacity-0" id="step-mentorship">
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight tracking-tight">
+          Mentorship <span class="text-cyan-400 font-black italic">is the key.</span>
+        </h2>
+        <p class="mt-8 text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          Virtual learning provides flexibility, but <span class="text-white underline decoration-cyan-500/50">partnership</span> provides the career. 
+          Our veteran mentors coach you every single step of the way.
+        </p>
       </div>
+
+      {/* Section 4: The Promise */}
+      <div class="narrative-step absolute inset-0 flex flex-col justify-center items-center opacity-0" id="step-partnership">
+        <h2 class="text-4xl md:text-6xl font-black text-white leading-none tracking-tighter uppercase">
+          This is not a <span class="bg-gradient-to-r from-indigo-500 to-cyan-500 bg-clip-text text-transparent">content drop.</span>
+        </h2>
+        <p class="mt-8 text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-medium">
+          We only succeed when you succeed. 
+          From the first rhythm to your first day in the OR, we go on the journey with you.
+        </p>
+        <div class="mt-12 flex justify-center gap-6">
+           <div class="flex items-center gap-2 text-indigo-400">
+             <span class="h-2 w-2 rounded-full bg-indigo-400 animate-pulse"></span>
+             <span class="text-sm font-bold tracking-widest uppercase">1-on-1 Coaching</span>
+           </div>
+           <div class="flex items-center gap-2 text-cyan-400">
+             <span class="h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></span>
+             <span class="text-sm font-bold tracking-widest uppercase">Lifetime Network</span>
+           </div>
+        </div>
+      </div>
+
     </div>
   </div>
-  
-  {/* The total scroll length is determined by the height of the container */}
-  <div class="h-[400vh]"></div>
+
+  {/* Scroll Spacer */}
+  <div class="h-[500vh]"></div>
 </div>
 
 <script>
@@ -37,73 +76,58 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Use window load to ensure all styles/elements are ready
   window.addEventListener('load', () => {
-    const container = document.querySelector('#journey-container');
-    const scrollyTarget = document.querySelector('#scrolly-target');
+    const container = document.querySelector('#narrative-container');
+    const target = document.querySelector('#narrative-target');
+    const thread = document.querySelector('#mentorship-thread');
     
-    if (!container || !scrollyTarget) return;
+    if (!container || !target || !thread) return;
 
-    // Create the timeline
+    // Set initial thread path
+    const updateThreadPath = () => {
+      const h = container.getBoundingClientRect().height;
+      thread.setAttribute('d', `M 0 0 L 0 ${h}`);
+    };
+    updateThreadPath();
+    window.addEventListener('resize', updateThreadPath);
+
+    // Narrative Timeline
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container,
         start: 'top top',
         end: 'bottom bottom',
-        scrub: 0.5, // Smoother scrubbing
-        pin: '#scrolly-target', // Explicitly pin the target
-        anticipatePin: 1,
+        scrub: 1,
+        pin: '#narrative-target',
         invalidateOnRefresh: true,
       }
     });
 
-    // Step 1: Fade in
-    tl.fromTo('#step-1', 
-      { autoAlpha: 0, y: 50 }, 
-      { autoAlpha: 1, y: 0, duration: 1 }
-    );
-    tl.fromTo('#bridge-visual', 
-      { opacity: 0, scaleX: 0.5, rotate: -12 }, 
-      { opacity: 0.3, scaleX: 1, rotate: -6, duration: 1.5 }, 
-      "<"
-    );
+    // Animate the thread drawing
+    const threadLength = thread.getTotalLength();
+    gsap.set(thread, { strokeDasharray: threadLength, strokeDashoffset: threadLength });
     
-    // Step 1: Fade out
-    tl.to('#step-1', { autoAlpha: 0, y: -50, duration: 1, delay: 0.5 });
+    tl.to(thread, { strokeDashoffset: 0, duration: 10, ease: 'none' }, 0);
 
-    // Step 2: Fade in
-    tl.fromTo('#step-2', 
-      { autoAlpha: 0, y: 50 }, 
-      { autoAlpha: 1, y: 0, duration: 1 }
-    );
-    tl.to('#bridge-visual', { opacity: 0.6, scaleX: 1.5, rotate: 0, duration: 1.5 }, "<");
-    
-    // Step 2: Fade out
-    tl.to('#step-2', { autoAlpha: 0, y: -50, duration: 1, delay: 0.5 });
+    // Step: Problem
+    tl.to('#step-problem', { opacity: 1, y: -20, duration: 2 }, 1);
+    tl.to('#step-problem', { opacity: 0, y: -50, duration: 1.5, delay: 1 });
 
-    // Step 3: Fade in
-    tl.fromTo('#step-3', 
-      { autoAlpha: 0, y: 50 }, 
-      { autoAlpha: 1, y: 0, duration: 1 }
-    );
-    tl.to('#bridge-visual', { 
-      opacity: 1, 
-      scaleX: 2.5, 
-      rotate: 6, 
-      filter: 'blur(0px)', 
-      height: '4px',
-      duration: 1.5 
-    }, "<");
+    // Step: Mentorship
+    tl.to('#step-mentorship', { opacity: 1, y: -20, duration: 2 });
+    tl.to('#step-mentorship', { opacity: 0, y: -50, duration: 1.5, delay: 1 });
+
+    // Step: Partnership
+    tl.to('#step-partnership', { opacity: 1, scale: 1.05, duration: 3 });
     
-    // Final hold
-    tl.to({}, { duration: 1 });
+    // Background Color Shifts
+    tl.to('#narrative-container', { backgroundColor: '#0f172a', duration: 3 }, 2);
+    tl.to('#narrative-container', { backgroundColor: '#020617', duration: 3 }, 5);
   });
 </script>
 
 <style>
-  /* Use autoAlpha (visibility + opacity) to prevent flashes */
-  .invisible {
-    visibility: hidden;
-    opacity: 0;
+  .narrative-step {
+    transition: filter 0.5s ease-out;
   }
 </style>

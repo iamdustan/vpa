@@ -3,54 +3,79 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ScrollJourney from '../components/ScrollJourney.astro';
 ---
 
-<BaseLayout title="Virtual Pacing Academy | The Mentorship Bridge">
-	<section class="relative flex h-[90vh] items-center justify-center overflow-hidden px-4">
-		<div class="z-10 text-center">
-			<h1 class="text-5xl font-extrabold tracking-tight sm:text-7xl">
-				The Mentorship <span class="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">Bridge</span>
+<BaseLayout title="Virtual Pacing Academy | Cardiac Medical Device Training" description="Transform your financial future with a high-impact career in MedTech. Hands-on education and 1-on-1 mentorship.">
+	
+	{/* Section 1: Hero Hook */}
+	<section class="relative flex h-[95vh] items-center justify-center overflow-hidden px-6">
+		<div class="z-10 text-center max-w-5xl">
+			<h1 class="text-4xl md:text-7xl font-black tracking-tight text-white leading-[1.1]">
+				Transform your financial future with a <span class="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">high-impact career</span> in MedTech.
 			</h1>
-			<p class="mx-auto mt-6 max-w-2xl text-lg text-slate-400 sm:text-xl">
-				From where you are to where you want to be. Master the technical skills and gain the mentorship needed to break into the MedTech industry.
+			<p class="mx-auto mt-8 max-w-3xl text-xl md:text-2xl text-slate-400 leading-relaxed">
+				Get the hands-on education and 1-on-1 mentorship you need to land an entry-level clinical specialist role—without quitting your day job.
 			</p>
-			<div class="mt-10 flex flex-wrap justify-center gap-4">
-				<a href="/apply" class="rounded-full bg-white px-8 py-4 text-lg font-bold text-slate-950 transition-all hover:scale-105 hover:bg-slate-200">
-					Start Your Journey
+			<div class="mt-12 flex flex-wrap justify-center gap-6">
+				<a href="/apply" class="rounded-full bg-white px-10 py-5 text-xl font-bold text-slate-950 transition-all hover:scale-105 hover:bg-slate-100 shadow-[0_0_20px_rgba(255,255,255,0.2)] uppercase tracking-wide">
+					Apply Now
 				</a>
-				<a href="/curriculum" class="rounded-full border border-white/20 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-white/5">
-					View Curriculum
+				<a href="/curriculum" class="rounded-full border border-white/20 px-10 py-5 text-xl font-bold text-white transition-all hover:bg-white/5 uppercase tracking-wide">
+					Explore the Career
 				</a>
 			</div>
 		</div>
 		
-		<div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.1),transparent_50%)]"></div>
+		{/* Visual Background: Subtle EKG Wave */}
+		<div class="absolute inset-0 -z-10 opacity-30">
+			<svg class="h-full w-full" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+				<path d="M0,500 L200,500 L220,450 L240,550 L260,500 L500,500 L520,200 L540,800 L560,500 L800,500 L820,480 L840,520 L860,500 L1000,500" 
+					  fill="none" stroke="rgba(99,102,241,0.2)" stroke-width="2" />
+			</svg>
+		</div>
+		<div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.15),transparent_70%)]"></div>
 	</section>
 
+	{/* The Narrative Scrollytelling Component */}
 	<ScrollJourney />
 
-	<section class="py-24 bg-slate-900/50">
-		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-			<div class="text-center">
-				<h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Your Transformation</h2>
-				<p class="mt-4 text-lg text-slate-400">A clear, supported path to a high-impact career.</p>
-			</div>
-			
-			<div class="mt-20 grid gap-12 md:grid-cols-3">
-				<div class="group relative rounded-2xl border border-white/5 bg-white/5 p-8 transition-all hover:bg-white/10">
-					<div class="text-4xl font-black text-indigo-500/20 group-hover:text-indigo-500/40 transition-colors">01</div>
-					<h3 class="mt-4 text-xl font-bold text-white">Apply & Connect</h3>
-					<p class="mt-2 text-slate-400">Join a community of driven individuals and veteran mentors focused on your success.</p>
+	{/* Secondary Content Sections */}
+	<section class="py-32 bg-slate-900/30">
+		<div class="mx-auto max-w-7xl px-6 lg:px-8">
+			<div class="grid gap-16 md:grid-cols-2 items-center">
+				<div>
+					<h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Our Mission</h2>
+					<p class="mt-6 text-xl text-slate-400 leading-relaxed">
+						We started during COVID-19 because we learned that asynchronous online learning was inefficient. 
+						It provides flexibility, but levels the playing field only when paired with veteran mentors who coach you every step of the way.
+					</p>
+					<a href="/curriculum" class="mt-10 inline-flex items-center gap-2 text-indigo-400 font-bold uppercase tracking-widest hover:text-indigo-300 transition-colors">
+						Learn About Our Mission <span>&rarr;</span>
+					</a>
 				</div>
-				<div class="group relative rounded-2xl border border-white/5 bg-white/5 p-8 transition-all hover:bg-white/10">
-					<div class="text-4xl font-black text-cyan-500/20 group-hover:text-cyan-500/40 transition-colors">02</div>
-					<h3 class="mt-4 text-xl font-bold text-white">Intensive Learning</h3>
-					<p class="mt-2 text-slate-400">Master cardiac pacing and device management through high-touch, virtual sessions.</p>
-				</div>
-				<div class="group relative rounded-2xl border border-white/5 bg-white/5 p-8 transition-all hover:bg-white/10">
-					<div class="text-4xl font-black text-emerald-500/20 group-hover:text-emerald-500/40 transition-colors">03</div>
-					<h3 class="mt-4 text-xl font-bold text-white">Career Launch</h3>
-					<p class="mt-2 text-slate-400">Get hired as a Clinical Specialist with a network and skill set that lasts a lifetime.</p>
+				<div class="grid gap-6">
+					<div class="rounded-2xl border border-white/5 bg-white/5 p-8">
+						<h3 class="text-xl font-bold text-white">100+ Years Experience</h3>
+						<p class="mt-2 text-slate-400">Our mentors are industry veterans from Medtronic, Abbott, and Boston Scientific.</p>
+					</div>
+					<div class="rounded-2xl border border-white/5 bg-white/5 p-8 text-emerald-400">
+						<h3 class="text-xl font-bold">Diversity Focused</h3>
+						<p class="mt-2 text-slate-400">We are committed to lowering technical barriers and promoting inclusion in MedTech.</p>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+
+	{/* Final CTA */}
+	<section class="py-32 border-t border-white/10">
+		<div class="mx-auto max-w-5xl px-6 text-center">
+			<h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter">Ready to join the next cohort?</h2>
+			<p class="mt-8 text-xl text-slate-400">Scholarships are now available. Let's work together to bridge the gap.</p>
+			<div class="mt-12">
+				<a href="/apply" class="rounded-full bg-indigo-600 px-12 py-6 text-2xl font-bold text-white transition-all hover:bg-indigo-500 hover:scale-105 inline-block shadow-[0_0_30px_rgba(79,70,229,0.3)]">
+					Apply for Next Cohort
+				</a>
+			</div>
+		</div>
+	</section>
+
 </BaseLayout>
