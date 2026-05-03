@@ -1,0 +1,19 @@
+{
+  "name": "vpa-monorepo",
+  "private": true,
+  "packageManager": "npm@11.7.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "dev": "turbo run dev"
+  },
+  "devDependencies": {
+    "turbo": "latest",
+    "typescript": "latest"
+  }
+}
