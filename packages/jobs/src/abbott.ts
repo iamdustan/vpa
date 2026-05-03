@@ -41,16 +41,17 @@ export class AbbottFetcher implements JobFetcher {
     return rawJobs
       .filter((post: any) => {
         const title = (post.title || '').toLowerCase();
-        // Strict filtering: Clinical Specialist and CRM related
+        // Strict filtering: Clinical Specialist and CRM related OR Clinical Associate
         const isClinicalSpecialist = title.includes('clinical specialist');
         const isCRM = title.includes('crm') || title.includes('cardiac rhythm');
+        const isClinicalAssociate = title.includes('clinical associate');
         
         // Exclusions
         const isNotIrrelevant = !title.includes('research') && 
                                 !title.includes('marketing') && 
                                 !title.includes('software');
 
-        return isClinicalSpecialist && isCRM && isNotIrrelevant;
+        return ((isClinicalSpecialist && isCRM) || isClinicalAssociate) && isNotIrrelevant;
       })
       .map((post: any) => ({
         id: post.jobId || post.jobSeqNo || post.reqId,
