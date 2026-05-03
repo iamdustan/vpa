@@ -17,17 +17,17 @@
 
   {/* Pinned Content Section */}
   <div id="narrative-target" class="h-screen flex flex-col justify-center items-center px-6">
-    <div class="relative z-10 w-full max-w-5xl text-center space-y-24">
+    <div class="relative z-10 w-full max-w-5xl text-center">
       
       {/* Section 2: The Problem */}
       <div class="narrative-step opacity-0" id="step-problem">
         <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight tracking-tight">
           Asynchronous online learning <span class="text-indigo-400">is inefficient.</span>
         </h2>
-        <p class="mt-8 text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+        <p class="mt-6 text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
           Brick-and-mortar schools cost $30,000+ and a year of your life. 
           Standard online courses leave you isolated. 
-          <span class="block mt-4 text-white font-semibold italic">It just doesn't work well.</span>
+          <span class="block mt-4 text-white font-semibold italic text-lg md:text-xl">It just doesn't work well.</span>
         </p>
       </div>
 
@@ -36,8 +36,8 @@
         <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight tracking-tight">
           Mentorship <span class="text-cyan-400 font-black italic">is the key.</span>
         </h2>
-        <p class="mt-8 text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-          Virtual learning provides flexibility, but <span class="text-white underline decoration-cyan-500/50">partnership</span> provides the career. 
+        <p class="mt-6 text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          Virtual learning provides flexibility, but <span class="text-white underline decoration-cyan-500/50 underline-offset-4">partnership</span> provides the career. 
           Our veteran mentors coach you every single step of the way.
         </p>
       </div>
@@ -47,18 +47,18 @@
         <h2 class="text-4xl md:text-6xl font-black text-white leading-none tracking-tighter uppercase">
           This is not a <span class="bg-gradient-to-r from-indigo-500 to-cyan-500 bg-clip-text text-transparent">content drop.</span>
         </h2>
-        <p class="mt-8 text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-medium">
+        <p class="mt-6 text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-medium">
           We only succeed when you succeed. 
           From the first rhythm to your first day in the OR, we go on the journey with you.
         </p>
-        <div class="mt-12 flex justify-center gap-6">
+        <div class="mt-10 flex justify-center gap-6">
            <div class="flex items-center gap-2 text-indigo-400">
              <span class="h-2 w-2 rounded-full bg-indigo-400 animate-pulse"></span>
-             <span class="text-sm font-bold tracking-widest uppercase">1-on-1 Coaching</span>
+             <span class="text-xs md:text-sm font-bold tracking-widest uppercase">1-on-1 Coaching</span>
            </div>
            <div class="flex items-center gap-2 text-cyan-400">
              <span class="h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></span>
-             <span class="text-sm font-bold tracking-widest uppercase">Lifetime Network</span>
+             <span class="text-xs md:text-sm font-bold tracking-widest uppercase">Lifetime Network</span>
            </div>
         </div>
       </div>
@@ -66,8 +66,8 @@
     </div>
   </div>
 
-  {/* Scroll Spacer */}
-  <div class="h-[500vh]"></div>
+  {/* Scroll Spacer - Significantly Condensed */}
+  <div class="h-[250vh]"></div>
 </div>
 
 <script>
@@ -83,7 +83,6 @@
     
     if (!container || !target || !thread) return;
 
-    // Set initial thread path
     const updateThreadPath = () => {
       const h = container.getBoundingClientRect().height;
       thread.setAttribute('d', `M 0 0 L 0 ${h}`);
@@ -91,43 +90,42 @@
     updateThreadPath();
     window.addEventListener('resize', updateThreadPath);
 
-    // Narrative Timeline
+    // Narrative Timeline - Tighter durations and less spacing
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container,
         start: 'top top',
         end: 'bottom bottom',
-        scrub: 1,
+        scrub: 0.5,
         pin: '#narrative-target',
         invalidateOnRefresh: true,
       }
     });
 
-    // Animate the thread drawing
     const threadLength = thread.getTotalLength();
     gsap.set(thread, { strokeDasharray: threadLength, strokeDashoffset: threadLength });
     
-    tl.to(thread, { strokeDashoffset: 0, duration: 10, ease: 'none' }, 0);
+    // Animate thread and background together
+    tl.to(thread, { strokeDashoffset: 0, duration: 6, ease: 'none' }, 0);
+    tl.to('#narrative-container', { backgroundColor: '#0f172a', duration: 2 }, 1);
+    tl.to('#narrative-container', { backgroundColor: '#020617', duration: 2 }, 4);
 
-    // Step: Problem
-    tl.to('#step-problem', { opacity: 1, y: -20, duration: 2 }, 1);
-    tl.to('#step-problem', { opacity: 0, y: -50, duration: 1.5, delay: 1 });
+    // Step 1: Problem (Fades in quickly, stays briefly, fades out)
+    tl.to('#step-problem', { opacity: 1, y: -10, duration: 1 }, 0.5);
+    tl.to('#step-problem', { opacity: 0, y: -30, duration: 0.8 }, 2);
 
-    // Step: Mentorship
-    tl.to('#step-mentorship', { opacity: 1, y: -20, duration: 2 });
-    tl.to('#step-mentorship', { opacity: 0, y: -50, duration: 1.5, delay: 1 });
+    // Step 2: Mentorship (Fades in as Step 1 leaves)
+    tl.to('#step-mentorship', { opacity: 1, y: -10, duration: 1 }, 2.2);
+    tl.to('#step-mentorship', { opacity: 0, y: -30, duration: 0.8 }, 3.7);
 
-    // Step: Partnership
-    tl.to('#step-partnership', { opacity: 1, scale: 1.05, duration: 3 });
-    
-    // Background Color Shifts
-    tl.to('#narrative-container', { backgroundColor: '#0f172a', duration: 3 }, 2);
-    tl.to('#narrative-container', { backgroundColor: '#020617', duration: 3 }, 5);
+    // Step 3: Partnership (The landing beat)
+    tl.to('#step-partnership', { opacity: 1, y: -10, duration: 1 }, 4);
+    tl.to('#step-partnership', { scale: 1.02, duration: 2 }, 4);
   });
 </script>
 
 <style>
   .narrative-step {
-    transition: filter 0.5s ease-out;
+    will-change: opacity, transform;
   }
 </style>
