@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
-import { hello } from './index';
 
-test('hello returns world', () => {
-  expect(hello()).toBe('world');
+test('jobs provider list is populated', async () => {
+  const { PROVIDERS } = await import('./index');
+  expect(Object.keys(PROVIDERS).length).toBeGreaterThan(0);
 });
