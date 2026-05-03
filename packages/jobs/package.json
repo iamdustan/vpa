@@ -1,0 +1,26 @@
+{
+  "name": "@vpa/jobs",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "jobs": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "lint": "biome check .",
+    "format": "biome format . --write",
+    "dev": "vitest",
+    "jobs": "tsx src/cli.ts"
+  },
+  "devDependencies": {
+    "@vpa/ts-config": "*",
+    "typescript": "latest",
+    "vitest": "latest",
+    "@biomejs/biome": "latest",
+    "tsx": "latest",
+    "commander": "latest"
+  }
+}
