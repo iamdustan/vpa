@@ -27,16 +27,27 @@ export class MedtronicFetcher implements JobFetcher {
     return rawJobs
       .filter((post: any) => {
         const title = post.title.toLowerCase();
-        // Strict filtering: must be a Clinical Specialist and must be CRM related
+        const location = post.locationsText.toLowerCase();
+
+        // Filter for US only
+        const isUS = location.includes('united states') || location.includes('usa');
+        if (!isUS) return false;
+
+        // Strict filtering: must be a Clinical Specialist and must be CRM related OR Field Inventory Analyst OR CAS related
         const isClinicalSpecialist = title.includes('clinical specialist');
         const isCRM = title.includes('crm') || title.includes('cardiac rhythm');
+        const isCAS = title.includes('(cas)') || title.includes(' cas') || title.includes('cas ') || title.includes('cardiac ablation solutions');
+        const isMappingSpecialist = title.includes('mapping specialist');
+        const isInventoryAnalyst = title.includes('field inventory analyst');
         
         // Exclude research, marketing, or software specific roles that aren't field clinical roles
         const isNotIrrelevant = !title.includes('research') && 
                                 !title.includes('marketing') && 
                                 !title.includes('software');
 
-        return isClinicalSpecialist && isCRM && isNotIrrelevant;
+        return (isClinicalSpecialist && (isCRM || isCAS) && isNotIrrelevant) || 
+               (isMappingSpecialist && isCAS && isNotIrrelevant) ||
+               isInventoryAnalyst;
       })
       .map((post: any) => ({
         id: post.bulletinNumber || post.externalPath,

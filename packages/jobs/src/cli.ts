@@ -38,26 +38,47 @@ program
         process.exit(1);
     }
 
-    console.log(`Searching for "${options.query}" at ${provider}...\n`);
+    console.log(`Searching at ${provider}...\n`);
 
     try {
-      const jobs = await fetcher.fetch(options.query);
+      const queries = provider.toLowerCase() === 'medtronic' 
+        ? ['Field Inventory Analyst', 'Clinical Specialist (CAS)', 'Clinical Specialist Cardiac Rhythm']
+        : [options.query];
+
+      const allJobs: JobPost[] = [];
+      for (const q of queries) {
+        const jobs = await fetcher.fetch(q);
+        allJobs.push(...jobs);
+      }
       
-      if (jobs.length === 0) {
+      // Deduplicate by ID
+      const uniqueJobs = Array.from(new Map(allJobs.map(j => [j.id, j])).values());
+
+      if (uniqueJobs.length === 0) {
         console.log('No jobs found.');
         return;
       }
 
-      jobs.forEach((job, i) => {
-        console.log(`${i + 1}. ${job.title}`);
-        console.log(`   Location: ${job.location}`);
-        console.log(`   URL: ${job.url}`);
-        console.log(`   ID: ${job.id}`);
-        console.log(`   Posted: ${job.datePosted}`);
-        console.log('---');
+      // Group by title
+      const groupedJobs = uniqueJobs.reduce((acc, job) => {
+        if (!acc[job.title]) acc[job.title] = [];
+        acc[job.title].push(job);
+        return acc;
+      }, {} as Record<string, JobPost[]>);
+
+      Object.entries(groupedJobs).forEach(([title, jobs]) => {
+        console.log(`\x1b[1m${title}\x1b[0m (${jobs.length} positions)`);
+        jobs.forEach((job) => {
+          console.log(`   Location: ${job.location}`);
+          console.log(`   URL: ${job.url}`);
+          console.log(`   ID: ${job.id}`);
+          console.log(`   Posted: ${job.datePosted}`);
+          console.log('---');
+        });
+        console.log();
       });
       
-      console.log(`\nFound ${jobs.length} jobs.`);
+      console.log(`\nFound ${uniqueJobs.length} unique jobs.`);
     } catch (error) {
       console.error('Error fetching jobs:', error instanceof Error ? error.message : error);
       process.exit(1);
