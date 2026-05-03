@@ -52,16 +52,35 @@ export class BiotronikFetcher implements JobFetcher {
           
           if (!titleLink) return null;
 
+          const titleText = titleLink.innerText.trim();
+          const titleLower = titleText.toLowerCase();
+
+          // Strict filtering: Must be Clinical Specialist, CRM, or Field related
+          const isClinical = titleLower.includes('clinical specialist') || 
+                            titleLower.includes('clinical support') ||
+                            titleLower.includes('procedural specialist');
+          const isCRM = titleLower.includes('crm') || 
+                        titleLower.includes('cardiac rhythm') || 
+                        titleLower.includes('pacemaker');
+          const isField = titleLower.includes('field');
+
+          // Exclusions: Accounting, Product Specialist, Research, Marketing, etc.
+          const isIrrelevant = titleLower.includes('accounting') ||
+                               titleLower.includes('product specialist') ||
+                               titleLower.includes('treasury') ||
+                               titleLower.includes('receivable') ||
+                               titleLower.includes('marketing') ||
+                               titleLower.includes('research') ||
+                               titleLower.includes('software');
+
+          if (!(isClinical || isCRM || isField) || isIrrelevant) return null;
+
           // Extract ID and Date from noteSection
-          // Format: Requisition ID: 62226 - Posted on 05/01/2026 - ...
           const emSpans = Array.from(row.querySelectorAll('.jobContentEM'));
           const id = emSpans[0]?.textContent?.trim() || '';
           const datePosted = emSpans[1]?.textContent?.replace('Posted on', '')?.trim() || '';
           
-          // Location is often in the title for Biotronik or in the note section
-          // e.g. "Field Clinical Specialist: Melbourne, FL"
           let location = '';
-          const titleText = titleLink.innerText.trim();
           if (titleText.includes(':')) {
             location = titleText.split(':').pop()?.trim() || '';
           }

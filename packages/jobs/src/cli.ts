@@ -16,11 +16,15 @@ const PROVIDERS: Record<string, { fetcher: new () => JobFetcher; queries: string
   },
   boston: {
     fetcher: BostonScientificFetcher,
-    queries: ['Clinical Specialist CRM', 'Field Clinical Representative CRM'],
+    queries: [
+      'Clinical Specialist CRM',
+      'CRM Field Clinical Representative',
+      'Ep Mapping clinical specialist',
+    ],
   },
   biotronik: {
     fetcher: BiotronikFetcher,
-    queries: ['Clinical Specialist'],
+    queries: ['Field Clinical Specialist'],
   },
 };
 
@@ -35,7 +39,7 @@ program
   .command('fetch')
   .description('Fetch jobs from a provider or all providers')
   .argument('[provider]', 'Company to fetch from (medtronic, abbott, boston, biotronik, all)', 'all')
-  .option('-q, --query <query>', 'Search query (if not using "all" or specific provider defaults)', 'Clinical Specialist CRM')
+  .option('-q, --query <query>', 'Search query (if not using "all" or specific provider defaults)')
   .action(async (providerArg, options) => {
     const providersToFetch = providerArg.toLowerCase() === 'all'
       ? Object.keys(PROVIDERS)

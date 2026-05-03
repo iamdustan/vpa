@@ -29,17 +29,21 @@ export class BostonScientificFetcher implements JobFetcher {
     return rawJobs
       .filter((post: any) => {
         const title = (post.name || '').toLowerCase();
-        // Strict filtering: Clinical Specialist and CRM related
-        // Note: Some Boston Sci roles use "Field Clinical Representative" for CRM
-        const isClinicalSpecialist = title.includes('clinical specialist') || title.includes('clinical representative');
+        // Strict filtering: Clinical Specialist and CRM/EP related
+        // Note: Some Boston Sci roles use "Field Clinical Representative" or "Mapping Specialist"
+        const isClinicalSpecialist = title.includes('clinical specialist') || 
+                                     title.includes('clinical representative') ||
+                                     title.includes('mapping specialist') ||
+                                     title.includes('clinical manager');
         const isCRM = title.includes('crm') || title.includes('cardiac rhythm');
+        const isEP = title.includes('ep ') || title.includes('electrophysiology') || title.includes('mapping');
         
         // Exclusions
         const isNotIrrelevant = !title.includes('research') && 
                                 !title.includes('marketing') && 
                                 !title.includes('software');
 
-        return isClinicalSpecialist && isCRM && isNotIrrelevant;
+        return isClinicalSpecialist && (isCRM || isEP) && isNotIrrelevant;
       })
       .map((post: any) => {
         let jobUrl = post.positionUrl || `https://bostonscientific.eightfold.ai/careers?job=${post.id}`;
