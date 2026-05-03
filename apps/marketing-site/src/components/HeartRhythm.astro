@@ -2,44 +2,53 @@
 ---
 
 <div class="fixed inset-0 pointer-events-none -z-20 overflow-hidden bg-slate-950" id="heart-rhythm-bg">
-  <svg class="h-full w-full opacity-40" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <svg class="h-full w-full opacity-60" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      {/* High-fidelity Glow Filter */}
+      <filter id="premium-glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="2" result="blur1"/>
+        <feGaussianBlur stdDeviation="4" result="blur2"/>
+        <feGaussianBlur stdDeviation="12" result="blur3"/>
+        <feColorMatrix in="blur3" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="glow3"/>
         <feMerge>
-          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="glow3"/>
+          <feMergeNode in="blur2"/>
+          <feMergeNode in="blur1"/>
           <feMergeNode in="SourceGraphic"/>
         </feMerge>
       </filter>
       
       <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" stop-color="rgba(99, 102, 241, 0)" />
-        <stop offset="50%" stop-color="rgba(99, 102, 241, 0.3)" />
+        <stop offset="50%" stop-color="rgba(99, 102, 241, 0.15)" />
         <stop offset="100%" stop-color="rgba(99, 102, 241, 0)" />
       </linearGradient>
 
-      <radialGradient id="pulse-glow">
-        <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.8" />
-        <stop offset="100%" stop-color="#22d3ee" stop-opacity="0" />
+      <radialGradient id="pulse-gradient">
+        <stop offset="0%" stop-color="#22d3ee" stop-opacity="1" />
+        <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
       </radialGradient>
     </defs>
 
-    {/* The Static Rhythm Line */}
+    {/* The Subtle Rhythm Line */}
     <path id="ekg-path" 
-      d="M-50,200 L100,200 L120,190 L140,210 L160,200 L300,200 L320,100 L340,300 L360,200 L500,200 L520,195 L540,205 L560,200 L750,200 L770,100 L790,300 L810,200 L950,200 L1050,200" 
+      d="M-100,200 L150,200 L165,185 L180,215 L195,200 L350,200 L370,120 L390,280 L410,200 L550,200 L565,190 L580,210 L595,200 L750,200 L770,120 L790,280 L810,200 L1100,200" 
       fill="none" 
       stroke="url(#line-gradient)" 
-      stroke-width="1.5" 
+      stroke-width="1" 
+      stroke-opacity="0.3"
     />
 
-    {/* The Moving Light/Pulse */}
-    <circle id="ekg-pulse" r="4" fill="#22d3ee" filter="url(#glow)" />
-    <circle id="ekg-pulse-outer" r="20" fill="url(#pulse-glow)" />
+    {/* The Moving Core */}
+    <circle id="ekg-pulse" r="2.5" fill="#22d3ee" filter="url(#premium-glow)" />
+    
+    {/* The Ambient Halo */}
+    <circle id="ekg-pulse-halo" r="15" fill="url(#pulse-gradient)" opacity="0.2" />
 
   </svg>
   
-  {/* WebGL-like noise overlay for texture */}
-  <div class="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+  {/* Grain Texture */}
+  <div class="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 </div>
 
 <script>
@@ -51,55 +60,51 @@
   window.addEventListener('load', () => {
     const path = document.querySelector('#ekg-path');
     const pulse = document.querySelector('#ekg-pulse');
-    const pulseOuter = document.querySelector('#ekg-pulse-outer');
+    const halo = document.querySelector('#ekg-pulse-halo');
     const bg = document.querySelector('#heart-rhythm-bg');
 
-    if (!path || !pulse || !pulseOuter) return;
+    if (!path || !pulse || !halo) return;
 
-    const mainTl = gsap.timeline({ repeat: -1 });
-
-    // Animate the light following the path
-    mainTl.to([pulse, pulseOuter], {
-      duration: 4,
+    // 1. Motion Path Animation
+    const mainDuration = 6; // Slower, more atmospheric
+    gsap.to([pulse, halo], {
+      duration: mainDuration,
       repeat: -1,
       ease: "none",
       motionPath: {
         path: "#ekg-path",
         align: "#ekg-path",
-        alignOrigin: [0.5, 0.5],
-        autoRotate: true
+        alignOrigin: [0.5, 0.5]
       }
     });
 
-    // Add rhythmic "beat" scaling when hitting spikes
-    // We'll sync this with the motion path progress
+    // 2. The Heartbeat Pulse (Sync'd visually)
     const beatTl = gsap.timeline({ repeat: -1 });
     
-    // Rhythmic "lub-dub" beat
-    beatTl.to(pulseOuter, {
-      scale: 1.5,
-      opacity: 1,
-      duration: 0.1,
-      ease: "power2.out"
+    beatTl.to(halo, {
+      scale: 2,
+      opacity: 0.6,
+      duration: 0.15,
+      ease: "power3.out"
     })
-    .to(pulseOuter, {
+    .to(halo, {
       scale: 1,
-      opacity: 0.4,
-      duration: 0.4,
-      ease: "power2.in"
-    }, "+=0.1")
+      opacity: 0.2,
+      duration: 0.6,
+      ease: "power2.inOut"
+    })
     .to(bg, {
        backgroundColor: '#0f172a',
-       duration: 0.1,
+       duration: 0.15,
+       ease: "power3.out"
     }, 0)
     .to(bg, {
        backgroundColor: '#020617',
-       duration: 1,
-    }, 0.2);
+       duration: 0.8,
+       ease: "power2.inOut"
+    }, 0.15);
 
-    // Sync beat with the QRS complex spikes in the path (approximate timing)
-    // 4s total loop, 2 spikes in the path.
-    beatTl.repeatDelay(1.5); // Adjust to feel like a real heart rate (approx 60bpm)
+    beatTl.repeatDelay(2.5); // Approx 1 heartbeat every 3 seconds for a calm feel
 
   });
 </script>
