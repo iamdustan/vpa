@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Virtual Pacing Academy - The Mentorship Bridge to a Career in MedTech" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+	</head>
+	<body class="bg-slate-950 text-slate-50 antialiased selection:bg-indigo-500/30">
+		<nav class="fixed top-0 z-50 w-full border-b border-white/10 bg-slate-950/80 backdrop-blur-md">
+			<div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+				<div class="flex items-center gap-2">
+					<a href="/" class="text-xl font-bold tracking-tight text-white">VPA</a>
+				</div>
+				<div class="hidden space-x-8 md:flex">
+					<a href="/curriculum" class="text-sm font-medium text-slate-400 transition-colors hover:text-white">Curriculum</a>
+					<a href="/admissions" class="text-sm font-medium text-slate-400 transition-colors hover:text-white">Admissions</a>
+					<a href="/apply" class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition-all hover:bg-slate-200">Apply Now</a>
+				</div>
+			</div>
+		</nav>
+		<main class="pt-16">
+			<slot />
+		</main>
+		<footer class="border-t border-white/10 py-12">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+					<p class="text-sm text-slate-500">&copy; {new Date().getFullYear()} Virtual Pacing Academy. All rights reserved.</p>
+					<div class="flex space-x-6">
+						<a href="/privacy" class="text-sm text-slate-500 hover:text-slate-300">Privacy</a>
+						<a href="/terms" class="text-sm text-slate-500 hover:text-slate-300">Terms</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
