@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Admissions & ROI | Virtual Pacing Academy" description="Learn about VPA pricing, scholarships, and the return on investment for your career.">
+	<div class="mx-auto max-w-4xl px-4 py-24 sm:px-6 lg:px-8">
+		<header class="text-center">
+			<h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Admissions & ROI</h1>
+			<p class="mt-6 text-lg text-slate-400">
+				An investment in your future. We lower the barriers to entry in MedTech.
+			</p>
+		</header>
+
+		<div class="mt-20 grid gap-8 md:grid-cols-2">
+			<div class="rounded-2xl border border-white/5 bg-white/5 p-8">
+				<h2 class="text-xl font-bold text-white">The Academy Cost</h2>
+				<p class="mt-4 text-3xl font-bold text-white">$9,990</p>
+				<p class="mt-2 text-slate-400">Complete curriculum and mentorship.</p>
+				<hr class="my-6 border-white/10" />
+				<p class="text-sm text-slate-500">Compare this to $30,000+ for traditional brick-and-mortar pacing schools.</p>
+			</div>
+			
+			<div class="rounded-2xl border border-indigo-500/20 bg-indigo-500/5 p-8">
+				<h2 class="text-xl font-bold text-white">Scholarships</h2>
+				<p class="mt-4 text-slate-400">
+					We offer needs-based scholarships specifically to support diversity and inclusion in the industry.
+				</p>
+				<a href="/scholarships" class="mt-6 inline-block text-indigo-400 hover:text-indigo-300">Learn about eligibility &rarr;</a>
+			</div>
+		</div>
+
+		<div class="mt-20 rounded-2xl border border-white/5 bg-white/5 p-8 sm:p-12">
+			<h2 class="text-2xl font-bold text-white text-center">The ROI Bridge</h2>
+			<div class="mt-10 grid gap-8 md:grid-cols-2">
+				<div class="text-center">
+					<p class="text-sm uppercase tracking-widest text-slate-500">Average Starting Salary</p>
+					<p class="mt-2 text-4xl font-bold text-emerald-400">$85k - $105k</p>
+				</div>
+				<div class="text-center">
+					<p class="text-sm uppercase tracking-widest text-slate-500">Time to Payoff</p>
+					<p class="mt-2 text-4xl font-bold text-indigo-400">< 6 Months</p>
+				</div>
+			</div>
+			<p class="mt-10 text-center text-slate-400 italic">
+				"Virtual Pacing Academy is the only way to get this level of training while continuing to work your current job."
+			</p>
+		</div>
+	</div>
+</BaseLayout>
