@@ -1,32 +1,6 @@
 import { Command } from 'commander';
-import { MedtronicFetcher } from './medtronic';
-import { AbbottFetcher } from './abbott';
-import { BostonScientificFetcher } from './boston';
-import { BiotronikFetcher } from './biotronik';
-import type { JobFetcher, JobPost } from './types';
-
-const PROVIDERS: Record<string, { fetcher: new () => JobFetcher; queries: string[] }> = {
-  medtronic: {
-    fetcher: MedtronicFetcher,
-    queries: ['Field Inventory Analyst', 'Clinical Specialist (CAS)', 'Clinical Specialist Cardiac Rhythm'],
-  },
-  abbott: {
-    fetcher: AbbottFetcher,
-    queries: ['Clinical Specialist CRM', 'Clinical Associate'],
-  },
-  boston: {
-    fetcher: BostonScientificFetcher,
-    queries: [
-      'Clinical Specialist CRM',
-      'CRM Field Clinical Representative',
-      'Ep Mapping clinical specialist',
-    ],
-  },
-  biotronik: {
-    fetcher: BiotronikFetcher,
-    queries: ['Field Clinical Specialist'],
-  },
-};
+import { fetchAllJobs, PROVIDERS } from './index';
+import type { JobPost } from './types';
 
 const program = new Command();
 
@@ -41,68 +15,65 @@ program
   .argument('[provider]', 'Company to fetch from (medtronic, abbott, boston, biotronik, all)', 'all')
   .option('-q, --query <query>', 'Search query (if not using "all" or specific provider defaults)')
   .action(async (providerArg, options) => {
-    const providersToFetch = providerArg.toLowerCase() === 'all'
-      ? Object.keys(PROVIDERS)
-      : [providerArg.toLowerCase()];
-
-    const allResults: JobPost[] = [];
-
-    for (const p of providersToFetch) {
-      const config = PROVIDERS[p];
-      if (!config) {
-        console.error(`Unknown provider: ${p}`);
-        continue;
-      }
-
-      console.log(`\n\x1b[36m--- Fetching from ${p.toUpperCase()} ---\x1b[0m`);
-      const fetcher = new config.fetcher();
-      
-      const queries = (providerArg.toLowerCase() === 'all' || !options.query)
-        ? config.queries 
-        : [options.query];
-
-      for (const q of queries) {
-        console.log(`Searching for "${q}"...`);
-        try {
-          const jobs = await fetcher.fetch(q);
-          allResults.push(...jobs);
-        } catch (error) {
-          console.error(`Error fetching from ${p} for "${q}":`, error instanceof Error ? error.message : error);
-        }
-      }
-    }
-
-    const uniqueJobs = Array.from(new Map(allResults.map(j => [j.id, j])).values());
-
-    if (uniqueJobs.length === 0) {
-      console.log('\nNo jobs found across all requested providers.');
-      return;
-    }
-
-    console.log(`\n\x1b[1m\x1b[32m=== RESULTS SUMMARY ===\x1b[0m`);
+    const providerKey = providerArg.toLowerCase();
     
-    const groupedByCompany = uniqueJobs.reduce((acc, job) => {
-      if (!acc[job.company]) acc[job.company] = {};
-      if (!acc[job.company][job.title]) acc[job.company][job.title] = [];
-      acc[job.company][job.title].push(job);
-      return acc;
-    }, {} as Record<string, Record<string, JobPost[]>>);
+    if (providerKey !== 'all' && !PROVIDERS[providerKey as keyof typeof PROVIDERS]) {
+      console.error(`Unknown provider: ${providerArg}`);
+      process.exit(1);
+    }
 
-    Object.entries(groupedByCompany).forEach(([company, titles]) => {
-      console.log(`\n\x1b[35m[${company}]\x1b[0m`);
-      Object.entries(titles).forEach(([title, jobs]) => {
-        console.log(`  \x1b[1m${title}\x1b[0m (${jobs.length} positions)`);
-        jobs.forEach((job) => {
-          console.log(`     Location: ${job.location}`);
-          console.log(`     URL: ${job.url}`);
-          console.log(`     ID: ${job.id}`);
-          if (job.datePosted) console.log(`     Posted: ${job.datePosted}`);
-          console.log('     ---');
+    console.log(`\nSearching at ${providerArg}...\n`);
+
+    try {
+      let uniqueJobs: JobPost[];
+
+      if (options.query && providerKey !== 'all') {
+        // Handle specific manual query
+        const config = PROVIDERS[providerKey as keyof typeof PROVIDERS];
+        const fetcher = new config.fetcher();
+        uniqueJobs = await fetcher.fetch(options.query);
+      } else {
+        // Use unified library function for default presets
+        uniqueJobs = await fetchAllJobs({ 
+          providers: providerKey === 'all' ? undefined : [providerKey as keyof typeof PROVIDERS] 
+        });
+      }
+
+      if (uniqueJobs.length === 0) {
+        console.log('\nNo jobs found.');
+        return;
+      }
+
+      console.log(`\x1b[1m\x1b[32m=== RESULTS SUMMARY ===\x1b[0m`);
+      
+      const groupedByCompany = uniqueJobs.reduce((acc, job) => {
+        if (!acc[job.company]) acc[job.company] = {};
+        if (!acc[job.company][job.title]) acc[job.company][job.title] = [];
+        acc[job.company][job.title].push(job);
+        return acc;
+      }, {} as Record<string, Record<string, JobPost[]>>);
+
+      Object.entries(groupedByCompany).forEach(([company, titles]) => {
+        console.log(`\n\x1b[35m[${company}]\x1b[0m`);
+        Object.entries(titles).forEach(([title, jobs]) => {
+          console.log(`  \x1b[1m${title}\x1b[0m (${jobs.length} positions)`);
+          jobs.forEach((job) => {
+            console.log(`     Location: ${job.location}`);
+            console.log(`     URL: ${job.url}`);
+            console.log(`     ID: ${job.id}`);
+            if (job.datePosted) console.log(`     Posted: ${job.datePosted}`);
+            console.log('     ---');
+          });
         });
       });
-    });
-    
-    console.log(`\n\x1b[32mFound ${uniqueJobs.length} unique jobs across ${Object.keys(groupedByCompany).length} companies.\x1b[0m`);
+      
+      console.log(`\n\x1b[32mFound ${uniqueJobs.length} unique jobs.\x1b[0m`);
+    } catch (error) {
+      console.error('Error fetching jobs:', error instanceof Error ? error.message : error);
+      process.exit(1);
+    }
   });
+
+program.parse();
 
 program.parse();
