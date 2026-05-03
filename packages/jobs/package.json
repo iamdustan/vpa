@@ -16,11 +16,14 @@
     "jobs": "tsx src/cli.ts"
   },
   "devDependencies": {
-    "@vpa/ts-config": "*",
-    "typescript": "latest",
-    "vitest": "latest",
     "@biomejs/biome": "latest",
+    "@vpa/ts-config": "*",
+    "commander": "latest",
     "tsx": "latest",
-    "commander": "latest"
+    "typescript": "latest",
+    "vitest": "latest"
+  },
+  "dependencies": {
+    "playwright": "^1.59.1"
   }
 }

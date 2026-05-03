@@ -17,8 +17,11 @@
     - [x] Basic fetching (/api/pcsx/search)
     - [x] Normalization
     - [x] Strict title filtering (includes "clinical representative")
-- [ ] Biotronik Fetcher (SuccessFactors)
+- [x] Biotronik Fetcher (SuccessFactors)
+    - [x] Basic fetching (Playwright)
+    - [x] Normalization
+    - [x] TDD implementation
 
 ## Next Steps
-1. Implement Biotronik Fetcher using TDD.
-2. Refactor to support a list of search queries per provider.
+1. Refactor to support a list of search queries per provider.
+2. Implement follow-up on Medtronic filtering logic.

@@ -2,6 +2,7 @@ import { Command } from 'commander';
 import { MedtronicFetcher } from './medtronic';
 import { AbbottFetcher } from './abbott';
 import { BostonScientificFetcher } from './boston';
+import { BiotronikFetcher } from './biotronik';
 
 const program = new Command();
 
@@ -28,6 +29,9 @@ program
       case 'boston':
       case 'boston-scientific':
         fetcher = new BostonScientificFetcher();
+        break;
+      case 'biotronik':
+        fetcher = new BiotronikFetcher();
         break;
       default:
         console.error(`Unknown provider: ${provider}`);
