@@ -4,6 +4,7 @@ export class MedtronicFetcher implements JobFetcher {
   private readonly baseUrl = 'https://medtronic.wd1.myworkdayjobs.com/wday/cxs/medtronic/MedtronicCareers/jobs';
 
   async fetch(query: string): Promise<JobPost[]> {
+    console.log(`[Medtronic] Actually fetching network data for "${query}"...`);
     const response = await fetch(this.baseUrl, {
       method: 'POST',
       headers: {

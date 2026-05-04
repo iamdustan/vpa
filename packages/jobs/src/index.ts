@@ -1,16 +1,13 @@
-export * from './types';
-export { MedtronicFetcher } from './medtronic';
-export { AbbottFetcher } from './abbott';
-export { BostonScientificFetcher } from './boston';
-export { BiotronikFetcher } from './biotronik';
-
 import { MedtronicFetcher } from './medtronic';
 import { AbbottFetcher } from './abbott';
 import { BostonScientificFetcher } from './boston';
 import { BiotronikFetcher } from './biotronik';
-import type { JobPost } from './types';
+import type { JobPost, JobFetcher } from './types';
 
-export const PROVIDERS = {
+export * from './types';
+export { MedtronicFetcher, AbbottFetcher, BostonScientificFetcher, BiotronikFetcher };
+
+export const PROVIDERS: Record<string, { fetcher: new () => JobFetcher; queries: string[] }> = {
   medtronic: {
     fetcher: MedtronicFetcher,
     queries: ['Field Inventory Analyst', 'Clinical Specialist (CAS)', 'Clinical Specialist Cardiac Rhythm'],
@@ -31,12 +28,16 @@ export const PROVIDERS = {
     fetcher: BiotronikFetcher,
     queries: ['Field Clinical Specialist'],
   },
-} as const;
+};
 
 /**
  * Unified API to fetch jobs from all or specific providers with their default expert-tuned queries.
  */
-export async function fetchAllJobs(options: { providers?: (keyof typeof PROVIDERS)[] } = {}): Promise<JobPost[]> {
+export async function fetchAllJobs(options: { 
+  providers?: (keyof typeof PROVIDERS)[],
+  forceRefresh?: boolean // Kept for API compatibility
+} = {}): Promise<JobPost[]> {
+  
   const providersToFetch = options.providers || (Object.keys(PROVIDERS) as (keyof typeof PROVIDERS)[]);
   const allResults: JobPost[] = [];
 
@@ -54,6 +55,5 @@ export async function fetchAllJobs(options: { providers?: (keyof typeof PROVIDER
     }
   }
 
-  // Deduplicate by ID
   return Array.from(new Map(allResults.map(j => [j.id, j])).values());
 }

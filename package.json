@@ -10,7 +10,8 @@
     "build": "turbo run build",
     "test": "turbo run test",
     "lint": "turbo run lint",
-    "dev": "turbo run dev"
+    "dev": "turbo run dev",
+    "jobs:refresh": "tsx packages/jobs/src/prefetch.ts apps/marketing-site/src/data/jobs.json"
   },
   "overrides": {
     "vite": "8.0.10"

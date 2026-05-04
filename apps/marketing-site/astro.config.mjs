@@ -13,7 +13,10 @@ export default defineConfig({
     mode: 'standalone',
   }),
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    server: {
+      allowedHosts: ['few-bags-love.loca.lt'],
+    },
   },
   integrations: [markdoc(), react(), keystatic()]
 });
