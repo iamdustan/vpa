@@ -4,7 +4,7 @@ import type { JobFetcher, JobPost } from './types';
 export class BiotronikFetcher implements JobFetcher {
   private url = 'https://career5.successfactors.eu/career?company=C0001096615P';
 
-  async fetch(query: string): Promise<JobPost[]> {
+  async fetch(query: string, options?: { unfiltered?: boolean }): Promise<JobPost[]> {
     const browser = await chromium.launch({ headless: true });
     const context = await browser.newContext({
       userAgent:
@@ -44,7 +44,7 @@ export class BiotronikFetcher implements JobFetcher {
         console.warn('No job rows found within timeout');
       });
 
-      const jobs = await page.evaluate((selector) => {
+      const jobs = await page.evaluate(({ selector, isUnfiltered }) => {
         const rows = Array.from(document.querySelectorAll(selector));
         return rows.map((row) => {
           const titleLink = row.querySelector('a.jobTitle') as HTMLAnchorElement;
@@ -55,28 +55,38 @@ export class BiotronikFetcher implements JobFetcher {
           const titleText = titleLink.innerText.trim();
           const titleLower = titleText.toLowerCase();
 
-          // Strict filtering: Must be Clinical Specialist, CRM, or Field related
-          const isClinical = titleLower.includes('clinical specialist') || 
-                            titleLower.includes('clinical support') ||
-                            titleLower.includes('procedural specialist');
-          const isCRM = titleLower.includes('crm') || 
-                        titleLower.includes('cardiac rhythm') || 
-                        titleLower.includes('pacemaker');
-          const isField = titleLower.includes('field');
+          if (!isUnfiltered) {
+            // Strict filtering: Must be Clinical Specialist, CRM, or Field related
+            const isClinical = titleLower.includes('clinical specialist') || 
+                              titleLower.includes('clinical support') ||
+                              titleLower.includes('procedural specialist');
+            const isCRM = titleLower.includes('crm') || 
+                          titleLower.includes('cardiac rhythm') || 
+                          titleLower.includes('pacemaker');
+            const isField = titleLower.includes('field');
 
-          // Exclusions: Accounting, Product Specialist, Research, Marketing, etc.
-          const isIrrelevant = titleLower.includes('accounting') ||
-                               titleLower.includes('product specialist') ||
-                               titleLower.includes('treasury') ||
-                               titleLower.includes('receivable') ||
-                               titleLower.includes('marketing') ||
-                               titleLower.includes('research') ||
-                               titleLower.includes('software');
+            // Exclusions: Accounting, Product Specialist, Research, Marketing, etc.
+            const isIrrelevant = titleLower.includes('accounting') ||
+                                titleLower.includes('product specialist') ||
+                                titleLower.includes('treasury') ||
+                                titleLower.includes('receivable') ||
+                                titleLower.includes('marketing') ||
+                                titleLower.includes('research') ||
+                                titleLower.includes('software') ||
+                                titleLower.includes('senior') ||
+                                titleLower.includes('sr ') ||
+                                titleLower.includes('sr.') ||
+                                titleLower.includes('principal') ||
+                                titleLower.includes('manager') ||
+                                titleLower.includes('thailand') ||
+                                titleLower.includes('leadless') ||
+                                titleLower.includes('neuro');
 
-          if (!(isClinical || isCRM || isField) || isIrrelevant) return null;
+            if (!(isClinical || isCRM || isField) || isIrrelevant) return null;
+          }
 
           // Extract ID and Date from noteSection
-          const emSpans = Array.from(row.querySelectorAll('.jobContentEM'));
+          const emSpans = Array.from(row.querySelectorAll('.jobContentEM')) as HTMLElement[];
           const id = emSpans[0]?.textContent?.trim() || '';
           const datePosted = emSpans[1]?.textContent?.replace('Posted on', '')?.trim() || '';
           
@@ -94,7 +104,7 @@ export class BiotronikFetcher implements JobFetcher {
             datePosted,
           };
         }).filter((j) => j !== null && j.title && j.url);
-      }, jobRowSelector);
+      }, { selector: jobRowSelector, isUnfiltered: !!options?.unfiltered });
 
       return jobs as JobPost[];
     } catch (error) {

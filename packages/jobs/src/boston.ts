@@ -3,7 +3,7 @@ import type { JobFetcher, JobPost } from './types';
 export class BostonScientificFetcher implements JobFetcher {
   private readonly baseUrl = 'https://bostonscientific.eightfold.ai/api/pcsx/search';
 
-  async fetch(query: string): Promise<JobPost[]> {
+  async fetch(query: string, options?: { unfiltered?: boolean }): Promise<JobPost[]> {
     const url = new URL(this.baseUrl);
     url.searchParams.append('domain', 'bostonscientific.com');
     url.searchParams.append('query', query);
@@ -28,20 +28,26 @@ export class BostonScientificFetcher implements JobFetcher {
 
     return rawJobs
       .filter((post: any) => {
+        if (options?.unfiltered) return true;
+
         const title = (post.name || '').toLowerCase();
         // Strict filtering: Clinical Specialist and CRM/EP related
         // Note: Some Boston Sci roles use "Field Clinical Representative" or "Mapping Specialist"
         const isClinicalSpecialist = title.includes('clinical specialist') || 
                                      title.includes('clinical representative') ||
-                                     title.includes('mapping specialist') ||
-                                     title.includes('clinical manager');
+                                     title.includes('mapping specialist');
         const isCRM = title.includes('crm') || title.includes('cardiac rhythm');
         const isEP = title.includes('ep ') || title.includes('electrophysiology') || title.includes('mapping');
         
         // Exclusions
         const isNotIrrelevant = !title.includes('research') && 
                                 !title.includes('marketing') && 
-                                !title.includes('software');
+                                !title.includes('software') &&
+                                !title.includes('senior') &&
+                                !title.includes('sr ') &&
+                                !title.includes('sr.') &&
+                                !title.includes('principal') &&
+                                !title.includes('manager');
 
         return isClinicalSpecialist && (isCRM || isEP) && isNotIrrelevant;
       })

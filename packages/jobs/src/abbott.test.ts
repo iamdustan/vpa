@@ -9,10 +9,13 @@ describe('AbbottFetcher', () => {
     expect(jobs).toBeInstanceOf(Array);
     
     // Ensure strict filtering
-    const irrelevantJobs = jobs.filter(j => 
-      !j.title.toLowerCase().includes('clinical specialist') ||
-      !(j.title.toLowerCase().includes('crm') || j.title.toLowerCase().includes('cardiac rhythm'))
-    );
+    const irrelevantJobs = jobs.filter(j => {
+      const title = j.title.toLowerCase();
+      const matchesInclusion = (title.includes('clinical specialist') && (title.includes('crm') || title.includes('cardiac rhythm'))) ||
+                               title.includes('clinical associate');
+      const matchesExclusion = title.includes('senior') || title.includes('principal') || title.includes('manager');
+      return !matchesInclusion || matchesExclusion;
+    });
     expect(irrelevantJobs.length).toBe(0);
 
     if (jobs.length > 0) {

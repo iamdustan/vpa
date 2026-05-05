@@ -9,5 +9,5 @@ export interface JobPost {
 }
 
 export interface JobFetcher {
-  fetch(query: string): Promise<JobPost[]>;
+  fetch(query: string, options?: { unfiltered?: boolean }): Promise<JobPost[]>;
 }

@@ -10,6 +10,20 @@ describe('BiotronikFetcher', () => {
     expect(jobs).toBeInstanceOf(Array);
     
     if (jobs.length > 0) {
+      // Ensure strict filtering
+      const irrelevantJobs = jobs.filter(j => {
+        const title = j.title.toLowerCase();
+        return title.includes('senior') || 
+               title.includes('principal') || 
+               title.includes('manager') ||
+               title.includes('thailand') || 
+               title.includes('leadless') || 
+               title.includes('neuro') ||
+               title.includes('software') ||
+               title.includes('marketing');
+      });
+      expect(irrelevantJobs.length).toBe(0);
+
       const job = jobs[0];
       expect(job.company).toBe('Biotronik');
       expect(job.id).toBeDefined();

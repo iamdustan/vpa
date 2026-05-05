@@ -8,7 +8,7 @@
     - [x] Basic fetching
     - [x] Normalization
     - [x] Strict title filtering
-    - [ ] TODO: Follow-up on filtering logic after expert review (Expected ~5, currently 9)
+    - [x] Filter out senior, principal, and manager roles (Global)
 - [x] Abbott Fetcher (Phenom People)
     - [x] Basic fetching (globalSearchEventV3)
     - [x] Normalization
@@ -21,7 +21,7 @@
     - [x] Basic fetching (Playwright)
     - [x] Normalization
     - [x] TDD implementation
+    - [x] Filter out Thailand, Leadless, and Neuro roles
 
 ## Next Steps
 1. Refactor to support a list of search queries per provider.
-2. Implement follow-up on Medtronic filtering logic.

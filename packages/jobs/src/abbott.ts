@@ -3,7 +3,7 @@ import type { JobFetcher, JobPost } from './types';
 export class AbbottFetcher implements JobFetcher {
   private readonly baseUrl = 'https://www.jobs.abbott/widgets';
 
-  async fetch(query: string): Promise<JobPost[]> {
+  async fetch(query: string, options?: { unfiltered?: boolean }): Promise<JobPost[]> {
     const response = await fetch(this.baseUrl, {
       method: 'POST',
       headers: {
@@ -40,16 +40,23 @@ export class AbbottFetcher implements JobFetcher {
 
     return rawJobs
       .filter((post: any) => {
+        if (options?.unfiltered) return true;
+
         const title = (post.title || '').toLowerCase();
         // Strict filtering: Clinical Specialist and CRM related OR Clinical Associate
         const isClinicalSpecialist = title.includes('clinical specialist');
         const isCRM = title.includes('crm') || title.includes('cardiac rhythm');
         const isClinicalAssociate = title.includes('clinical associate');
         
-        // Exclusions
         const isNotIrrelevant = !title.includes('research') && 
                                 !title.includes('marketing') && 
-                                !title.includes('software');
+                                !title.includes('software') &&
+                                !title.includes('senior') &&
+                                !title.includes('sr ') &&
+                                !title.includes('sr.') &&
+                                !title.includes('principal') &&
+                                !title.includes('manager') &&
+                                !title.includes('leadless');
 
         return ((isClinicalSpecialist && isCRM) || isClinicalAssociate) && isNotIrrelevant;
       })

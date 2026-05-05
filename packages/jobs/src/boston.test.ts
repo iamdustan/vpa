@@ -11,9 +11,12 @@ describe('BostonScientificFetcher', () => {
     // Ensure strict filtering
     const irrelevantJobs = jobs.filter(j => {
       const title = j.title.toLowerCase();
-      const isClinicalRole = title.includes('clinical specialist') || title.includes('clinical representative');
-      const isCRM = title.includes('crm') || title.includes('cardiac rhythm');
-      return !isClinicalRole || !isCRM;
+      const isClinicalRole = title.includes('clinical specialist') || 
+                             title.includes('clinical representative') ||
+                             title.includes('mapping specialist');
+      const isCRM = title.includes('crm') || title.includes('cardiac rhythm') || title.includes('ep ') || title.includes('electrophysiology') || title.includes('mapping');
+      const isExcluded = title.includes('senior') || title.includes('principal') || title.includes('manager');
+      return !isClinicalRole || !isCRM || isExcluded;
     });
     expect(irrelevantJobs.length).toBe(0);
 

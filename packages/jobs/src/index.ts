@@ -10,7 +10,12 @@ export { MedtronicFetcher, AbbottFetcher, BostonScientificFetcher, BiotronikFetc
 export const PROVIDERS: Record<string, { fetcher: new () => JobFetcher; queries: string[] }> = {
   medtronic: {
     fetcher: MedtronicFetcher,
-    queries: ['Field Inventory Analyst', 'Clinical Specialist (CAS)', 'Clinical Specialist Cardiac Rhythm'],
+    queries: [
+      'Field Inventory Analyst',
+      'Clinical Specialist (CAS)',
+      'Clinical Specialist Cardiac Rhythm',
+      'Affera Mapping Specialist',
+    ],
   },
   abbott: {
     fetcher: AbbottFetcher,
@@ -35,7 +40,8 @@ export const PROVIDERS: Record<string, { fetcher: new () => JobFetcher; queries:
  */
 export async function fetchAllJobs(options: { 
   providers?: (keyof typeof PROVIDERS)[],
-  forceRefresh?: boolean // Kept for API compatibility
+  forceRefresh?: boolean, // Kept for API compatibility
+  unfiltered?: boolean
 } = {}): Promise<JobPost[]> {
   
   const providersToFetch = options.providers || (Object.keys(PROVIDERS) as (keyof typeof PROVIDERS)[]);
@@ -47,7 +53,7 @@ export async function fetchAllJobs(options: {
     
     for (const q of config.queries) {
       try {
-        const jobs = await fetcher.fetch(q);
+        const jobs = await fetcher.fetch(q, { unfiltered: options.unfiltered });
         allResults.push(...jobs);
       } catch (error) {
         console.error(`Error fetching from ${p} for "${q}":`, error);

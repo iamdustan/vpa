@@ -8,12 +8,17 @@ describe('MedtronicFetcher', () => {
 
     expect(jobs).toBeInstanceOf(Array);
     
-    // Ensure we don't have irrelevant roles like "Software Safety Engineer"
-    const irrelevantJobs = jobs.filter(j => 
-      j.title.toLowerCase().includes('software') || 
-      j.title.toLowerCase().includes('marketing') ||
-      j.title.toLowerCase().includes('research')
-    );
+    // Ensure we don't have irrelevant roles
+    const irrelevantJobs = jobs.filter(j => {
+      const title = j.title.toLowerCase();
+      const isIrrelevant = title.includes('software') || 
+                           title.includes('marketing') ||
+                           title.includes('research') ||
+                           title.includes('senior') ||
+                           title.includes('principal') ||
+                           title.includes('manager');
+      return isIrrelevant;
+    });
     expect(irrelevantJobs.length).toBe(0);
 
     if (jobs.length > 0) {

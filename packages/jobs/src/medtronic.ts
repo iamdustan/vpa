@@ -3,7 +3,7 @@ import type { JobFetcher, JobPost } from './types';
 export class MedtronicFetcher implements JobFetcher {
   private readonly baseUrl = 'https://medtronic.wd1.myworkdayjobs.com/wday/cxs/medtronic/MedtronicCareers/jobs';
 
-  async fetch(query: string): Promise<JobPost[]> {
+  async fetch(query: string, options?: { unfiltered?: boolean }): Promise<JobPost[]> {
     console.log(`[Medtronic] Actually fetching network data for "${query}"...`);
     const response = await fetch(this.baseUrl, {
       method: 'POST',
@@ -34,20 +34,27 @@ export class MedtronicFetcher implements JobFetcher {
         const isUS = location.includes('united states') || location.includes('usa');
         if (!isUS) return false;
 
+        if (options?.unfiltered) return true;
+
         // Strict filtering: must be a Clinical Specialist and must be CRM related OR Field Inventory Analyst OR CAS related
         const isClinicalSpecialist = title.includes('clinical specialist');
         const isCRM = title.includes('crm') || title.includes('cardiac rhythm');
-        const isCAS = title.includes('(cas)') || title.includes(' cas') || title.includes('cas ') || title.includes('cardiac ablation solutions');
-        const isMappingSpecialist = title.includes('mapping specialist');
+        const isCAS = (title.includes('(cas)') || title.includes(' cas') || title.includes('cas ') || title.includes('cardiac ablation solutions')) && !title.includes('affera');
+        const isMappingSpecialist = title.includes('mapping specialist') && !title.includes('affera');
         const isInventoryAnalyst = title.includes('field inventory analyst');
         
         // Exclude research, marketing, or software specific roles that aren't field clinical roles
         const isNotIrrelevant = !title.includes('research') && 
                                 !title.includes('marketing') && 
-                                !title.includes('software');
+                                !title.includes('software') &&
+                                !title.includes('senior') &&
+                                !title.includes('sr ') &&
+                                !title.includes('sr.') &&
+                                !title.includes('principal') &&
+                                !title.includes('manager');
 
         return (isClinicalSpecialist && (isCRM || isCAS) && isNotIrrelevant) || 
-               (isMappingSpecialist && isCAS && isNotIrrelevant) ||
+               (isMappingSpecialist && (isCAS || isCRM) && isNotIrrelevant) ||
                isInventoryAnalyst;
       })
       .map((post: any) => ({
