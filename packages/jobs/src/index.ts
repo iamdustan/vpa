@@ -15,6 +15,7 @@ export const PROVIDERS: Record<string, { fetcher: new () => JobFetcher; queries:
       'Clinical Specialist (CAS)',
       'Clinical Specialist Cardiac Rhythm',
       'Affera Mapping Specialist',
+      'In Training',
     ],
   },
   abbott: {

@@ -37,11 +37,12 @@ export class MedtronicFetcher implements JobFetcher {
         if (options?.unfiltered) return true;
 
         // Strict filtering: must be a Clinical Specialist and must be CRM related OR Field Inventory Analyst OR CAS related
-        const isClinicalSpecialist = title.includes('clinical specialist');
+        const isClinicalSpecialist = title.includes('clinical specialist') || title.includes('clinical spec');
         const isCRM = title.includes('crm') || title.includes('cardiac rhythm');
         const isCAS = (title.includes('(cas)') || title.includes(' cas') || title.includes('cas ') || title.includes('cardiac ablation solutions')) && !title.includes('affera');
-        const isMappingSpecialist = title.includes('mapping specialist') && !title.includes('affera');
+        const isMappingSpecialist = (title.includes('mapping specialist') || title.includes('mapping spec')) && !title.includes('affera');
         const isInventoryAnalyst = title.includes('field inventory analyst');
+        const isInTraining = title.includes('in training');
         
         // Exclude research, marketing, or software specific roles that aren't field clinical roles
         const isNotIrrelevant = !title.includes('research') && 
@@ -52,6 +53,11 @@ export class MedtronicFetcher implements JobFetcher {
                                 !title.includes('sr.') &&
                                 !title.includes('principal') &&
                                 !title.includes('manager');
+
+        // "In Training" roles are usually entry level and very relevant, so we want to be inclusive
+        if (isInTraining && (isCRM || isCAS || isMappingSpecialist)) {
+          return isNotIrrelevant;
+        }
 
         return (isClinicalSpecialist && (isCRM || isCAS) && isNotIrrelevant) || 
                (isMappingSpecialist && (isCAS || isCRM) && isNotIrrelevant) ||
