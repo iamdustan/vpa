@@ -17,7 +17,7 @@ const companies = ['All', ...new Set(jobs.map(j => j.company))].sort();
     {/* Background Decorative Element */}
     <div class="absolute top-0 left-1/2 -translate-x-1/2 -z-10 w-full max-w-7xl h-full opacity-10 pointer-events-none">
       <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-brand-blue rounded-full blur-[150px]" />
-      <div class="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-brand-orange rounded-full blur-[120px]" />
+      <div class="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-brand-yellow rounded-full blur-[120px]" />
     </div>
 
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -100,7 +100,7 @@ const companies = ['All', ...new Set(jobs.map(j => j.company))].sort();
                 <div class="flex items-center gap-4 mb-4">
                   <span class={`text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full border ${
                     job.company === 'Medtronic' ? 'border-brand-blue/30 text-brand-blue bg-brand-blue/10' :
-                    job.company === 'Abbott' ? 'border-brand-orange/30 text-brand-orange bg-brand-orange/10' :
+                    job.company === 'Abbott' ? 'border-brand-yellow/30 text-brand-yellow bg-brand-yellow/10' :
                     job.company === 'Boston Scientific' ? 'border-yellow-500/30 text-yellow-400 bg-yellow-500/10' :
                     'border-emerald-500/30 text-emerald-400 bg-emerald-500/10'
                   }`}>
