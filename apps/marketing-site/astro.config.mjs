@@ -15,7 +15,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     server: {
-      allowedHosts: ['*.loca.lt'],
+      allowedHosts: ['easy-comics-draw.loca.lt'],
     },
   },
   integrations: [markdoc(), react(), keystatic()]
