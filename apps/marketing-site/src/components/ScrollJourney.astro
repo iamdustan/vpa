@@ -10,58 +10,58 @@ const { sceneUrl, heroTitle, heroSubtitle } = Astro.props;
 
 <div class="relative w-full bg-page-bg" id="scrolly-journey-wrapper">
   {/* The pinned element managed by GSAP */}
-  <div id="scrolly-journey-card-container" class="h-screen w-full flex items-center justify-center p-6 lg:p-12 overflow-hidden">
+  <div id="scrolly-journey-card-container" class="h-screen w-full flex items-center justify-center p-4 md:p-6 lg:p-12 overflow-hidden">
     
     {/* The Unified Central Card */}
-    <div class="w-full max-w-[1600px] aspect-[16/10] max-h-[90vh] bg-background rounded-[40px] overflow-hidden flex flex-col relative shadow-2xl shadow-black/50 border border-white/5">
+    <div class="w-full max-w-[1600px] h-[92vh] lg:h-[95vh] bg-background rounded-3xl lg:rounded-[40px] overflow-hidden flex flex-col relative shadow-2xl shadow-black/50 border border-white/5">
       
       {/* Top Segment: Content & Visuals */}
-      <div class="flex-1 flex flex-col lg:flex-row min-h-0">
+      <div class="flex-1 flex flex-col-reverse lg:flex-row min-h-0">
         
-        {/* Left Segment: Narrative (Hero + Scrollytelling) */}
-        <div class="w-full lg:w-[45%] p-12 lg:p-20 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/5 relative overflow-hidden">
+        {/* Narrative Segment (Bottom on Mobile, Left on Desktop) */}
+        <div class="w-full h-1/2 lg:h-full lg:w-[45%] p-8 md:p-12 lg:p-24 flex flex-col justify-center border-t lg:border-t-0 lg:border-r border-white/5 relative overflow-hidden">
           <div class="relative h-full w-full">
             
             {/* Phase 0: Hero */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-100" id="phase-hero">
-              <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Welcome to VPA</h2>
-              <h1 class="text-3xl md:text-5xl font-black tracking-tighter text-white leading-[0.9] text-gradient uppercase">
+              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6 lg:mb-8">Welcome to VPA</h2>
+              <h1 class="text-3xl md:text-5xl lg:text-7xl font-black tracking-tighter text-white leading-[0.9] text-gradient uppercase">
                 {heroTitle}
               </h1>
-              <p class="mt-8 text-base md:text-lg text-white/50 font-medium leading-relaxed max-w-sm">
+              <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/50 font-medium leading-relaxed max-w-sm">
                 {heroSubtitle}
               </p>
             </div>
 
             {/* Phase 1: Problem */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-problem">
-              <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">The Problem</h2>
-              <h3 class="text-4xl md:text-6xl font-black text-white leading-[0.9] uppercase tracking-tighter">
+              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6 lg:mb-8">The Problem</h2>
+              <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
                 Education <br/><span class="text-gradient">is broken.</span>
               </h3>
-              <p class="mt-8 text-lg md:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
+              <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
                 Traditional schools cost $30k and take a year. Standard online courses leave you isolated. 
               </p>
             </div>
 
             {/* Phase 2: Solution */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-solution">
-              <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-orange mb-6">The Solution</h2>
-              <h3 class="text-4xl md:text-6xl font-black text-white leading-[0.9] uppercase tracking-tighter">
+              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-orange mb-6 lg:mb-8">The Solution</h2>
+              <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
                 Mentorship <br/><span class="text-brand-orange">is the key.</span>
               </h3>
-              <p class="mt-8 text-lg md:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
+              <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
                 We pair you with industry veterans who coach you through every single step of your transition.
               </p>
             </div>
 
             {/* Phase 3: Outcome */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-outcome">
-              <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-400 mb-6">The Outcome</h2>
-              <h3 class="text-4xl md:text-6xl font-black text-white leading-[0.9] uppercase tracking-tighter">
+              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-emerald-400 mb-6 lg:mb-8">The Outcome</h2>
+              <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
                 Land the <br/><span class="text-emerald-400">Dream Job.</span>
               </h3>
-              <p class="mt-8 text-lg md:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
+              <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
                 From the first rhythm to your first day in the OR, we guide you to a career with purpose.
               </p>
             </div>
@@ -69,8 +69,8 @@ const { sceneUrl, heroTitle, heroSubtitle } = Astro.props;
           </div>
         </div>
 
-        {/* Right Segment: Visuals (Spline + Animations) */}
-        <div class="flex-1 relative bg-surface/10 flex items-center justify-center overflow-hidden">
+        {/* Visuals Segment (Top on Mobile, Right on Desktop) */}
+        <div class="w-full h-1/2 lg:h-full lg:flex-1 relative bg-surface/10 flex items-center justify-center overflow-hidden">
             
             {/* Hero Visual: Spline */}
             <div class="visual-phase absolute inset-0 opacity-100" id="visual-hero">
@@ -84,26 +84,26 @@ const { sceneUrl, heroTitle, heroSubtitle } = Astro.props;
             </div>
 
             {/* Scrolly Visuals */}
-            <div class="absolute inset-0 flex items-center justify-center p-20">
+            <div class="absolute inset-0 flex items-center justify-center p-6 lg:p-20">
                 
                 {/* Visual 1: Problem */}
                 <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-problem">
-                    <div class="w-48 h-48 rounded-full border border-white/5 flex items-center justify-center relative">
+                    <div class="w-32 h-32 md:w-48 md:h-48 rounded-full border border-white/5 flex items-center justify-center relative">
                         <div class="absolute inset-0 border border-brand-blue/20 rounded-full animate-ping"></div>
-                        <div class="w-24 h-px bg-white/20 rotate-45"></div>
-                        <div class="w-24 h-px bg-white/20 -rotate-45"></div>
+                        <div class="w-16 md:w-24 h-px bg-white/20 rotate-45"></div>
+                        <div class="w-16 md:w-24 h-px bg-white/20 -rotate-45"></div>
                     </div>
                 </div>
 
                 {/* Visual 2: Solution */}
                 <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-solution">
-                    <div class="flex items-center gap-12">
-                        <div class="w-24 h-24 rounded-3xl bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center font-black text-brand-orange uppercase text-xs">Student</div>
-                        <div class="w-12 h-px bg-white/10 relative">
+                    <div class="flex items-center gap-4 md:gap-12">
+                        <div class="w-16 h-16 md:w-24 md:h-24 rounded-2xl md:rounded-3xl bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center font-black text-brand-orange uppercase text-[8px] md:text-xs">Student</div>
+                        <div class="w-6 md:w-12 h-px bg-white/10 relative">
                             <div class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-brand-orange"></div>
                         </div>
-                        <div class="w-32 h-32 rounded-full border-2 border-brand-blue border-dashed animate-[spin_10s_linear_infinite] p-2">
-                            <div class="w-full h-full rounded-full bg-brand-blue/20 flex items-center justify-center font-black text-white uppercase text-[10px] text-center">Mentor</div>
+                        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-brand-blue border-dashed animate-[spin_10s_linear_infinite] p-2">
+                            <div class="w-full h-full rounded-full bg-brand-blue/20 flex items-center justify-center font-black text-white uppercase text-[8px] md:text-[10px] text-center">Mentor</div>
                         </div>
                     </div>
                 </div>
@@ -111,9 +111,9 @@ const { sceneUrl, heroTitle, heroSubtitle } = Astro.props;
                 {/* Visual 3: Outcome */}
                 <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-outcome">
                     <div class="text-center relative">
-                        <div class="text-9xl mb-8 opacity-20 blur-sm absolute inset-0 translate-y-4">🏆</div>
-                        <div class="text-9xl relative">🏆</div>
-                        <div class="mt-8 text-xs font-black uppercase tracking-[0.5em] text-emerald-400">Success Attained</div>
+                        <div class="text-7xl md:text-9xl mb-4 md:mb-8 opacity-20 blur-sm absolute inset-0 translate-y-4">🏆</div>
+                        <div class="text-7xl md:text-9xl relative">🏆</div>
+                        <div class="mt-4 md:mt-8 text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-emerald-400">Success Attained</div>
                     </div>
                 </div>
 
@@ -123,22 +123,25 @@ const { sceneUrl, heroTitle, heroSubtitle } = Astro.props;
       </div>
 
       {/* Bottom Segment: Constant Call to Action */}
-      <div class="h-24 lg:h-32 border-t border-white/5 bg-surface/20 px-12 lg:px-20">
-        <div class="h-full w-full mx-auto flex items-center justify-between">
-          <div class="flex flex-col">
-              <span class="text-[10px] font-black uppercase tracking-[0.2em] text-white/30">Journey Phase</span>
-              <span class="text-sm font-black uppercase text-brand-blue transition-colors duration-500" id="journey-phase-label">Introduction</span>
+      <div class="h-auto lg:h-32 border-t border-white/5 bg-surface/20 px-6 py-4 lg:py-0 lg:px-20">
+        <div class="h-full w-full mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
+          <div class="flex flex-col text-center md:text-left w-full md:w-auto">
+              <span class="text-[8px] lg:text-[10px] font-black uppercase tracking-[0.2em] text-white/30">Journey Phase</span>
+              <span class="text-xs lg:text-sm font-black uppercase text-brand-blue transition-colors duration-500" id="journey-phase-label">Introduction</span>
           </div>
 
-          <div class="flex gap-8 items-center">
-              <a href="/curriculum" class="text-[10px] font-black uppercase tracking-widest text-white/50 hover:text-white transition-colors">Explore Curriculum</a>
-              <a href="/apply" class="px-10 py-4 rounded-full bg-brand-blue text-[10px] font-black uppercase tracking-widest hover:bg-brand-blue/90 transition-all shadow-xl shadow-brand-blue/20">Apply Now</a>
+          <div class="flex flex-col md:flex-row gap-4 lg:gap-8 items-center w-full md:w-auto">
+              <a href="/curriculum" class="text-[8px] lg:text-[10px] font-black uppercase tracking-widest text-white/50 hover:text-white transition-colors w-full md:w-auto text-center border border-white/10 md:border-none rounded-full px-6 py-3 md:p-0">Explore Curriculum</a>
+              <a href="/apply" class="w-full md:w-auto px-10 py-3 lg:py-4 rounded-full bg-brand-blue text-[8px] lg:text-[10px] font-black uppercase tracking-widest hover:bg-brand-blue/90 transition-all shadow-xl shadow-brand-blue/20 text-center">Apply Now</a>
           </div>
         </div>
       </div>
 
     </div>
   </div>
+
+  {/* Scroll Spacer - This provides the depth for scrolling */}
+  <div class="h-[500vh] pointer-events-none"></div>
 </div>
 
 <script>
@@ -156,9 +159,9 @@ const { sceneUrl, heroTitle, heroSubtitle } = Astro.props;
       scrollTrigger: {
         trigger: wrapper,
         start: 'top top',
-        end: '+=400%', // Define scroll distance as 400% of viewport
+        end: '+=400%',
         scrub: 1,
-        pin: true, // Let GSAP handle the pinning and spacing
+        pin: true,
         invalidateOnRefresh: true,
       }
     });
