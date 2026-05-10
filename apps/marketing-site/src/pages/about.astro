@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About Our Mission | Virtual Pacing Academy" description="Learn about the Virtual Pacing Academy mission to lower technical barriers and bridge the mentorship gap in the medical device industry.">
+	
+	<section class="py-32 flex items-center justify-center p-6 lg:p-12">
+		<div class="w-full max-w-[1600px] bg-background rounded-[40px] border border-white/5 p-12 lg:p-24 overflow-hidden relative">
+            <div class="absolute inset-0 bg-brand-blue/5 blur-[120px] -z-10"></div>
+			<div class="grid gap-20 lg:grid-cols-2 items-center">
+				<div>
+					<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Our Mission</h2>
+					<h3 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">We build the <br/><span class="text-gradient">Mentorship Bridge.</span></h3>
+					<p class="text-xl text-white/40 leading-relaxed font-medium max-w-xl">
+						We started during COVID-19 because we learned that asynchronous online learning was inefficient. 
+						It provides flexibility, but levels the playing field only when paired with veteran mentors.
+					</p>
+				</div>
+				<div class="grid gap-8">
+					<div class="glass-card p-10 bg-white/[0.02]">
+						<h3 class="text-xl font-black text-white uppercase tracking-tight mb-2">100+ Years Experience</h3>
+						<p class="text-white/30 font-medium">Our mentors are industry veterans from Medtronic, Abbott, and Boston Scientific.</p>
+					</div>
+					<div class="glass-card p-10 bg-white/[0.02]">
+						<h3 class="text-xl font-black text-brand-blue uppercase tracking-tight mb-2">Diversity Focused</h3>
+						<p class="text-white/30 font-medium">We are committed to lowering technical barriers and promoting inclusion in MedTech.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="pb-32 flex items-center justify-center p-6 lg:p-12">
+		<div class="w-full max-w-[1600px] bg-brand-blue rounded-[40px] p-20 lg:p-32 text-center relative overflow-hidden shadow-2xl shadow-brand-blue/20">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
+			<h2 class="text-5xl md:text-8xl font-black text-white tracking-tighter uppercase leading-[0.8]">Ready to <br/>Start?</h2>
+			<p class="mt-10 text-xl md:text-2xl text-white/70 font-medium max-w-2xl mx-auto">Scholarships are now available. Let's work together to bridge the gap.</p>
+			<div class="mt-16">
+				<a href="/apply" class="rounded-full bg-white px-12 py-6 text-2xl font-black text-slate-950 transition-all hover:scale-105 inline-block shadow-2xl uppercase tracking-[0.2em]">
+					Apply Now
+				</a>
+			</div>
+		</div>
+	</section>
+
+</BaseLayout>

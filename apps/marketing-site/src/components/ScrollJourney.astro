@@ -1,45 +1,67 @@
 ---
+interface Props {
+  sceneUrl: string;
+  heroTitle: string;
+  heroSubtitle: string;
+}
+
+const { sceneUrl, heroTitle, heroSubtitle } = Astro.props;
 ---
 
-<div class="relative w-full bg-page-bg" id="scrolly-narrative-container">
-  <div class="sticky top-0 h-screen w-full flex items-center justify-center p-6 lg:p-12 overflow-hidden">
+<div class="relative w-full bg-page-bg" id="scrolly-journey-wrapper">
+  {/* The pinned element managed by GSAP */}
+  <div id="scrolly-journey-card-container" class="h-screen w-full flex items-center justify-center p-6 lg:p-12 overflow-hidden">
     
-    {/* The Central Rounded Cube Card */}
+    {/* The Unified Central Card */}
     <div class="w-full max-w-[1600px] aspect-[16/10] max-h-[90vh] bg-background rounded-[40px] overflow-hidden flex flex-col relative shadow-2xl shadow-black/50 border border-white/5">
       
-      {/* Top Segment: Narrative & Visuals */}
+      {/* Top Segment: Content & Visuals */}
       <div class="flex-1 flex flex-col lg:flex-row min-h-0">
         
-        {/* Left Segment: Narrative Pitch */}
+        {/* Left Segment: Narrative (Hero + Scrollytelling) */}
         <div class="w-full lg:w-[45%] p-12 lg:p-20 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/5 relative overflow-hidden">
           <div class="relative h-full w-full">
             
-            <div class="narrative-text absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="pitch-1">
+            {/* Phase 0: Hero */}
+            <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-100" id="phase-hero">
+              <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Welcome to VPA</h2>
+              <h1 class="text-3xl md:text-5xl font-black tracking-tighter text-white leading-[0.9] text-gradient uppercase">
+                {heroTitle}
+              </h1>
+              <p class="mt-8 text-base md:text-lg text-white/50 font-medium leading-relaxed max-w-sm">
+                {heroSubtitle}
+              </p>
+            </div>
+
+            {/* Phase 1: Problem */}
+            <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-problem">
               <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">The Problem</h2>
-              <h3 class="text-5xl md:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
+              <h3 class="text-4xl md:text-6xl font-black text-white leading-[0.9] uppercase tracking-tighter">
                 Education <br/><span class="text-gradient">is broken.</span>
               </h3>
-              <p class="mt-8 text-xl text-white/40 font-medium max-w-sm leading-relaxed">
+              <p class="mt-8 text-lg md:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
                 Traditional schools cost $30k and take a year. Standard online courses leave you isolated. 
               </p>
             </div>
 
-            <div class="narrative-text absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="pitch-2">
+            {/* Phase 2: Solution */}
+            <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-solution">
               <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-orange mb-6">The Solution</h2>
-              <h3 class="text-5xl md:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
+              <h3 class="text-4xl md:text-6xl font-black text-white leading-[0.9] uppercase tracking-tighter">
                 Mentorship <br/><span class="text-brand-orange">is the key.</span>
               </h3>
-              <p class="mt-8 text-xl text-white/40 font-medium max-w-sm leading-relaxed">
+              <p class="mt-8 text-lg md:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
                 We pair you with industry veterans who coach you through every single step of your transition.
               </p>
             </div>
 
-            <div class="narrative-text absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="pitch-3">
+            {/* Phase 3: Outcome */}
+            <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-outcome">
               <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-400 mb-6">The Outcome</h2>
-              <h3 class="text-5xl md:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
+              <h3 class="text-4xl md:text-6xl font-black text-white leading-[0.9] uppercase tracking-tighter">
                 Land the <br/><span class="text-emerald-400">Dream Job.</span>
               </h3>
-              <p class="mt-8 text-xl text-white/40 font-medium max-w-sm leading-relaxed">
+              <p class="mt-8 text-lg md:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
                 From the first rhythm to your first day in the OR, we guide you to a career with purpose.
               </p>
             </div>
@@ -47,13 +69,25 @@
           </div>
         </div>
 
-        {/* Right Segment: Dynamic Animations */}
-        <div class="flex-1 relative bg-surface/10 flex items-center justify-center p-20">
-            {/* Visual containment for animations */}
-            <div class="w-full h-full relative">
+        {/* Right Segment: Visuals (Spline + Animations) */}
+        <div class="flex-1 relative bg-surface/10 flex items-center justify-center overflow-hidden">
+            
+            {/* Hero Visual: Spline */}
+            <div class="visual-phase absolute inset-0 opacity-100" id="visual-hero">
+                <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.59/build/spline-viewer.js"></script>
+                <spline-viewer 
+                    url={sceneUrl} 
+                    events-target="global" 
+                    loading-library="lazy"
+                    class="w-full h-full"
+                ></spline-viewer>
+            </div>
+
+            {/* Scrolly Visuals */}
+            <div class="absolute inset-0 flex items-center justify-center p-20">
                 
                 {/* Visual 1: Problem */}
-                <div class="visual-element absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-1">
+                <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-problem">
                     <div class="w-48 h-48 rounded-full border border-white/5 flex items-center justify-center relative">
                         <div class="absolute inset-0 border border-brand-blue/20 rounded-full animate-ping"></div>
                         <div class="w-24 h-px bg-white/20 rotate-45"></div>
@@ -62,7 +96,7 @@
                 </div>
 
                 {/* Visual 2: Solution */}
-                <div class="visual-element absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-2">
+                <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-solution">
                     <div class="flex items-center gap-12">
                         <div class="w-24 h-24 rounded-3xl bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center font-black text-brand-orange uppercase text-xs">Student</div>
                         <div class="w-12 h-px bg-white/10 relative">
@@ -75,7 +109,7 @@
                 </div>
 
                 {/* Visual 3: Outcome */}
-                <div class="visual-element absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-3">
+                <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-outcome">
                     <div class="text-center relative">
                         <div class="text-9xl mb-8 opacity-20 blur-sm absolute inset-0 translate-y-4">🏆</div>
                         <div class="text-9xl relative">🏆</div>
@@ -92,22 +126,19 @@
       <div class="h-24 lg:h-32 border-t border-white/5 bg-surface/20 px-12 lg:px-20">
         <div class="h-full w-full mx-auto flex items-center justify-between">
           <div class="flex flex-col">
-              <span class="text-[10px] font-black uppercase tracking-[0.2em] text-white/30">Program Path</span>
-              <span class="text-sm font-black uppercase text-brand-blue transition-colors duration-500" id="current-phase-label">Phase 01: The Problem</span>
+              <span class="text-[10px] font-black uppercase tracking-[0.2em] text-white/30">Journey Phase</span>
+              <span class="text-sm font-black uppercase text-brand-blue transition-colors duration-500" id="journey-phase-label">Introduction</span>
           </div>
 
           <div class="flex gap-8 items-center">
-              <a href="/curriculum" class="text-[10px] font-black uppercase tracking-widest text-white/50 hover:text-white transition-colors">Get More Info</a>
-              <a href="/apply" class="px-10 py-4 rounded-full bg-brand-blue text-[10px] font-black uppercase tracking-widest hover:bg-brand-blue/90 transition-all shadow-xl shadow-brand-blue/20">Register for Cohort</a>
+              <a href="/curriculum" class="text-[10px] font-black uppercase tracking-widest text-white/50 hover:text-white transition-colors">Explore Curriculum</a>
+              <a href="/apply" class="px-10 py-4 rounded-full bg-brand-blue text-[10px] font-black uppercase tracking-widest hover:bg-brand-blue/90 transition-all shadow-xl shadow-brand-blue/20">Apply Now</a>
           </div>
         </div>
       </div>
 
     </div>
   </div>
-
-  {/* Scroll Spacer */}
-  <div class="h-[400vh]"></div>
 </div>
 
 <script>
@@ -117,37 +148,35 @@
   gsap.registerPlugin(ScrollTrigger);
 
   window.addEventListener('load', () => {
-    const container = document.querySelector('#scrolly-narrative-container');
-    if (!container) return;
+    const wrapper = document.querySelector('#scrolly-journey-wrapper');
+    const cardContainer = document.querySelector('#scrolly-journey-card-container');
+    if (!wrapper || !cardContainer) return;
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: container,
+        trigger: wrapper,
         start: 'top top',
-        end: 'bottom bottom',
+        end: '+=400%', // Define scroll distance as 400% of viewport
         scrub: 1,
-        pin: true,
+        pin: true, // Let GSAP handle the pinning and spacing
         invalidateOnRefresh: true,
       }
     });
 
     const phases = [
-        { label: 'Phase 01: The Problem', color: '#2223D3' },
-        { label: 'Phase 02: The Solution', color: '#E93313' },
-        { label: 'Phase 03: The Outcome', color: '#34d399' }
+        { label: 'Introduction', color: '#2223D3' },
+        { label: 'The Problem', color: '#2223D3' },
+        { label: 'The Solution', color: '#E93313' },
+        { label: 'The Outcome', color: '#34d399' }
     ];
 
-    const phaseLabel = document.querySelector('#current-phase-label');
+    const phaseLabel = document.querySelector('#journey-phase-label');
 
-    // Section 1: Problem
-    tl.to('#pitch-1', { opacity: 1, pointerEvents: 'auto', duration: 1 }, 0);
-    tl.to('#visual-1', { opacity: 1, scale: 1, duration: 1 }, 0);
+    // Section 0: Hero -> Phase 1: Problem
+    tl.to('#phase-hero', { opacity: 0, y: -40, duration: 1 }, 0.5);
+    tl.to('#visual-hero', { opacity: 0, scale: 1.1, duration: 1 }, 0.5);
     
-    // Transition to Phase 2: Solution
-    tl.to('#pitch-1', { opacity: 0, y: -40, duration: 1 }, 1.5);
-    tl.to('#visual-1', { opacity: 0, scale: 0.8, duration: 1 }, 1.5);
-    
-    tl.to('#pitch-2', { opacity: 1, pointerEvents: 'auto', y: 0, duration: 1, onStart: () => {
+    tl.to('#phase-problem', { opacity: 1, pointerEvents: 'auto', y: 0, duration: 1, onStart: () => {
         if (phaseLabel) {
             phaseLabel.textContent = phases[1].label;
             gsap.to(phaseLabel, { color: phases[1].color, duration: 0.5 });
@@ -157,14 +186,14 @@
             phaseLabel.textContent = phases[0].label;
             gsap.to(phaseLabel, { color: phases[0].color, duration: 0.5 });
         }
-    }}, 2);
-    tl.to('#visual-2', { opacity: 1, scale: 1, duration: 1 }, 2);
+    }}, 1);
+    tl.to('#visual-problem', { opacity: 1, scale: 1, duration: 1 }, 1);
 
-    // Transition to Phase 3: Outcome
-    tl.to('#pitch-2', { opacity: 0, y: -40, duration: 1 }, 3.5);
-    tl.to('#visual-2', { opacity: 0, scale: 0.8, duration: 1 }, 3.5);
-
-    tl.to('#pitch-3', { opacity: 1, pointerEvents: 'auto', y: 0, duration: 1, onStart: () => {
+    // Phase 1 -> Phase 2: Solution
+    tl.to('#phase-problem', { opacity: 0, y: -40, duration: 1 }, 2);
+    tl.to('#visual-problem', { opacity: 0, scale: 0.8, duration: 1 }, 2);
+    
+    tl.to('#phase-solution', { opacity: 1, pointerEvents: 'auto', y: 0, duration: 1, onStart: () => {
         if (phaseLabel) {
             phaseLabel.textContent = phases[2].label;
             gsap.to(phaseLabel, { color: phases[2].color, duration: 0.5 });
@@ -174,14 +203,35 @@
             phaseLabel.textContent = phases[1].label;
             gsap.to(phaseLabel, { color: phases[1].color, duration: 0.5 });
         }
+    }}, 2.5);
+    tl.to('#visual-solution', { opacity: 1, scale: 1, duration: 1 }, 2.5);
+
+    // Phase 2 -> Phase 3: Outcome
+    tl.to('#phase-solution', { opacity: 0, y: -40, duration: 1 }, 3.5);
+    tl.to('#visual-solution', { opacity: 0, scale: 0.8, duration: 1 }, 3.5);
+
+    tl.to('#phase-outcome', { opacity: 1, pointerEvents: 'auto', y: 0, duration: 1, onStart: () => {
+        if (phaseLabel) {
+            phaseLabel.textContent = phases[3].label;
+            gsap.to(phaseLabel, { color: phases[3].color, duration: 0.5 });
+        }
+    }, onReverseComplete: () => {
+        if (phaseLabel) {
+            phaseLabel.textContent = phases[2].label;
+            gsap.to(phaseLabel, { color: phases[2].color, duration: 0.5 });
+        }
     }}, 4);
-    tl.to('#visual-3', { opacity: 1, scale: 1, duration: 1 }, 4);
+    tl.to('#visual-outcome', { opacity: 1, scale: 1, duration: 1 }, 4);
 
   });
 </script>
 
 <style>
-  .narrative-text, .visual-element {
+  .narrative-phase, .visual-phase {
     will-change: opacity, transform;
+  }
+  spline-viewer {
+    width: 100%;
+    height: 100%;
   }
 </style>

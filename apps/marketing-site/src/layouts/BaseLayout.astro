@@ -41,14 +41,13 @@ const { title, description = "Virtual Pacing Academy - The Mentorship Bridge to 
 		<main>
 			<slot />
 		</main>
-		<footer class="border-t border-white/10 py-12">
-			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-				<div class="flex flex-col items-center justify-between gap-6 md:flex-row">
-					<p class="text-sm text-slate-500">&copy; {new Date().getFullYear()} Virtual Pacing Academy. All rights reserved.</p>
-					<div class="flex space-x-6">
-						<a href="/privacy" class="text-sm text-slate-500 hover:text-slate-300">Privacy</a>
-						<a href="/terms" class="text-sm text-slate-500 hover:text-slate-300">Terms</a>
-					</div>
+		<footer class="py-12 px-6">
+			<div class="mx-auto max-w-[1600px] flex flex-col items-center justify-between gap-6 md:flex-row border-t border-white/5 pt-12">
+				<p class="text-[10px] font-black uppercase tracking-widest text-white/20">&copy; {new Date().getFullYear()} Virtual Pacing Academy. All rights reserved.</p>
+				<div class="flex space-x-8">
+					<a href="/about" class="text-[10px] font-black uppercase tracking-widest text-white/20 hover:text-brand-blue transition-colors">Mission</a>
+					<a href="/privacy" class="text-[10px] font-black uppercase tracking-widest text-white/20 hover:text-white transition-colors">Privacy</a>
+					<a href="/terms" class="text-[10px] font-black uppercase tracking-widest text-white/20 hover:text-white transition-colors">Terms</a>
 				</div>
 			</div>
 		</footer>

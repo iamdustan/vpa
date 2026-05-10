@@ -15,7 +15,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     server: {
-      allowedHosts: ['few-bags-love.loca.lt'],
+      allowedHosts: ['blue-teams-drive.loca.lt'],
     },
   },
   integrations: [markdoc(), react(), keystatic()]
