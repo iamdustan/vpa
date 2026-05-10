@@ -9,7 +9,7 @@ import keystatic from '@keystatic/astro';
 export default defineConfig({
   output: 'static',
   site: 'https://iamdustan.github.io',
-  base: '/vpa',
+  base: '/vpa/',
   vite: {
     plugins: [tailwindcss()],
   },
