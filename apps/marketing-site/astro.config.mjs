@@ -13,5 +13,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  integrations: [markdoc(), react(), keystatic()]
+  integrations: [markdoc(), react()]
 });
