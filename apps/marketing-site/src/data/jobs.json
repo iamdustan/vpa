@@ -1,6 +1,6 @@
 [
   {
-    "id": "/job/Indianapolis-Indiana-United-States-of-America/Field-Inventory-Analyst---Indianapolis--IN_R63266-1",
+    "id": "medtronic:/job/Indianapolis-Indiana-United-States-of-America/Field-Inventory-Analyst---Indianapolis--IN_R63266-1",
     "title": "Field Inventory Analyst - Indianapolis, IN",
     "company": "Medtronic",
     "location": "Indianapolis, Indiana, United States of America",
@@ -8,7 +8,7 @@
     "datePosted": "Posted 6 Days Ago"
   },
   {
-    "id": "/job/State-of-Iowa-United-States-of-America/Clinical-Specialist--Cardiac-Rhythm-Management--CRM----Mason-City--IA_R63300-1",
+    "id": "medtronic:/job/State-of-Iowa-United-States-of-America/Clinical-Specialist--Cardiac-Rhythm-Management--CRM----Mason-City--IA_R63300-1",
     "title": "Clinical Specialist, Cardiac Rhythm Management (CRM) - Mason City, IA",
     "company": "Medtronic",
     "location": "State of Iowa, United States of America",
@@ -16,7 +16,7 @@
     "datePosted": "Posted 3 Days Ago"
   },
   {
-    "id": "/job/St-Louis-Missouri-United-States-of-America/Cardiac-Rhythm-Management-Associate-Clinical-Specialist_R66015",
+    "id": "medtronic:/job/St-Louis-Missouri-United-States-of-America/Cardiac-Rhythm-Management-Associate-Clinical-Specialist_R66015",
     "title": "Cardiac Rhythm Management Associate Clinical Specialist",
     "company": "Medtronic",
     "location": "St. Louis, Missouri, United States of America",
@@ -24,7 +24,7 @@
     "datePosted": "Posted 2 Days Ago"
   },
   {
-    "id": "/job/Sarasota-Florida-United-States-of-America/Clinical-Specialist-CRM---Sarasota_R66450-1",
+    "id": "medtronic:/job/Sarasota-Florida-United-States-of-America/Clinical-Specialist-CRM---Sarasota_R66450-1",
     "title": "Clinical Specialist CRM - Sarasota",
     "company": "Medtronic",
     "location": "Sarasota, Florida, United States of America",
@@ -32,7 +32,7 @@
     "datePosted": "Posted 2 Days Ago"
   },
   {
-    "id": "/job/Anchorage-Alaska-United-States-of-America/Clinical-Specialist-CRM---Alaska_R60316-1",
+    "id": "medtronic:/job/Anchorage-Alaska-United-States-of-America/Clinical-Specialist-CRM---Alaska_R60316-1",
     "title": "Clinical Specialist CRM - Alaska",
     "company": "Medtronic",
     "location": "Anchorage, Alaska, United States of America",
@@ -40,7 +40,7 @@
     "datePosted": "Posted 4 Days Ago"
   },
   {
-    "id": "/job/Amarillo-Texas-United-States-of-America/EP-Mapping-Specialist---CAS---Amarillo--TX_R65688-1",
+    "id": "medtronic:/job/Amarillo-Texas-United-States-of-America/EP-Mapping-Specialist---CAS---Amarillo--TX_R65688-1",
     "title": "EP Mapping Specialist - CAS - Amarillo, TX",
     "company": "Medtronic",
     "location": "Amarillo, Texas, United States of America",
@@ -48,7 +48,7 @@
     "datePosted": "Posted 4 Days Ago"
   },
   {
-    "id": "/job/Nashville-Tennessee-United-States-of-America/EP-Mapping-Specialist---CAS-Nashville--TN_R65905-1",
+    "id": "medtronic:/job/Nashville-Tennessee-United-States-of-America/EP-Mapping-Specialist---CAS-Nashville--TN_R65905-1",
     "title": "EP Mapping Specialist - CAS Nashville, TN",
     "company": "Medtronic",
     "location": "Nashville, Tennessee, United States of America",
@@ -56,7 +56,7 @@
     "datePosted": "Posted 5 Days Ago"
   },
   {
-    "id": "/job/Philadelphia-Pennsylvania-United-States-of-America/Mapping-Specialist---In-Training---Philly_R66112",
+    "id": "medtronic:/job/Philadelphia-Pennsylvania-United-States-of-America/Mapping-Specialist---In-Training---Philly_R66112",
     "title": "Mapping Specialist | In Training - Philly",
     "company": "Medtronic",
     "location": "Philadelphia, Pennsylvania, United States of America",
@@ -64,7 +64,7 @@
     "datePosted": "Posted 4 Days Ago"
   },
   {
-    "id": "/job/State-of-Georgia-United-States-of-America/CAS-Assoc-Mapping-Spec-In-Training_R66030-1",
+    "id": "medtronic:/job/State-of-Georgia-United-States-of-America/CAS-Assoc-Mapping-Spec-In-Training_R66030-1",
     "title": "CAS Assoc Mapping Spec In Training",
     "company": "Medtronic",
     "location": "State of Georgia, United States of America",
@@ -72,7 +72,7 @@
     "datePosted": "Posted 3 Days Ago"
   },
   {
-    "id": "/job/Fargo-North-Dakota-United-States-of-America/EP-Mapping-Specialist--CAS---In-Training---Fargo--ND_R65683-1",
+    "id": "medtronic:/job/Fargo-North-Dakota-United-States-of-America/EP-Mapping-Specialist--CAS---In-Training---Fargo--ND_R65683-1",
     "title": "EP Mapping Specialist, CAS | In Training - Fargo, ND",
     "company": "Medtronic",
     "location": "Fargo, North Dakota, United States of America",
@@ -80,7 +80,7 @@
     "datePosted": "Posted 9 Days Ago"
   },
   {
-    "id": "/job/Duluth-Minnesota-United-States-of-America/EP-Mapping-Specialist--CAS-I-In-Training---Duluth--MN_R65692-1",
+    "id": "medtronic:/job/Duluth-Minnesota-United-States-of-America/EP-Mapping-Specialist--CAS-I-In-Training---Duluth--MN_R65692-1",
     "title": "EP Mapping Specialist, CAS I In Training - Duluth, MN",
     "company": "Medtronic",
     "location": "Duluth, Minnesota, United States of America",
@@ -88,133 +88,105 @@
     "datePosted": "Posted 9 Days Ago"
   },
   {
-    "id": "31144101",
+    "id": "abbott:31144101",
     "title": "Clinical Specialist, CRM (Houston, TX)",
     "company": "Abbott",
     "location": "United States - Texas - Houston",
     "url": "https://www.jobs.abbott/us/en/job/31144101"
   },
   {
-    "id": "31143372",
+    "id": "abbott:31143372",
     "title": "Clinical Specialist, CRM - Georgia",
     "company": "Abbott",
     "location": "United States - Georgia - Remote",
     "url": "https://www.jobs.abbott/us/en/job/31143372"
   },
   {
-    "id": "31148766",
+    "id": "abbott:31148766",
     "title": "Clinical Specialist, CRM (Kearney, NE)",
     "company": "Abbott",
     "location": "United States - Nebraska - Remote",
     "url": "https://www.jobs.abbott/us/en/job/31148766"
   },
   {
-    "id": "31140993",
+    "id": "abbott:31140993",
     "title": "Clinical Specialist , CRM (Austin, TX)",
     "company": "Abbott",
     "location": "United States - Texas - Austin",
     "url": "https://www.jobs.abbott/us/en/job/31140993"
   },
   {
-    "id": "31142015",
+    "id": "abbott:31142015",
     "title": "Clinical Specialist, CRM - (Houston, TX)",
     "company": "Abbott",
     "location": "United States - Texas - Houston",
     "url": "https://www.jobs.abbott/us/en/job/31142015"
   },
   {
-    "id": "31138528",
+    "id": "abbott:31138528",
     "title": "Clinical Specialist, CRM - Harrisburg, PA",
     "company": "Abbott",
     "location": "United States - Pennsylvania - Harrisburg",
     "url": "https://www.jobs.abbott/us/en/job/31138528"
   },
   {
-    "id": "31136782",
+    "id": "abbott:31136782",
     "title": "Clinical Specialist, CRM San Antonio, TX",
     "company": "Abbott",
     "location": "United States - Texas - San Antonio",
     "url": "https://www.jobs.abbott/us/en/job/31136782"
   },
   {
-    "id": "31137559",
+    "id": "abbott:31137559",
     "title": "Clinical Specialist, CRM - Baltimore, MD",
     "company": "Abbott",
     "location": "United States - Maryland - Baltimore",
     "url": "https://www.jobs.abbott/us/en/job/31137559"
   },
   {
-    "id": "31145512",
+    "id": "abbott:31145512",
     "title": "Clinical Specialist, CRM - Charleston,  WV",
     "company": "Abbott",
     "location": "United States - West Virginia - Charleston",
     "url": "https://www.jobs.abbott/us/en/job/31145512"
   },
   {
-    "id": "31149312",
+    "id": "abbott:31149312",
     "title": "Clinical Specialist, CRM - Philadelphia, PA",
     "company": "Abbott",
     "location": "United States - Pennsylvania - Philadelphia",
     "url": "https://www.jobs.abbott/us/en/job/31149312"
   },
   {
-    "id": "31148530",
+    "id": "abbott:31148530",
     "title": "Associate Clinical Specialist, CRM - Charlotte, NC",
     "company": "Abbott",
     "location": "United States - North Carolina - Charlotte",
     "url": "https://www.jobs.abbott/us/en/job/31148530"
   },
   {
-    "id": "31137629",
+    "id": "abbott:31137629",
     "title": "Clinical Specialist II, CRM - Long Island, NY",
     "company": "Abbott",
     "location": "United States - New York - Long Island",
     "url": "https://www.jobs.abbott/us/en/job/31137629"
   },
   {
-    "id": "31149526",
-    "title": "Clinical Associate",
+    "id": "abbott:31142480",
+    "title": "Field Clinical Specialist",
     "company": "Abbott",
-    "location": "United States - Missouri - Kansas City",
-    "url": "https://www.jobs.abbott/us/en/job/31149526"
+    "location": "Australia - Remote",
+    "url": "https://www.jobs.abbott/us/en/job/31142480"
   },
   {
-    "id": "31149726",
-    "title": "Clinical Associate",
-    "company": "Abbott",
-    "location": "United States - Pennsylvania - Reading",
-    "url": "https://www.jobs.abbott/us/en/job/31149726"
-  },
-  {
-    "id": "31149967",
-    "title": "Clinical Associate",
-    "company": "Abbott",
-    "location": "United States - Michigan - Detroit",
-    "url": "https://www.jobs.abbott/us/en/job/31149967"
-  },
-  {
-    "id": "31131455",
-    "title": "Clinical Associate",
-    "company": "Abbott",
-    "location": "United States - Florida - Tallahassee",
-    "url": "https://www.jobs.abbott/us/en/job/31131455"
-  },
-  {
-    "id": "31144820",
-    "title": "Clinical Associate",
-    "company": "Abbott",
-    "location": "United States - Missouri - St. Louis",
-    "url": "https://www.jobs.abbott/us/en/job/31144820"
-  },
-  {
-    "id": "31143622",
+    "id": "abbott:31143622",
     "title": "Associate Clinical Specialist, Cardiac Rhythm Management - Milwaukee, WI",
     "company": "Abbott",
     "location": "United States - Wisconsin - Milwaukee",
     "url": "https://www.jobs.abbott/us/en/job/31143622"
   },
   {
-    "id": 563602812210014,
+    "id": "boston:563602812210014",
     "title": "CRM Field Clinical Representative - Port Charlotte/Fort Myers/Naples, FL",
     "company": "Boston Scientific",
     "location": "Ft. Myers/Naples US-FL, United States |  N/A",
@@ -222,7 +194,7 @@
     "datePosted": "2026-05-04T20:54:19.000Z"
   },
   {
-    "id": 563602812222296,
+    "id": "boston:563602812222296",
     "title": "CRM Field Clinical Representative - Buffalo NY/Erie, PA",
     "company": "Boston Scientific",
     "location": "Buffalo US-NY, United States | US-PA-Erie",
@@ -230,7 +202,7 @@
     "datePosted": "2026-05-05T21:04:05.000Z"
   },
   {
-    "id": 563602811781067,
+    "id": "boston:563602811781067",
     "title": "CRM Field Clinical Representative - Shreveport, LA",
     "company": "Boston Scientific",
     "location": "Shreveport US-LA, United States |  N/A",
@@ -238,7 +210,7 @@
     "datePosted": "2026-04-01T19:52:51.000Z"
   },
   {
-    "id": 563602811674156,
+    "id": "boston:563602811674156",
     "title": "EP Mapping Specialist II - Tacoma, WA",
     "company": "Boston Scientific",
     "location": "Tacoma/Olympia US-WA, United States |  N/A",
@@ -246,51 +218,51 @@
     "datePosted": "2026-03-31T13:30:29.000Z"
   },
   {
-    "id": "62253",
+    "id": "biotronik:62253",
     "title": "Field Clinical Specialist Associate; The Valley, Texas",
-    "company": "Biotronik",
     "location": "",
-    "url": "https://career5.successfactors.eu/career?career%5fns=job%5flisting&company=C0001096615P&navBarLevel=JOB%5fSEARCH&rcm%5fsite%5flocale=en%5fUS&career_job_req_id=62253&selected_lang=en_US&jobAlertController_jobAlertId=&jobAlertController_jobAlertName=&browserTimeZone=America/New_York&_s.crb=ugNrqWwO0J98gLLVAICM2WB9cjv3uRNMFQy%2b2IAGUgM%3d",
-    "datePosted": "05/07/2026"
+    "url": "https://career5.successfactors.eu/career?career%5fns=job%5flisting&company=C0001096615P&navBarLevel=JOB%5fSEARCH&rcm%5fsite%5flocale=en%5fUS&career_job_req_id=62253&selected_lang=en_US&jobAlertController_jobAlertId=&jobAlertController_jobAlertName=&browserTimeZone=America/New_York&_s.crb=JEdJpsxlfroSwVHSxMzPtqkbk%2f4QY8Vk%2fBVyck3QtKM%3d",
+    "datePosted": "05/07/2026",
+    "company": "Biotronik"
   },
   {
-    "id": "62226",
+    "id": "biotronik:62226",
     "title": "Field Clinical Specialist: Melbourne, FL",
-    "company": "Biotronik",
     "location": "Melbourne, FL",
-    "url": "https://career5.successfactors.eu/career?career%5fns=job%5flisting&company=C0001096615P&navBarLevel=JOB%5fSEARCH&rcm%5fsite%5flocale=en%5fUS&career_job_req_id=62226&selected_lang=en_US&jobAlertController_jobAlertId=&jobAlertController_jobAlertName=&browserTimeZone=America/New_York&_s.crb=ugNrqWwO0J98gLLVAICM2WB9cjv3uRNMFQy%2b2IAGUgM%3d",
-    "datePosted": "05/01/2026"
+    "url": "https://career5.successfactors.eu/career?career%5fns=job%5flisting&company=C0001096615P&navBarLevel=JOB%5fSEARCH&rcm%5fsite%5flocale=en%5fUS&career_job_req_id=62226&selected_lang=en_US&jobAlertController_jobAlertId=&jobAlertController_jobAlertName=&browserTimeZone=America/New_York&_s.crb=JEdJpsxlfroSwVHSxMzPtqkbk%2f4QY8Vk%2fBVyck3QtKM%3d",
+    "datePosted": "05/01/2026",
+    "company": "Biotronik"
   },
   {
-    "id": "62197",
+    "id": "biotronik:62197",
     "title": "Field Clinical Specialist: Miami, FL",
-    "company": "Biotronik",
     "location": "Miami, FL",
-    "url": "https://career5.successfactors.eu/career?career%5fns=job%5flisting&company=C0001096615P&navBarLevel=JOB%5fSEARCH&rcm%5fsite%5flocale=en%5fUS&career_job_req_id=62197&selected_lang=en_US&jobAlertController_jobAlertId=&jobAlertController_jobAlertName=&browserTimeZone=America/New_York&_s.crb=ugNrqWwO0J98gLLVAICM2WB9cjv3uRNMFQy%2b2IAGUgM%3d",
-    "datePosted": "04/24/2026"
+    "url": "https://career5.successfactors.eu/career?career%5fns=job%5flisting&company=C0001096615P&navBarLevel=JOB%5fSEARCH&rcm%5fsite%5flocale=en%5fUS&career_job_req_id=62197&selected_lang=en_US&jobAlertController_jobAlertId=&jobAlertController_jobAlertName=&browserTimeZone=America/New_York&_s.crb=JEdJpsxlfroSwVHSxMzPtqkbk%2f4QY8Vk%2fBVyck3QtKM%3d",
+    "datePosted": "04/24/2026",
+    "company": "Biotronik"
   },
   {
-    "id": "61844",
+    "id": "biotronik:61844",
     "title": "Field Clinical Specialist: Phoenix, Arizona",
-    "company": "Biotronik",
     "location": "Phoenix, Arizona",
-    "url": "https://career5.successfactors.eu/career?career%5fns=job%5flisting&company=C0001096615P&navBarLevel=JOB%5fSEARCH&rcm%5fsite%5flocale=en%5fUS&career_job_req_id=61844&selected_lang=en_US&jobAlertController_jobAlertId=&jobAlertController_jobAlertName=&browserTimeZone=America/New_York&_s.crb=ugNrqWwO0J98gLLVAICM2WB9cjv3uRNMFQy%2b2IAGUgM%3d",
-    "datePosted": "04/23/2026"
+    "url": "https://career5.successfactors.eu/career?career%5fns=job%5flisting&company=C0001096615P&navBarLevel=JOB%5fSEARCH&rcm%5fsite%5flocale=en%5fUS&career_job_req_id=61844&selected_lang=en_US&jobAlertController_jobAlertId=&jobAlertController_jobAlertName=&browserTimeZone=America/New_York&_s.crb=JEdJpsxlfroSwVHSxMzPtqkbk%2f4QY8Vk%2fBVyck3QtKM%3d",
+    "datePosted": "04/23/2026",
+    "company": "Biotronik"
   },
   {
-    "id": "62187",
+    "id": "biotronik:62187",
     "title": "Field Clinical Specialist: Central New Jersey",
-    "company": "Biotronik",
     "location": "Central New Jersey",
-    "url": "https://career5.successfactors.eu/career?career%5fns=job%5flisting&company=C0001096615P&navBarLevel=JOB%5fSEARCH&rcm%5fsite%5flocale=en%5fUS&career_job_req_id=62187&selected_lang=en_US&jobAlertController_jobAlertId=&jobAlertController_jobAlertName=&browserTimeZone=America/New_York&_s.crb=ugNrqWwO0J98gLLVAICM2WB9cjv3uRNMFQy%2b2IAGUgM%3d",
-    "datePosted": "04/22/2026"
+    "url": "https://career5.successfactors.eu/career?career%5fns=job%5flisting&company=C0001096615P&navBarLevel=JOB%5fSEARCH&rcm%5fsite%5flocale=en%5fUS&career_job_req_id=62187&selected_lang=en_US&jobAlertController_jobAlertId=&jobAlertController_jobAlertName=&browserTimeZone=America/New_York&_s.crb=JEdJpsxlfroSwVHSxMzPtqkbk%2f4QY8Vk%2fBVyck3QtKM%3d",
+    "datePosted": "04/22/2026",
+    "company": "Biotronik"
   },
   {
-    "id": "62179",
+    "id": "biotronik:62179",
     "title": "Field Clinical Specialist: North New Jersey",
-    "company": "Biotronik",
     "location": "North New Jersey",
-    "url": "https://career5.successfactors.eu/career?career%5fns=job%5flisting&company=C0001096615P&navBarLevel=JOB%5fSEARCH&rcm%5fsite%5flocale=en%5fUS&career_job_req_id=62179&selected_lang=en_US&jobAlertController_jobAlertId=&jobAlertController_jobAlertName=&browserTimeZone=America/New_York&_s.crb=ugNrqWwO0J98gLLVAICM2WB9cjv3uRNMFQy%2b2IAGUgM%3d",
-    "datePosted": "04/20/2026"
+    "url": "https://career5.successfactors.eu/career?career%5fns=job%5flisting&company=C0001096615P&navBarLevel=JOB%5fSEARCH&rcm%5fsite%5flocale=en%5fUS&career_job_req_id=62179&selected_lang=en_US&jobAlertController_jobAlertId=&jobAlertController_jobAlertName=&browserTimeZone=America/New_York&_s.crb=JEdJpsxlfroSwVHSxMzPtqkbk%2f4QY8Vk%2fBVyck3QtKM%3d",
+    "datePosted": "04/20/2026",
+    "company": "Biotronik"
   }
 ]
