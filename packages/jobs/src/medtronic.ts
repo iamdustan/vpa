@@ -1,3 +1,5 @@
+import { isRelevantJob } from './matcher';
+import { MedtronicResponseSchema } from './schemas';
 import type { JobFetcher, JobPost } from './types';
 
 export class MedtronicFetcher implements JobFetcher {
@@ -22,12 +24,19 @@ export class MedtronicFetcher implements JobFetcher {
       throw new Error(`Failed to fetch from Medtronic: ${response.statusText}`);
     }
 
-    const data = await response.json();
-    const rawJobs = data.jobPostings || [];
+    const rawData = await response.json();
+    const result = MedtronicResponseSchema.safeParse(rawData);
+    
+    if (!result.success) {
+      console.error('[Medtronic] Schema validation failed:', result.error.format());
+      return [];
+    }
+
+    const rawJobs = result.data.jobPostings || [];
     
     return rawJobs
-      .filter((post: any) => {
-        const title = post.title.toLowerCase();
+      .filter((post) => {
+        const title = post.title;
         const location = post.locationsText.toLowerCase();
 
         // Filter for US only
@@ -36,35 +45,10 @@ export class MedtronicFetcher implements JobFetcher {
 
         if (options?.unfiltered) return true;
 
-        // Strict filtering: must be a Clinical Specialist and must be CRM related OR Field Inventory Analyst OR CAS related
-        const isClinicalSpecialist = title.includes('clinical specialist') || title.includes('clinical spec');
-        const isCRM = title.includes('crm') || title.includes('cardiac rhythm');
-        const isCAS = (title.includes('(cas)') || title.includes(' cas') || title.includes('cas ') || title.includes('cardiac ablation solutions')) && !title.includes('affera');
-        const isMappingSpecialist = (title.includes('mapping specialist') || title.includes('mapping spec')) && !title.includes('affera');
-        const isInventoryAnalyst = title.includes('field inventory analyst');
-        const isInTraining = title.includes('in training');
-        
-        // Exclude research, marketing, or software specific roles that aren't field clinical roles
-        const isNotIrrelevant = !title.includes('research') && 
-                                !title.includes('marketing') && 
-                                !title.includes('software') &&
-                                !title.includes('senior') &&
-                                !title.includes('sr ') &&
-                                !title.includes('sr.') &&
-                                !title.includes('principal') &&
-                                !title.includes('manager');
-
-        // "In Training" roles are usually entry level and very relevant, so we want to be inclusive
-        if (isInTraining && (isCRM || isCAS || isMappingSpecialist)) {
-          return isNotIrrelevant;
-        }
-
-        return (isClinicalSpecialist && (isCRM || isCAS) && isNotIrrelevant) || 
-               (isMappingSpecialist && (isCAS || isCRM) && isNotIrrelevant) ||
-               isInventoryAnalyst;
+        return isRelevantJob(title);
       })
-      .map((post: any) => ({
-        id: post.bulletinNumber || post.externalPath,
+      .map((post) => ({
+        id: `medtronic:${post.bulletinNumber || post.externalPath}`,
         title: post.title,
         company: 'Medtronic',
         location: post.locationsText,

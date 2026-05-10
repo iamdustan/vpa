@@ -1,3 +1,5 @@
+import { isRelevantJob } from './matcher';
+import { AbbottResponseSchema } from './schemas';
 import type { JobFetcher, JobPost } from './types';
 
 export class AbbottFetcher implements JobFetcher {
@@ -28,45 +30,31 @@ export class AbbottFetcher implements JobFetcher {
       throw new Error(`Failed to fetch from Abbott: ${response.statusText}`);
     }
 
-    const data = await response.json();
+    const rawData = await response.json();
+    const result = AbbottResponseSchema.safeParse(rawData);
     
-    // Based on inspection of globalSearchEventV3 response:
-    const rawJobs = data.globalSearchEventV3?.jobTitles?.data?.titles ||
-                    data.globalSearchEventV3?.data?.jobs || 
-                    data.globalSearchEventV3?.jobs ||
-                    data.refineSearch?.data?.jobs || 
-                    data.refineSearch?.hits ||
+    if (!result.success) {
+      console.error('[Abbott] Schema validation failed:', result.error.format());
+      return [];
+    }
+    
+    // Abbott's structure is deeply nested and varies
+    const rawJobs = result.data.globalSearchEventV3?.jobTitles?.data?.titles ||
+                    result.data.globalSearchEventV3?.data?.jobs || 
                     [];
 
     return rawJobs
-      .filter((post: any) => {
+      .filter((post) => {
         if (options?.unfiltered) return true;
-
-        const title = (post.title || '').toLowerCase();
-        // Strict filtering: Clinical Specialist and CRM related OR Clinical Associate
-        const isClinicalSpecialist = title.includes('clinical specialist');
-        const isCRM = title.includes('crm') || title.includes('cardiac rhythm');
-        const isClinicalAssociate = title.includes('clinical associate');
-        
-        const isNotIrrelevant = !title.includes('research') && 
-                                !title.includes('marketing') && 
-                                !title.includes('software') &&
-                                !title.includes('senior') &&
-                                !title.includes('sr ') &&
-                                !title.includes('sr.') &&
-                                !title.includes('principal') &&
-                                !title.includes('manager') &&
-                                !title.includes('leadless');
-
-        return ((isClinicalSpecialist && isCRM) || isClinicalAssociate) && isNotIrrelevant;
+        return isRelevantJob(post.title || '');
       })
-      .map((post: any) => ({
-        id: post.jobId || post.jobSeqNo || post.reqId,
+      .map((post) => ({
+        id: `abbott:${post.jobId}`,
         title: post.title,
         company: 'Abbott',
-        location: post.location || post.cityStateCountry || post.postedLocation,
-        url: `https://www.jobs.abbott/us/en/job/${post.jobId || post.jobSeqNo || post.reqId}`,
-        datePosted: post.postedDate || post.datePosted,
+        location: post.location || 'United States',
+        url: `https://www.jobs.abbott/us/en/job/${post.jobId}`,
+        datePosted: post.postedDate,
       }));
   }
 }

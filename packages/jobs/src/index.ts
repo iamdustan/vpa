@@ -46,21 +46,33 @@ export async function fetchAllJobs(options: {
 } = {}): Promise<JobPost[]> {
   
   const providersToFetch = options.providers || (Object.keys(PROVIDERS) as (keyof typeof PROVIDERS)[]);
-  const allResults: JobPost[] = [];
-
-  for (const p of providersToFetch) {
+  
+  const providerPromises = providersToFetch.map(async (p) => {
     const config = PROVIDERS[p];
     const fetcher = new config.fetcher();
     
+    // Within each provider, we still run queries sequentially to be nice to their APIs
+    const providerResults: JobPost[] = [];
     for (const q of config.queries) {
       try {
         const jobs = await fetcher.fetch(q, { unfiltered: options.unfiltered });
-        allResults.push(...jobs);
+        providerResults.push(...jobs);
       } catch (error) {
         console.error(`Error fetching from ${p} for "${q}":`, error);
       }
     }
+    return providerResults;
+  });
+
+  const settleResults = await Promise.allSettled(providerPromises);
+  const allResults: JobPost[] = [];
+
+  for (const res of settleResults) {
+    if (res.status === 'fulfilled') {
+      allResults.push(...res.value);
+    }
   }
 
+  // Deduplicate by ID
   return Array.from(new Map(allResults.map(j => [j.id, j])).values());
 }

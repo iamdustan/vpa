@@ -2,8 +2,7 @@
   "extends": "@vpa/ts-config/tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src",
-    "resolveJsonModule": true
+    "rootDir": "./src"
   },
-  "include": ["src", "src/**/*.json"]
+  "include": ["src"]
 }

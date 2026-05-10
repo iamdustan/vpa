@@ -1,3 +1,5 @@
+import { isRelevantJob } from './matcher';
+import { BostonResponseSchema } from './schemas';
 import type { JobFetcher, JobPost } from './types';
 
 export class BostonScientificFetcher implements JobFetcher {
@@ -23,42 +25,29 @@ export class BostonScientificFetcher implements JobFetcher {
       throw new Error(`Failed to fetch from Boston Scientific: ${response.statusText}`);
     }
 
-    const json = await response.json();
-    const rawJobs = json.data?.positions || [];
+    const rawData = await response.json();
+    const result = BostonResponseSchema.safeParse(rawData);
+
+    if (!result.success) {
+      console.error('[Boston] Schema validation failed:', result.error.format());
+      return [];
+    }
+
+    const rawJobs = result.data.data.positions || [];
 
     return rawJobs
-      .filter((post: any) => {
+      .filter((post) => {
         if (options?.unfiltered) return true;
-
-        const title = (post.name || '').toLowerCase();
-        // Strict filtering: Clinical Specialist and CRM/EP related
-        // Note: Some Boston Sci roles use "Field Clinical Representative" or "Mapping Specialist"
-        const isClinicalSpecialist = title.includes('clinical specialist') || 
-                                     title.includes('clinical representative') ||
-                                     title.includes('mapping specialist');
-        const isCRM = title.includes('crm') || title.includes('cardiac rhythm');
-        const isEP = title.includes('ep ') || title.includes('electrophysiology') || title.includes('mapping');
-        
-        // Exclusions
-        const isNotIrrelevant = !title.includes('research') && 
-                                !title.includes('marketing') && 
-                                !title.includes('software') &&
-                                !title.includes('senior') &&
-                                !title.includes('sr ') &&
-                                !title.includes('sr.') &&
-                                !title.includes('principal') &&
-                                !title.includes('manager');
-
-        return isClinicalSpecialist && (isCRM || isEP) && isNotIrrelevant;
+        return isRelevantJob(post.name || '');
       })
-      .map((post: any) => {
+      .map((post) => {
         let jobUrl = post.positionUrl || `https://bostonscientific.eightfold.ai/careers?job=${post.id}`;
         if (jobUrl.startsWith('/')) {
           jobUrl = `https://bostonscientific.eightfold.ai${jobUrl}`;
         }
 
         return {
-          id: post.id || post.displayJobId,
+          id: `boston:${post.id}`,
           title: post.name,
           company: 'Boston Scientific',
           location: post.locations?.[0] || 'Unknown',

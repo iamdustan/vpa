@@ -1,4 +1,5 @@
 import { chromium } from 'playwright';
+import { isRelevantJob } from './matcher';
 import type { JobFetcher, JobPost } from './types';
 
 export class BiotronikFetcher implements JobFetcher {
@@ -44,48 +45,16 @@ export class BiotronikFetcher implements JobFetcher {
         console.warn('No job rows found within timeout');
       });
 
-      const jobs = await page.evaluate(({ selector, isUnfiltered }) => {
+      // Note: We can't easily pass the matcher function into page.evaluate
+      // so we'll filter AFTER getting the raw data
+      const rawJobs = await page.evaluate(({ selector }) => {
         const rows = Array.from(document.querySelectorAll(selector));
+        console.log(`Found ${rows.length} rows with selector ${selector}`);
         return rows.map((row) => {
           const titleLink = row.querySelector('a.jobTitle') as HTMLAnchorElement;
-          const noteSection = row.querySelector('.noteSection') as HTMLElement;
-          
           if (!titleLink) return null;
 
           const titleText = titleLink.innerText.trim();
-          const titleLower = titleText.toLowerCase();
-
-          if (!isUnfiltered) {
-            // Strict filtering: Must be Clinical Specialist, CRM, or Field related
-            const isClinical = titleLower.includes('clinical specialist') || 
-                              titleLower.includes('clinical support') ||
-                              titleLower.includes('procedural specialist');
-            const isCRM = titleLower.includes('crm') || 
-                          titleLower.includes('cardiac rhythm') || 
-                          titleLower.includes('pacemaker');
-            const isField = titleLower.includes('field');
-
-            // Exclusions: Accounting, Product Specialist, Research, Marketing, etc.
-            const isIrrelevant = titleLower.includes('accounting') ||
-                                titleLower.includes('product specialist') ||
-                                titleLower.includes('treasury') ||
-                                titleLower.includes('receivable') ||
-                                titleLower.includes('marketing') ||
-                                titleLower.includes('research') ||
-                                titleLower.includes('software') ||
-                                titleLower.includes('senior') ||
-                                titleLower.includes('sr ') ||
-                                titleLower.includes('sr.') ||
-                                titleLower.includes('principal') ||
-                                titleLower.includes('manager') ||
-                                titleLower.includes('thailand') ||
-                                titleLower.includes('leadless') ||
-                                titleLower.includes('neuro');
-
-            if (!(isClinical || isCRM || isField) || isIrrelevant) return null;
-          }
-
-          // Extract ID and Date from noteSection
           const emSpans = Array.from(row.querySelectorAll('.jobContentEM')) as HTMLElement[];
           const id = emSpans[0]?.textContent?.trim() || '';
           const datePosted = emSpans[1]?.textContent?.replace('Posted on', '')?.trim() || '';
@@ -98,15 +67,30 @@ export class BiotronikFetcher implements JobFetcher {
           return {
             id,
             title: titleText,
-            company: 'Biotronik',
             location: location,
             url: titleLink.href,
             datePosted,
           };
-        }).filter((j) => j !== null && j.title && j.url);
-      }, { selector: jobRowSelector, isUnfiltered: !!options?.unfiltered });
+        }).filter((j) => j !== null);
+      }, { selector: jobRowSelector });
 
-      return jobs as JobPost[];
+      console.log(`Biotronik found ${rawJobs.length} raw jobs`);
+
+      const filtered = (rawJobs as any[])
+        .filter((job) => {
+          const relevant = options?.unfiltered || isRelevantJob(job.title);
+          if (!relevant) console.log(`Biotronik filtering out: ${job.title}`);
+          return relevant;
+        });
+
+      console.log(`Biotronik found ${filtered.length} filtered jobs`);
+
+      return filtered
+        .map((job) => ({
+          ...job,
+          id: `biotronik:${job.id}`,
+          company: 'Biotronik'
+        }));
     } catch (error) {
       console.error('Biotronik fetch failed:', error);
       return [];

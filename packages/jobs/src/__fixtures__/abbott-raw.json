@@ -1,0 +1,605 @@
+{
+  "globalSearchEventV3": {
+    "jobCategories": {
+      "status": 200,
+      "hits": 0,
+      "totalHits": 0,
+      "data": {
+        "agg": []
+      },
+      "eid": "6a008b0c13b87984aa68e7e6"
+    },
+    "jobTitles": {
+      "status": 200,
+      "hits": 50,
+      "totalHits": 404,
+      "data": {
+        "titles": [
+          {
+            "multi_location": [
+              "United States - Texas - Houston"
+            ],
+            "jobId": "31144101",
+            "title": "Clinical Specialist, CRM (Houston, TX)",
+            "jobSeqNo": "ABLAUS31144101ENUSEXTERNAL",
+            "location": "United States - Texas - Houston",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em>, <em>CRM</em> (Houston, TX)"
+          },
+          {
+            "multi_location": [
+              "United States - Georgia - Remote"
+            ],
+            "jobId": "31143372",
+            "title": "Clinical Specialist, CRM - Georgia",
+            "jobSeqNo": "ABLAUS31143372ENUSEXTERNAL",
+            "location": "United States - Georgia - Remote",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - Georgia"
+          },
+          {
+            "multi_location": [
+              "United States - Nebraska - Remote"
+            ],
+            "jobId": "31148766",
+            "title": "Clinical Specialist, CRM (Kearney, NE)",
+            "jobSeqNo": "ABLAUS31148766ENUSEXTERNAL",
+            "location": "United States - Nebraska - Remote",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em>, <em>CRM</em> (Kearney, NE)"
+          },
+          {
+            "multi_location": [
+              "United States - Texas - Austin"
+            ],
+            "jobId": "31140993",
+            "title": "Clinical Specialist , CRM (Austin, TX)",
+            "jobSeqNo": "ABLAUS31140993ENUSEXTERNAL",
+            "location": "United States - Texas - Austin",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em> , <em>CRM</em> (Austin, TX)"
+          },
+          {
+            "multi_location": [
+              "United States - Texas - Houston"
+            ],
+            "jobId": "31142015",
+            "title": "Clinical Specialist, CRM - (Houston, TX)",
+            "jobSeqNo": "ABLAUS31142015ENUSEXTERNAL",
+            "location": "United States - Texas - Houston",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - (Houston, TX)"
+          },
+          {
+            "multi_location": [
+              "United States - Pennsylvania - Harrisburg"
+            ],
+            "jobId": "31138528",
+            "title": "Clinical Specialist, CRM - Harrisburg, PA",
+            "jobSeqNo": "ABLAUS31138528ENUSEXTERNAL",
+            "location": "United States - Pennsylvania - Harrisburg",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - Harrisburg, PA"
+          },
+          {
+            "multi_location": [
+              "United States - Texas - San Antonio"
+            ],
+            "jobId": "31136782",
+            "title": "Clinical Specialist, CRM San Antonio, TX",
+            "jobSeqNo": "ABLAUS31136782ENUSEXTERNAL",
+            "location": "United States - Texas - San Antonio",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em>, <em>CRM</em> San Antonio, TX"
+          },
+          {
+            "multi_location": [
+              "United States - Maryland - Baltimore"
+            ],
+            "jobId": "31137559",
+            "title": "Clinical Specialist, CRM - Baltimore, MD",
+            "jobSeqNo": "ABLAUS31137559ENUSEXTERNAL",
+            "location": "United States - Maryland - Baltimore",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - Baltimore, MD"
+          },
+          {
+            "multi_location": [
+              "United States - West Virginia - Charleston"
+            ],
+            "jobId": "31145512",
+            "title": "Clinical Specialist, CRM - Charleston,  WV",
+            "jobSeqNo": "ABLAUS31145512ENUSEXTERNAL",
+            "location": "United States - West Virginia - Charleston",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - Charleston,  WV"
+          },
+          {
+            "multi_location": [
+              "United States - Pennsylvania - Philadelphia"
+            ],
+            "jobId": "31149312",
+            "title": "Clinical Specialist, CRM - Philadelphia, PA",
+            "jobSeqNo": "ABLAUS31149312ENUSEXTERNAL",
+            "location": "United States - Pennsylvania - Philadelphia",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - Philadelphia, PA"
+          },
+          {
+            "multi_location": [
+              "United States - North Carolina - Charlotte"
+            ],
+            "jobId": "31148530",
+            "title": "Associate Clinical Specialist, CRM - Charlotte, NC",
+            "jobSeqNo": "ABLAUS31148530ENUSEXTERNAL",
+            "location": "United States - North Carolina - Charlotte",
+            "category": "Customer & Technical Support",
+            "title_html": "Associate <em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - Charlotte, NC"
+          },
+          {
+            "multi_location": [
+              "United States - New York - Manhattan"
+            ],
+            "jobId": "31147929",
+            "title": "Principal Clinical Specialist, CRM - Manhattan, NY",
+            "jobSeqNo": "ABLAUS31147929ENUSEXTERNAL",
+            "location": "United States - New York - Manhattan",
+            "category": "Customer & Technical Support",
+            "title_html": "Principal <em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - Manhattan, NY"
+          },
+          {
+            "multi_location": [
+              "United States - North Carolina - Fayetteville"
+            ],
+            "jobId": "31137656",
+            "title": "Principal Clinical Specialist, CRM - Fayetteville, NC",
+            "jobSeqNo": "ABLAUS31137656ENUSEXTERNAL",
+            "location": "United States - North Carolina - Fayetteville",
+            "category": "Customer & Technical Support",
+            "title_html": "Principal <em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - Fayetteville, NC"
+          },
+          {
+            "multi_location": [
+              "United States - New York - Manhattan"
+            ],
+            "jobId": "31144562",
+            "title": "Sr. Clinical Specialist, CRM - Manhattan, NY",
+            "jobSeqNo": "ABLAUS31144562ENUSEXTERNAL",
+            "location": "United States - New York - Manhattan",
+            "category": "Customer & Technical Support",
+            "title_html": "Sr. <em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - Manhattan, NY"
+          },
+          {
+            "multi_location": [
+              "United States - Wisconsin - Green Bay",
+              "United States - Wisconsin - Madison",
+              "United States - Wisconsin - Milwaukee"
+            ],
+            "jobId": "31143919",
+            "title": "Clinical Specialist",
+            "jobSeqNo": "ABLAUS31143919ENUSEXTERNAL",
+            "location": "United States - Wisconsin - Milwaukee",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - Florida - Sarasota"
+            ],
+            "jobId": "31147789",
+            "title": "Clinical Specialist",
+            "jobSeqNo": "ABLAUS31147789ENUSEXTERNAL",
+            "location": "United States - Florida - Sarasota",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - Minnesota - Minneapolis"
+            ],
+            "jobId": "31142969",
+            "title": "Clinical Specialist",
+            "jobSeqNo": "ABLAUS31142969ENUSEXTERNAL",
+            "location": "United States - Minnesota - Minneapolis",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - Kansas - Kansas City",
+              "United States - Nebraska - Omaha",
+              "United States - Missouri - St. Louis",
+              "United States - Colorado - Denver"
+            ],
+            "jobId": "31141551",
+            "title": "Leadless Clinical Specialist, CRM - Great Plains Territory",
+            "jobSeqNo": "ABLAUS31141551ENUSEXTERNAL",
+            "location": "United States - Colorado - Denver",
+            "category": "Customer & Technical Support",
+            "title_html": "Leadless <em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - Great Plains Territory"
+          },
+          {
+            "multi_location": [
+              "United States - Florida - Tampa"
+            ],
+            "jobId": "31149021",
+            "title": "Sr. Clinical Specialist, CRM - St Petersburg, FL",
+            "jobSeqNo": "ABLAUS31149021ENUSEXTERNAL",
+            "location": "United States - Florida - Tampa",
+            "category": "Customer & Technical Support",
+            "title_html": "Sr. <em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - St Petersburg, FL"
+          },
+          {
+            "multi_location": [
+              "United States - California - San Francisco",
+              "United States - Oregon - Portland",
+              "United States - Nevada - Las Vegas",
+              "United States - Arizona - Phoenix",
+              "United States - Utah - Salt Lake City",
+              "United States - California - Sacramento",
+              "United States - Washington - Seattle",
+              "United States - California - Los Angeles"
+            ],
+            "jobId": "31134366",
+            "title": "Leadless Clinical Specialist, CRM - West Coast Region",
+            "jobSeqNo": "ABLAUS31134366ENUSEXTERNAL",
+            "location": "United States - California - Los Angeles",
+            "category": "Customer & Technical Support",
+            "title_html": "Leadless <em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - West Coast Region"
+          },
+          {
+            "multi_location": [
+              "United States - Illinois - Chicago",
+              "United States - Indiana - Indianapolis",
+              "United States - Michigan - Detroit"
+            ],
+            "jobId": "31132576",
+            "title": "Leadless Clinical Specialist, CRM - Great Lakes Region",
+            "jobSeqNo": "ABLAUS31132576ENUSEXTERNAL",
+            "location": "United States - Michigan - Detroit",
+            "category": "Customer & Technical Support",
+            "title_html": "Leadless <em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - Great Lakes Region"
+          },
+          {
+            "multi_location": [
+              "United States - Indiana - Fort Wayne"
+            ],
+            "jobId": "31142196",
+            "title": "Sr. Clinical Specialist, CRM - Fort Wayne, IN",
+            "jobSeqNo": "ABLAUS31142196ENUSEXTERNAL",
+            "location": "United States - Indiana - Fort Wayne",
+            "category": "Customer & Technical Support",
+            "title_html": "Sr. <em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - Fort Wayne, IN"
+          },
+          {
+            "multi_location": [
+              "United States - New York - Long Island"
+            ],
+            "jobId": "31137629",
+            "title": "Clinical Specialist II, CRM - Long Island, NY",
+            "jobSeqNo": "ABLAUS31137629ENUSEXTERNAL",
+            "location": "United States - New York - Long Island",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em> II, <em>CRM</em> - Long Island, NY"
+          },
+          {
+            "multi_location": [
+              "United States - Florida - Orlando",
+              "United States - Florida - Sarasota",
+              "United States - Florida - Tampa",
+              "United States - Florida - Fort Lauderdale",
+              "United States - Florida - Miami"
+            ],
+            "jobId": "31141550",
+            "title": "Leadless Clinical Specialist, CRM - South Atlantic Territory",
+            "jobSeqNo": "ABLAUS31141550ENUSEXTERNAL",
+            "location": "United States - Florida - Miami",
+            "category": "Customer & Technical Support",
+            "title_html": "Leadless <em>Clinical</em> <em>Specialist</em>, <em>CRM</em> - South Atlantic Territory"
+          },
+          {
+            "multi_location": [
+              "Japan - Tokyo"
+            ],
+            "jobId": "31136927",
+            "title": "Clinical Affairs Specialist",
+            "jobSeqNo": "ABLAUS31136927ENUSEXTERNAL",
+            "location": "Japan - Tokyo",
+            "category": "Medical and Clinical Affairs",
+            "title_html": "<em>Clinical</em> Affairs <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "Japan - Tokyo"
+            ],
+            "jobId": "31138814",
+            "title": "Clinical Affairs Specialist",
+            "jobSeqNo": "ABLAUS31138814ENUSEXTERNAL",
+            "location": "Japan - Tokyo",
+            "category": "Medical and Clinical Affairs",
+            "title_html": "<em>Clinical</em> Affairs <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "Australia - Remote"
+            ],
+            "jobId": "31142480",
+            "title": "Field Clinical Specialist",
+            "jobSeqNo": "ABLAUS31142480ENUSEXTERNAL",
+            "location": "Australia - Remote",
+            "category": "Medical and Clinical Affairs",
+            "title_html": "Field <em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - Tennessee - Nashville"
+            ],
+            "jobId": "31138553",
+            "title": "Senior Clinical Specialist",
+            "jobSeqNo": "ABLAUS31138553ENUSEXTERNAL",
+            "location": "United States - Tennessee - Nashville",
+            "category": "Customer & Technical Support",
+            "title_html": "Senior <em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - Texas - Fort Worth",
+              "United States - Texas - Dallas"
+            ],
+            "jobId": "31136024",
+            "title": "Senior Clinical Specialist",
+            "jobSeqNo": "ABLAUS31136024ENUSEXTERNAL",
+            "location": "United States - Texas - Dallas",
+            "category": "Customer & Technical Support",
+            "title_html": "Senior <em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - Colorado - Denver"
+            ],
+            "jobId": "31138422",
+            "title": "Principal Clinical Specialist",
+            "jobSeqNo": "ABLAUS31138422ENUSEXTERNAL",
+            "location": "United States - Colorado - Denver",
+            "category": "Customer & Technical Support",
+            "title_html": "Principal <em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - Pennsylvania - Philadelphia"
+            ],
+            "jobId": "31137333",
+            "title": "Senior Clinical Specialist",
+            "jobSeqNo": "ABLAUS31137333ENUSEXTERNAL",
+            "location": "United States - Pennsylvania - Philadelphia",
+            "category": "Customer & Technical Support",
+            "title_html": "Senior <em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "Thailand - Bangkok"
+            ],
+            "jobId": "31149743",
+            "title": "Clinical Sales Specialist",
+            "jobSeqNo": "ABLAUS31149743ENUSEXTERNAL",
+            "location": "Thailand - Bangkok",
+            "category": "Sales",
+            "title_html": "<em>Clinical</em> Sales <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - Virginia - Richmond"
+            ],
+            "jobId": "31140004",
+            "title": "Principal Clinical Specialist",
+            "jobSeqNo": "ABLAUS31140004ENUSEXTERNAL",
+            "location": "United States - Virginia - Richmond",
+            "category": "Customer & Technical Support",
+            "title_html": "Principal <em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - California - San Diego"
+            ],
+            "jobId": "31144453",
+            "title": "Principal Clinical Specialist",
+            "jobSeqNo": "ABLAUS31144453ENUSEXTERNAL",
+            "location": "United States - California - San Diego",
+            "category": "Customer & Technical Support",
+            "title_html": "Principal <em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - Arizona - Phoenix"
+            ],
+            "jobId": "31144796",
+            "title": "Principal Clinical Specialist",
+            "jobSeqNo": "ABLAUS31144796ENUSEXTERNAL",
+            "location": "United States - Arizona - Phoenix",
+            "category": "Customer & Technical Support",
+            "title_html": "Principal <em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - Texas - Fort Worth",
+              "United States - Texas - Dallas"
+            ],
+            "jobId": "31138193",
+            "title": "Senior Clinical Specialist",
+            "jobSeqNo": "ABLAUS31138193ENUSEXTERNAL",
+            "location": "United States - Texas - Dallas",
+            "category": "Customer & Technical Support",
+            "title_html": "Senior <em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - Nebraska - Omaha"
+            ],
+            "jobId": "31147233",
+            "title": "Principal Clinical Specialist",
+            "jobSeqNo": "ABLAUS31147233ENUSEXTERNAL",
+            "location": "United States - Nebraska - Omaha",
+            "category": "Customer & Technical Support",
+            "title_html": "Principal <em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - Maryland - Annapolis"
+            ],
+            "jobId": "31144099",
+            "title": "Senior Clinical Specialist",
+            "jobSeqNo": "ABLAUS31144099ENUSEXTERNAL",
+            "location": "United States - Maryland - Annapolis",
+            "category": "Customer & Technical Support",
+            "title_html": "Senior <em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - California - Irvine"
+            ],
+            "jobId": "31147883",
+            "title": "Senior Clinical Specialist",
+            "jobSeqNo": "ABLAUS31147883ENUSEXTERNAL",
+            "location": "United States - California - Irvine",
+            "category": "Customer & Technical Support",
+            "title_html": "Senior <em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - Texas - San Antonio"
+            ],
+            "jobId": "31136103",
+            "title": "Principal Clinical Specialist",
+            "jobSeqNo": "ABLAUS31136103ENUSEXTERNAL",
+            "location": "United States - Texas - San Antonio",
+            "category": "Customer & Technical Support",
+            "title_html": "Principal <em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States of America : Remote"
+            ],
+            "jobId": "31144347",
+            "title": "Principal Field Clinical Specialist",
+            "jobSeqNo": "ABLAUS31144347ENUSEXTERNAL",
+            "location": "United States of America : Remote",
+            "category": "Medical and Clinical Affairs",
+            "title_html": "Principal Field <em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "United States - Texas - El Paso"
+            ],
+            "jobId": "31146081",
+            "title": "Sr. Clinical Specialist, CRM (El Paso, TX or Las Cruces, NM)",
+            "jobSeqNo": "ABLAUS31146081ENUSEXTERNAL",
+            "location": "United States - Texas - El Paso",
+            "category": "Customer & Technical Support",
+            "title_html": "Sr. <em>Clinical</em> <em>Specialist</em>, <em>CRM</em> (El Paso, TX or Las Cruces, NM)"
+          },
+          {
+            "multi_location": [
+              "United States - Colorado - Remote",
+              "United States - Colorado - Fort Collins",
+              "United States - Colorado - Aurora",
+              "United States - Colorado - Greenwood Village",
+              "United States - Colorado - Colorado Springs",
+              "United States - Colorado - Denver"
+            ],
+            "jobId": "31145747",
+            "title": "Clinical Specialist, Endovascular - CO/WY/UT/MT",
+            "jobSeqNo": "ABLAUS31145747ENUSEXTERNAL",
+            "location": "United States - Colorado - Denver",
+            "category": "Sales",
+            "title_html": "<em>Clinical</em> <em>Specialist</em>, Endovascular - CO/WY/UT/MT"
+          },
+          {
+            "multi_location": [
+              "United States - South Carolina - Charleston"
+            ],
+            "jobId": "31125985",
+            "title": "Key Account Senior Clinical Specialist",
+            "jobSeqNo": "ABLAUS31125985ENUSEXTERNAL",
+            "location": "United States - South Carolina - Charleston",
+            "category": "Customer & Technical Support",
+            "title_html": "Key Account Senior <em>Clinical</em> <em>Specialist</em>"
+          },
+          {
+            "multi_location": [
+              "Canada - Alberta"
+            ],
+            "jobId": "31145776",
+            "title": "Clinical Specialist – Endovascular (Western Canada)",
+            "jobSeqNo": "ABLAUS31145776ENUSEXTERNAL",
+            "location": "Canada - Alberta",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em> – Endovascular (Western Canada)"
+          },
+          {
+            "multi_location": [
+              "United States - Oregon - Eugene"
+            ],
+            "jobId": "31139514",
+            "title": "Clinical Specialist - Medford, OR",
+            "jobSeqNo": "ABLAUS31139514ENUSEXTERNAL",
+            "location": "United States - Oregon - Eugene",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em> - Medford, OR"
+          },
+          {
+            "multi_location": [
+              "United States - Ohio - Cleveland"
+            ],
+            "jobId": "31140384",
+            "title": "Clinical Specialist - Cleveland, OH",
+            "jobSeqNo": "ABLAUS31140384ENUSEXTERNAL",
+            "location": "United States - Ohio - Cleveland",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em> - Cleveland, OH"
+          },
+          {
+            "multi_location": [
+              "United States - New Hampshire - Portsmouth"
+            ],
+            "jobId": "31133298",
+            "title": "Sr. Clinical Specialist - Portsmouth, NH",
+            "jobSeqNo": "ABLAUS31133298ENUSEXTERNAL",
+            "location": "United States - New Hampshire - Portsmouth",
+            "category": "Customer & Technical Support",
+            "title_html": "Sr. <em>Clinical</em> <em>Specialist</em> - Portsmouth, NH"
+          },
+          {
+            "multi_location": [
+              "United States - California - San Francisco"
+            ],
+            "jobId": "31143872",
+            "title": "Clinical Specialist - Burlingame/San Mateo, CA",
+            "jobSeqNo": "ABLAUS31143872ENUSEXTERNAL",
+            "location": "United States - California - San Francisco",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em> - Burlingame/San Mateo, CA"
+          },
+          {
+            "multi_location": [
+              "United States - California - Los Angeles"
+            ],
+            "jobId": "31149301",
+            "title": "Clinical Specialist - Los Angeles, CA",
+            "jobSeqNo": "ABLAUS31149301ENUSEXTERNAL",
+            "location": "United States - California - Los Angeles",
+            "category": "Customer & Technical Support",
+            "title_html": "<em>Clinical</em> <em>Specialist</em> - Los Angeles, CA"
+          }
+        ]
+      },
+      "eid": "6a008b0008de9c0bc3ef6a3c"
+    },
+    "jobLocations": {
+      "locations": {
+        "city": [],
+        "state": [],
+        "country": []
+      }
+    }
+  }
+}

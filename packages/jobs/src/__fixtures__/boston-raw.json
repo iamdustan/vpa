@@ -1,0 +1,571 @@
+{
+  "status": 200,
+  "error": {
+    "message": "",
+    "body": ""
+  },
+  "data": {
+    "positions": [
+      {
+        "id": 563602812210014,
+        "displayJobId": "628612",
+        "name": "CRM Field Clinical Representative - Port Charlotte/Fort Myers/Naples, FL",
+        "locations": [
+          "Ft. Myers/Naples US-FL, United States |  N/A"
+        ],
+        "standardizedLocations": [
+          "Naples, FL, US"
+        ],
+        "postedTs": 1777928059,
+        "solrScore": null,
+        "stars": 0,
+        "department": "Sales",
+        "creationTs": 1777921705,
+        "isHot": 0,
+        "workLocationOption": "onsite",
+        "locationFlexibility": null,
+        "atsJobId": "628612",
+        "positionUrl": "/careers/job/563602812210014"
+      },
+      {
+        "id": 563602812222296,
+        "displayJobId": "628701",
+        "name": "CRM Field Clinical Representative - Buffalo NY/Erie, PA",
+        "locations": [
+          "Buffalo US-NY, United States | US-PA-Erie"
+        ],
+        "standardizedLocations": [
+          "Buffalo, NY, US"
+        ],
+        "postedTs": 1778015045,
+        "solrScore": null,
+        "stars": 0,
+        "department": "Sales",
+        "creationTs": 1778012624,
+        "isHot": 0,
+        "workLocationOption": "onsite",
+        "locationFlexibility": null,
+        "atsJobId": "628701",
+        "positionUrl": "/careers/job/563602812222296"
+      },
+      {
+        "id": 563602811781067,
+        "displayJobId": "627066",
+        "name": "CRM Field Clinical Representative - Shreveport, LA",
+        "locations": [
+          "Shreveport US-LA, United States |  N/A"
+        ],
+        "standardizedLocations": [
+          "Shreveport, LA, US"
+        ],
+        "postedTs": 1775073171,
+        "solrScore": null,
+        "stars": 0,
+        "department": "Sales",
+        "creationTs": 1775068643,
+        "isHot": 0,
+        "workLocationOption": "onsite",
+        "locationFlexibility": null,
+        "atsJobId": "627066",
+        "positionUrl": "/careers/job/563602811781067"
+      },
+      {
+        "id": 563602812209353,
+        "displayJobId": "628586",
+        "name": "CRM Field Clinical Manager - Houston, TX",
+        "locations": [
+          "Houston US-TX, United States |  N/A"
+        ],
+        "standardizedLocations": [
+          "Houston, TX, US"
+        ],
+        "postedTs": 1777910877,
+        "solrScore": null,
+        "stars": 0,
+        "department": "Sales",
+        "creationTs": 1777908551,
+        "isHot": 0,
+        "workLocationOption": "onsite",
+        "locationFlexibility": null,
+        "atsJobId": "628586",
+        "positionUrl": "/careers/job/563602812209353"
+      },
+      {
+        "id": 563602812210194,
+        "displayJobId": "628622",
+        "name": "CRM Senior Field Clinical Representative - Port Charlotte/Fort Myers/Naples, FL",
+        "locations": [
+          "Ft. Myers/Naples US-FL, United States |  N/A"
+        ],
+        "standardizedLocations": [
+          "Naples, FL, US"
+        ],
+        "postedTs": 1777996199,
+        "solrScore": null,
+        "stars": 0,
+        "department": "Sales",
+        "creationTs": 1777932340,
+        "isHot": 0,
+        "workLocationOption": "onsite",
+        "locationFlexibility": null,
+        "atsJobId": "628622",
+        "positionUrl": "/careers/job/563602812210194"
+      },
+      {
+        "id": 563602811695185,
+        "displayJobId": "626815",
+        "name": "CRM Field Clinical Manager - Dallas, TX",
+        "locations": [
+          "Dallas US-TX, United States |  N/A"
+        ],
+        "standardizedLocations": [
+          "Dallas, TX, US"
+        ],
+        "postedTs": 1777640673,
+        "solrScore": null,
+        "stars": 0,
+        "department": "Sales",
+        "creationTs": 1774551565,
+        "isHot": 0,
+        "workLocationOption": "onsite",
+        "locationFlexibility": null,
+        "atsJobId": "626815",
+        "positionUrl": "/careers/job/563602811695185"
+      },
+      {
+        "id": 563602812209866,
+        "displayJobId": "628608",
+        "name": "Clinical Specialist | Urology - Sacral Neuromodulation | [Northern] Utah / Idaho",
+        "locations": [
+          "Salt Lake City US-UT, United States | US-ID-Boise, US-ID-Idaho Falls/Pocatello, US-ID-Twin Falls"
+        ],
+        "standardizedLocations": [
+          "Idaho Falls, ID, US"
+        ],
+        "postedTs": 1777997154,
+        "solrScore": null,
+        "stars": 0,
+        "department": "Sales",
+        "creationTs": 1777918717,
+        "isHot": 0,
+        "workLocationOption": "onsite",
+        "locationFlexibility": null,
+        "atsJobId": "628608",
+        "positionUrl": "/careers/job/563602812209866"
+      },
+      {
+        "id": 563602812221898,
+        "displayJobId": "628689",
+        "name": "Peripheral Vascular Senior Clinical Specialist - Houston",
+        "locations": [
+          "Houston US-TX, United States | US-TX-Houston"
+        ],
+        "standardizedLocations": [
+          "Houston, TX, US"
+        ],
+        "postedTs": 1778002046,
+        "solrScore": null,
+        "stars": 0,
+        "department": "Sales",
+        "creationTs": 1777999602,
+        "isHot": 0,
+        "workLocationOption": "onsite",
+        "locationFlexibility": null,
+        "atsJobId": "628689",
+        "positionUrl": "/careers/job/563602812221898"
+      },
+      {
+        "id": 563602811858234,
+        "displayJobId": "627343",
+        "name": "Clinical Specialist Manager | Urology - Sacral Neuromodulation | Northeast Region",
+        "locations": [
+          "Pittsburgh US-PA, United States |  N/A"
+        ],
+        "standardizedLocations": [
+          "Fox Chapel, PA, US"
+        ],
+        "postedTs": 1775845328,
+        "solrScore": null,
+        "stars": 0,
+        "department": "Sales",
+        "creationTs": 1775684621,
+        "isHot": 0,
+        "workLocationOption": "onsite",
+        "locationFlexibility": null,
+        "atsJobId": "627343",
+        "positionUrl": "/careers/job/563602811858234"
+      },
+      {
+        "id": 563602811892529,
+        "displayJobId": "627459",
+        "name": "Intracept Clinical Specialist - Portland, OR",
+        "locations": [
+          "Portland US-OR, United States |  N/A"
+        ],
+        "standardizedLocations": [
+          "Portland, OR, US"
+        ],
+        "postedTs": 1775849770,
+        "solrScore": null,
+        "stars": 0,
+        "department": "Sales",
+        "creationTs": 1775841312,
+        "isHot": 0,
+        "workLocationOption": "onsite",
+        "locationFlexibility": null,
+        "atsJobId": "627459",
+        "positionUrl": "/careers/job/563602811892529"
+      }
+    ],
+    "filterDef": {
+      "facets": {
+        "locations": [
+          [
+            "Remote",
+            999999
+          ],
+          [
+            "Arden Hills, MN, United States",
+            69
+          ],
+          [
+            "Penang, Malaysia",
+            24
+          ],
+          [
+            "Maple Grove, MN, United States",
+            31
+          ],
+          [
+            "Marlboro, MA, United States",
+            10
+          ],
+          [
+            "Warsaw, Masovian Voivodeship, Poland",
+            10
+          ],
+          [
+            "CDMX, Mexico",
+            9
+          ],
+          [
+            "Seoul, Korea, Republic of",
+            9
+          ]
+        ]
+      },
+      "smartFilters": [
+        {
+          "type": "multi_select",
+          "filterName": "seniority",
+          "title": "Job Level",
+          "options": [
+            {
+              "label": "Entry",
+              "value": "Entry"
+            },
+            {
+              "label": "Mid-Level",
+              "value": "Mid-Level"
+            },
+            {
+              "label": "Senior",
+              "value": "Senior"
+            },
+            {
+              "label": "Manager",
+              "value": "Manager"
+            },
+            {
+              "label": "Intern",
+              "value": "Intern"
+            },
+            {
+              "label": "Director",
+              "value": "Director"
+            },
+            {
+              "label": "Vice President",
+              "value": "Vice President"
+            }
+          ],
+          "tooltip": null,
+          "extraData": {},
+          "displayCount": 10,
+          "translateOptions": false,
+          "allowFreeText": false
+        },
+        {
+          "type": "toggle",
+          "filterName": "include_remote",
+          "title": "Include Eligible Remote Jobs",
+          "options": null,
+          "tooltip": "When selected, the results will include remote job opportunities",
+          "extraData": {},
+          "displayCount": 10,
+          "translateOptions": false,
+          "allowFreeText": false
+        }
+      ],
+      "allFilters": [
+        {
+          "type": "multi_select_suggest",
+          "filterName": "skills",
+          "title": "Skills",
+          "options": [
+            {
+              "label": "Teamwork",
+              "value": "Teamwork"
+            },
+            {
+              "label": "Pharmaceutical/Medical Device",
+              "value": "Pharmaceutical/Medical Device"
+            },
+            {
+              "label": "Communication",
+              "value": "Communication"
+            },
+            {
+              "label": "Training",
+              "value": "Training"
+            },
+            {
+              "label": "Clinical Skills",
+              "value": "Clinical Skills"
+            },
+            {
+              "label": "Healthcare",
+              "value": "Healthcare"
+            },
+            {
+              "label": "Problem Solving",
+              "value": "Problem Solving"
+            },
+            {
+              "label": "Collaboration",
+              "value": "Collaboration"
+            },
+            {
+              "label": "Compliance",
+              "value": "Compliance"
+            },
+            {
+              "label": "Sales",
+              "value": "Sales"
+            }
+          ],
+          "tooltip": null,
+          "extraData": {},
+          "displayCount": 10,
+          "translateOptions": false,
+          "allowFreeText": false
+        },
+        {
+          "type": "multi_select",
+          "filterName": "workmode",
+          "title": "Work mode",
+          "options": [
+            {
+              "label": "Hybrid",
+              "value": "hybrid"
+            },
+            {
+              "label": "Field Based",
+              "value": "field based"
+            },
+            {
+              "label": "Onsite",
+              "value": "onsite"
+            },
+            {
+              "label": "Remote In Country",
+              "value": "remote in country"
+            },
+            {
+              "label": "Remote Global",
+              "value": "remote global"
+            }
+          ],
+          "tooltip": null,
+          "extraData": {},
+          "displayCount": 10,
+          "translateOptions": false,
+          "allowFreeText": false
+        },
+        {
+          "type": "multi_select",
+          "filterName": "title",
+          "title": "Title",
+          "options": [
+            {
+              "label": "Territory Manager",
+              "value": "Territory Manager"
+            },
+            {
+              "label": "Territory Sales Manager",
+              "value": "Territory Sales Manager"
+            },
+            {
+              "label": "Regional Sales Manager",
+              "value": "Regional Sales Manager"
+            },
+            {
+              "label": "District Sales Manager",
+              "value": "District Sales Manager"
+            },
+            {
+              "label": "Clinical Specialist",
+              "value": "Clinical Specialist"
+            },
+            {
+              "label": "Senior Sales Representative",
+              "value": "Senior Sales Representative"
+            },
+            {
+              "label": "Manufacturing Technician",
+              "value": "Manufacturing Technician"
+            },
+            {
+              "label": "National Sales Manager",
+              "value": "National Sales Manager"
+            },
+            {
+              "label": "Assembly Technician",
+              "value": "Assembly Technician"
+            },
+            {
+              "label": "Regional Account Manager",
+              "value": "Regional Account Manager"
+            }
+          ],
+          "tooltip": null,
+          "extraData": {},
+          "displayCount": 10,
+          "translateOptions": false,
+          "allowFreeText": false
+        },
+        {
+          "type": "multi_select",
+          "filterName": "country",
+          "title": "Country",
+          "options": [
+            {
+              "label": "United States",
+              "value": "United States"
+            },
+            {
+              "label": "Malaysia",
+              "value": "Malaysia"
+            },
+            {
+              "label": "Germany",
+              "value": "Germany"
+            },
+            {
+              "label": "Japan",
+              "value": "Japan"
+            },
+            {
+              "label": "Mexico",
+              "value": "Mexico"
+            },
+            {
+              "label": "Costa Rica",
+              "value": "Costa Rica"
+            },
+            {
+              "label": "Poland",
+              "value": "Poland"
+            },
+            {
+              "label": "France",
+              "value": "France"
+            },
+            {
+              "label": "Spain",
+              "value": "Spain"
+            },
+            {
+              "label": "India",
+              "value": "India"
+            }
+          ],
+          "tooltip": null,
+          "extraData": {},
+          "displayCount": 10,
+          "translateOptions": false,
+          "allowFreeText": false
+        },
+        {
+          "type": "multi_select",
+          "filterName": "department",
+          "title": "Function",
+          "options": [
+            {
+              "label": "Sales",
+              "value": "Sales"
+            },
+            {
+              "label": "Engineering",
+              "value": "Engineering"
+            },
+            {
+              "label": "Interns/Graduates",
+              "value": "Interns/Graduates"
+            },
+            {
+              "label": "Manufacturing",
+              "value": "Manufacturing"
+            },
+            {
+              "label": "Customer Support",
+              "value": "Customer Support"
+            },
+            {
+              "label": "Marketing",
+              "value": "Marketing"
+            },
+            {
+              "label": "Quality",
+              "value": "Quality"
+            },
+            {
+              "label": "Science",
+              "value": "Science"
+            },
+            {
+              "label": "Project/Program Management",
+              "value": "Project/Program Management"
+            },
+            {
+              "label": "Supply Chain",
+              "value": "Supply Chain"
+            }
+          ],
+          "tooltip": null,
+          "extraData": {},
+          "displayCount": 10,
+          "translateOptions": false,
+          "allowFreeText": false
+        }
+      ]
+    },
+    "count": 99,
+    "sortBy": "relevance",
+    "appliedFilters": {
+      "includeRemote": [
+        "1"
+      ]
+    },
+    "debug": {},
+    "savedSearchMetadata": {
+      "savedSearchParamsHash": null,
+      "isSavedSearchActive": false
+    },
+    "resultsMetaData": {
+      "usedFuzzSearch": false,
+      "mocTitle": null
+    }
+  },
+  "metadata": null
+}
