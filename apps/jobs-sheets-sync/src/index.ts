@@ -44,6 +44,13 @@ export async function syncJobsToSheet(doc: GoogleSpreadsheet, sheetTitle: string
 
   console.log(`Updating Google Sheet "${sheetTitle}" with ${jobs.length} jobs...`);
 
+  // Resize the sheet to fit the data exactly BEFORE loading cells, 
+  // ensuring we have enough space for the new data.
+  await sheet.resize({
+    rowCount: Math.max(2, jobs.length + 1),
+    columnCount: header.length,
+  });
+
   // We use cell-based updates to ensure we start at row 1 and replace everything
   await sheet.loadCells({
     startRowIndex: 0,
@@ -74,13 +81,6 @@ export async function syncJobsToSheet(doc: GoogleSpreadsheet, sheetTitle: string
   }
 
   await sheet.saveUpdatedCells();
-
-  // Resize the sheet to fit the data exactly, which removes any leftover rows
-  // We use Math.max(2, ...) to ensure at least one non-frozen row if the header is frozen
-  await sheet.resize({
-    rowCount: Math.max(2, jobs.length + 1),
-    columnCount: header.length,
-  });
 }
 
 async function runSync() {
