@@ -13,66 +13,59 @@ const { heroTitle, heroSubtitle, splineSceneUrl } = homeContent;
 	<HeartRhythm />
 
 	<SplineHero sceneUrl={splineSceneUrl}>
-		<h1 class="text-5xl md:text-8xl font-black tracking-tight text-white leading-[0.9] text-gradient uppercase">
-			{heroTitle}
-		</h1>
-		<p class="mx-auto mt-8 max-w-3xl text-xl md:text-2xl text-white/60 leading-relaxed font-medium">
-			{heroSubtitle}
-		</p>
-		<div class="mt-12 flex flex-wrap justify-center gap-6 pointer-events-auto">
-			<a href="/apply" class="rounded-full bg-brand-blue px-10 py-5 text-xl font-bold text-white transition-all hover:scale-105 hover:bg-brand-blue/90 shadow-lg shadow-brand-blue/20 uppercase tracking-widest">
-				Apply Now
-			</a>
-			<a href="/curriculum" class="rounded-full border border-white/20 px-10 py-5 text-xl font-bold text-white transition-all hover:bg-white/5 uppercase tracking-widest">
-				Explore Curriculum
-			</a>
-		</div>
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 pointer-events-none animate-bounce">
-            <span class="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Scroll to Explore</span>
-            <div class="w-px h-12 bg-gradient-to-b from-brand-blue to-transparent"></div>
+        <div slot="narrative">
+            <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Welcome to VPA</h2>
+            <h1 class="text-5xl md:text-8xl font-black tracking-tighter text-white leading-[0.9] text-gradient uppercase">
+                {heroTitle}
+            </h1>
+            <p class="mt-8 text-xl text-white/50 font-medium leading-relaxed max-w-md">
+                {heroSubtitle}
+            </p>
         </div>
 	</SplineHero>
 
-    {/* The New Segmented Scrollytelling Experience */}
+    {/* The Central Card Scrollytelling Experience */}
 	<ScrollJourney />
 
-	{/* Secondary Content Sections */}
-	<section class="py-32 bg-surface/10 border-t border-white/5">
-		<div class="mx-auto max-w-7xl px-6 lg:px-8">
-			<div class="grid gap-20 md:grid-cols-2 items-center">
+	{/* Secondary Content Sections: Also contained in a card-like structure */}
+	<section class="py-32 flex items-center justify-center p-6 lg:p-12">
+		<div class="w-full max-w-[1600px] bg-background rounded-[40px] border border-white/5 p-12 lg:p-24 overflow-hidden relative">
+            <div class="absolute inset-0 bg-brand-blue/5 blur-[120px] -z-10"></div>
+			<div class="grid gap-20 lg:grid-cols-2 items-center">
 				<div>
-					<h2 class="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase mb-8">Our Mission</h2>
-					<p class="text-xl text-white/60 leading-relaxed font-medium">
+					<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Our Mission</h2>
+					<h3 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">We build the <br/><span class="text-gradient">Mentorship Bridge.</span></h3>
+					<p class="text-xl text-white/40 leading-relaxed font-medium max-w-xl">
 						We started during COVID-19 because we learned that asynchronous online learning was inefficient. 
-						It provides flexibility, but levels the playing field only when paired with veteran mentors who coach you every step of the way.
+						It provides flexibility, but levels the playing field only when paired with veteran mentors.
 					</p>
-					<a href="/curriculum" class="mt-12 inline-flex items-center gap-4 text-brand-blue font-black uppercase tracking-[0.2em] hover:text-brand-blue/80 transition-all text-sm">
+					<a href="/curriculum" class="mt-12 inline-flex items-center gap-4 text-brand-blue font-black uppercase tracking-[0.2em] hover:text-brand-blue/80 transition-all text-xs">
 						Learn About Our Mission <span>&rarr;</span>
 					</a>
 				</div>
 				<div class="grid gap-8">
-					<div class="glass-card p-10">
+					<div class="glass-card p-10 bg-white/[0.02]">
 						<h3 class="text-xl font-black text-white uppercase tracking-tight mb-2">100+ Years Experience</h3>
-						<p class="text-white/50 font-medium">Our mentors are industry veterans from Medtronic, Abbott, and Boston Scientific.</p>
+						<p class="text-white/30 font-medium">Our mentors are industry veterans from Medtronic, Abbott, and Boston Scientific.</p>
 					</div>
-					<div class="glass-card p-10">
+					<div class="glass-card p-10 bg-white/[0.02]">
 						<h3 class="text-xl font-black text-brand-blue uppercase tracking-tight mb-2">Diversity Focused</h3>
-						<p class="text-white/50 font-medium">We are committed to lowering technical barriers and promoting inclusion in MedTech.</p>
+						<p class="text-white/30 font-medium">We are committed to lowering technical barriers and promoting inclusion in MedTech.</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	{/* Final CTA */}
-	<section class="py-40 border-t border-white/5 relative overflow-hidden">
-        <div class="absolute inset-0 bg-brand-blue/5 blur-[120px] -z-10"></div>
-		<div class="mx-auto max-w-5xl px-6 text-center">
-			<h2 class="text-5xl md:text-8xl font-black text-white tracking-tighter uppercase leading-[0.9]">Ready to <span class="text-gradient">Transition?</span></h2>
-			<p class="mt-10 text-xl md:text-2xl text-white/60 font-medium">Scholarships are now available. Let's work together to bridge the gap.</p>
+	{/* Final CTA: Contained Card */}
+	<section class="pb-32 flex items-center justify-center p-6 lg:p-12">
+		<div class="w-full max-w-[1600px] bg-brand-blue rounded-[40px] p-20 lg:p-32 text-center relative overflow-hidden shadow-2xl shadow-brand-blue/20">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
+			<h2 class="text-5xl md:text-8xl font-black text-white tracking-tighter uppercase leading-[0.8]">Ready to <br/>Start?</h2>
+			<p class="mt-10 text-xl md:text-2xl text-white/70 font-medium max-w-2xl mx-auto">Scholarships are now available. Let's work together to bridge the gap.</p>
 			<div class="mt-16">
-				<a href="/apply" class="rounded-full bg-brand-blue px-12 py-6 text-2xl font-black text-white transition-all hover:bg-brand-blue/90 hover:scale-105 inline-block shadow-2xl shadow-brand-blue/30 uppercase tracking-[0.2em]">
-					Apply for Next Cohort
+				<a href="/apply" class="rounded-full bg-white px-12 py-6 text-2xl font-black text-slate-950 transition-all hover:scale-105 inline-block shadow-2xl uppercase tracking-[0.2em]">
+					Apply Now
 				</a>
 			</div>
 		</div>

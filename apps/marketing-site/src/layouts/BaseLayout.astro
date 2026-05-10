@@ -20,21 +20,21 @@ const { title, description = "Virtual Pacing Academy - The Mentorship Bridge to 
 		<title>{title}</title>
 		<meta name="description" content={description} />
 	</head>
-	<body class="bg-background text-white antialiased selection:bg-brand-blue/30">
+	<body class="bg-page-bg text-white antialiased selection:bg-brand-blue/30">
 		<script>
 			import { initPostHog } from '../lib/analytics';
 			initPostHog();
 		</script>
-		<nav class="fixed top-0 z-50 w-full border-b border-white/5 bg-background/80 backdrop-blur-xl">
-			<div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+		<nav class="fixed top-0 z-50 w-full px-6 py-8 pointer-events-none">
+			<div class="mx-auto flex max-w-[1600px] items-center justify-between pointer-events-auto">
 				<div class="flex items-center gap-2">
-					<a href="/" class="text-xl font-black tracking-tighter text-white uppercase">VPA</a>
+					<a href="/" class="text-2xl font-black tracking-tighter text-white uppercase">VPA</a>
 				</div>
-				<div class="hidden space-x-10 md:flex items-center">
+				<div class="hidden space-x-10 md:flex items-center bg-background/50 backdrop-blur-xl px-8 py-3 rounded-full border border-white/5">
 					<a href="/jobs" class="text-xs font-black uppercase tracking-[0.2em] text-white/50 transition-colors hover:text-white">Jobs</a>
 					<a href="/curriculum" class="text-xs font-black uppercase tracking-[0.2em] text-white/50 transition-colors hover:text-white">Curriculum</a>
 					<a href="/admissions" class="text-xs font-black uppercase tracking-[0.2em] text-white/50 transition-colors hover:text-white">Admissions</a>
-					<a href="/apply" class="rounded-full bg-brand-blue px-6 py-2.5 text-xs font-black text-white transition-all hover:bg-brand-blue/90 uppercase tracking-widest">Apply Now</a>
+					<a href="/apply" class="text-xs font-black text-brand-blue uppercase tracking-widest hover:text-white transition-colors">Apply Now</a>
 				</div>
 			</div>
 		</nav>
