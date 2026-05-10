@@ -158,10 +158,10 @@ const companies = ['All', ...new Set(jobs.map(j => j.company))].sort();
         Our program prepares you to be the top candidate the moment a role opens in your territory.
       </p>
       <div class="mt-12 flex flex-wrap justify-center gap-6">
-        <a href="/apply" class="rounded-full bg-brand-blue px-10 py-5 text-xl font-black text-white transition-all hover:bg-brand-blue/90 hover:scale-105 shadow-xl shadow-brand-blue/20 uppercase tracking-widest">
+        <a href={`${import.meta.env.BASE_URL}/apply`} class="rounded-full bg-brand-blue px-10 py-5 text-xl font-black text-white transition-all hover:bg-brand-blue/90 hover:scale-105 shadow-xl shadow-brand-blue/20 uppercase tracking-widest">
           Start Your Transition
         </a>
-        <a href="/curriculum" class="rounded-full border border-white/10 bg-white/5 px-10 py-5 text-xl font-black text-white transition-all hover:bg-white/10 uppercase tracking-widest">
+        <a href={`${import.meta.env.BASE_URL}/curriculum`} class="rounded-full border border-white/10 bg-white/5 px-10 py-5 text-xl font-black text-white transition-all hover:bg-white/10 uppercase tracking-widest">
           View Curriculum
         </a>
       </div>

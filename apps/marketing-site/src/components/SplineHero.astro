@@ -46,8 +46,8 @@ const { sceneUrl } = Astro.props;
                 <span class="text-sm font-black uppercase text-brand-blue">Summer 2026</span>
             </div>
             <div class="flex gap-6">
-                <a href="/curriculum" class="text-[10px] font-black uppercase tracking-widest text-white/50 hover:text-white transition-colors">Explore Curriculum</a>
-                <a href="/apply" class="px-8 py-3 rounded-full bg-brand-blue text-[10px] font-black uppercase tracking-widest hover:bg-brand-blue/90 transition-all shadow-lg shadow-brand-blue/20">Apply Now</a>
+                <a href={`${import.meta.env.BASE_URL}/curriculum`} class="text-[10px] font-black uppercase tracking-widest text-white/50 hover:text-white transition-colors">Explore Curriculum</a>
+                <a href={`${import.meta.env.BASE_URL}/apply`} class="px-8 py-3 rounded-full bg-brand-blue text-[10px] font-black uppercase tracking-widest hover:bg-brand-blue/90 transition-all shadow-lg shadow-brand-blue/20">Apply Now</a>
             </div>
         </slot>
       </div>
