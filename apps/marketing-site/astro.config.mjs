@@ -7,6 +7,7 @@ import keystatic from '@keystatic/astro';
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'static',
   site: 'https://iamdustan.github.io',
   base: '/vpa',
   vite: {
