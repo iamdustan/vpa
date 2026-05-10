@@ -15,139 +15,153 @@ const companies = ['All', ...new Set(jobs.map(j => j.company))].sort();
 >
   <div class="relative overflow-hidden pt-24 pb-32">
     {/* Background Decorative Element */}
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 -z-10 w-full max-w-7xl h-full opacity-20 pointer-events-none">
-      <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-500 rounded-full blur-[120px]" />
-      <div class="absolute bottom-[20%] right-[-5%] w-[30%] h-[30%] bg-cyan-500 rounded-full blur-[100px]" />
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 -z-10 w-full max-w-7xl h-full opacity-10 pointer-events-none">
+      <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-brand-blue rounded-full blur-[150px]" />
+      <div class="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-brand-orange rounded-full blur-[120px]" />
     </div>
 
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto max-w-3xl text-center mb-16">
-        <h2 class="text-base font-bold uppercase tracking-[0.3em] text-indigo-400 mb-4">Market Watch</h2>
-        <h1 class="text-4xl md:text-6xl font-black text-white tracking-tight leading-tight">
-          Active <span class="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">Career Openings</span>
+      <div class="mx-auto max-w-3xl text-center mb-20">
+        <h2 class="text-xs font-black uppercase tracking-[0.4em] text-brand-blue mb-4">Market Watch</h2>
+        <h1 class="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9] uppercase mb-8">
+          Active <span class="text-gradient">Career Openings</span>
         </h1>
-        <p class="mt-6 text-lg md:text-xl text-slate-400 leading-relaxed">
-          We track the latest Clinical Specialist, Mapping, and Field Representative roles across the "Big Four" manufacturers.
+        <p class="mt-6 text-lg md:text-xl text-white/50 leading-relaxed font-medium">
+          Real-time tracking of Clinical Specialist and Field Representative roles across the industry leaders.
         </p>
       </div>
 
       {/* Filters Header */}
-      <div class="sticky top-16 z-40 bg-slate-950/80 backdrop-blur-md border-b border-white/10 py-6 mb-8">
-        <div class="flex flex-col md:flex-row gap-4 items-end">
+      <div class="sticky top-20 z-40 glass-card p-6 mb-12">
+        <div class="flex flex-col lg:flex-row gap-6 items-end">
           <div class="flex-1 w-full">
-            <label for="job-search" class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Search Roles</label>
+            <label for="job-search" class="block text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-3">Search Roles</label>
             <input
               id="job-search"
               type="text"
               placeholder="Filter by title or location..."
-              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
+              class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-blue/50 transition-all font-medium placeholder:text-white/20"
             />
           </div>
           
-          <div class="w-full md:w-48">
-            <label for="company-filter" class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Employer</label>
-            <select
-              id="company-filter"
-              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all appearance-none"
-            >
-              {companies.map(c => <option value={c} class="bg-slate-900">{c}</option>)}
-            </select>
+          <div class="w-full lg:w-64">
+            <label for="company-filter" class="block text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-3">Employer</label>
+            <div class="relative">
+                <select
+                id="company-filter"
+                class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-blue/50 transition-all appearance-none font-bold text-sm uppercase tracking-widest"
+                >
+                {companies.map(c => <option value={c} class="bg-surface text-white">{c}</option>)}
+                </select>
+                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/40">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+            </div>
           </div>
 
-          <div class="w-full md:w-48">
-            <label for="sort-by" class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Sort By</label>
-            <select
-              id="sort-by"
-              class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all appearance-none"
-            >
-              <option value="newest" class="bg-slate-900">Newest First</option>
-              <option value="title" class="bg-slate-900">Job Title</option>
-              <option value="company" class="bg-slate-900">Company</option>
-            </select>
+          <div class="w-full lg:w-64">
+            <label for="sort-by" class="block text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-3">Sort By</label>
+            <div class="relative">
+                <select
+                id="sort-by"
+                class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-blue/50 transition-all appearance-none font-bold text-sm uppercase tracking-widest"
+                >
+                <option value="newest" class="bg-surface text-white">Newest First</option>
+                <option value="title" class="bg-surface text-white">Job Title</option>
+                <option value="company" class="bg-surface text-white">Company</option>
+                </select>
+                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/40">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Jobs List */}
-      <div id="jobs-container" class="grid gap-4">
+      <div id="jobs-container" class="grid gap-6">
         {jobs.map((job) => (
           <a
             href={job.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="job-card group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] p-6 transition-all hover:bg-white/[0.05] hover:border-white/10"
+            class="job-card group relative overflow-hidden glass-card p-8 transition-all hover:bg-white/[0.05] hover:border-white/20 hover:scale-[1.01]"
             data-company={job.company}
             data-title={job.title.toLowerCase()}
             data-location={job.location.toLowerCase()}
             data-date={job.datePosted || ''}
           >
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
               <div class="flex-1">
-                <div class="flex items-center gap-3 mb-2">
-                  <span class={`company-badge text-[10px] font-black uppercase tracking-[0.2em] px-2 py-0.5 rounded border ${
-                    job.company === 'Medtronic' ? 'border-blue-500/50 text-blue-400 bg-blue-500/10' :
-                    job.company === 'Abbott' ? 'border-red-500/50 text-red-400 bg-red-500/10' :
-                    job.company === 'Boston Scientific' ? 'border-yellow-500/50 text-yellow-400 bg-yellow-500/10' :
-                    'border-emerald-500/50 text-emerald-400 bg-emerald-500/10'
+                <div class="flex items-center gap-4 mb-4">
+                  <span class={`text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full border ${
+                    job.company === 'Medtronic' ? 'border-brand-blue/30 text-brand-blue bg-brand-blue/10' :
+                    job.company === 'Abbott' ? 'border-brand-orange/30 text-brand-orange bg-brand-orange/10' :
+                    job.company === 'Boston Scientific' ? 'border-yellow-500/30 text-yellow-400 bg-yellow-500/10' :
+                    'border-emerald-500/30 text-emerald-400 bg-emerald-500/10'
                   }`}>
                     {job.company}
                   </span>
                   {job.datePosted && (
-                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider italic">
+                    <span class="text-[10px] font-black text-white/30 uppercase tracking-[0.15em]">
                       {job.datePosted}
                     </span>
                   )}
                 </div>
-                <h3 class="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">
+                <h3 class="text-2xl font-black text-white group-hover:text-brand-blue transition-colors uppercase tracking-tight">
                   {job.title}
                 </h3>
-                <p class="mt-1 text-slate-400 font-medium">
+                <p class="mt-2 text-white/50 font-bold uppercase text-xs tracking-widest">
                   {job.location || 'Remote / Field Based'}
                 </p>
               </div>
               
-              <div class="flex items-center gap-4">
-                <div class="hidden md:block h-12 w-px bg-white/10 mx-4" />
-                <span class="inline-flex items-center gap-2 rounded-full bg-indigo-500/10 px-4 py-2 text-sm font-bold text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-all">
+              <div class="flex items-center gap-6">
+                <div class="hidden md:block h-16 w-px bg-white/10" />
+                <span class="inline-flex items-center gap-3 rounded-full bg-brand-blue px-6 py-3 text-xs font-black text-white group-hover:bg-white group-hover:text-brand-blue transition-all uppercase tracking-widest">
                   View Posting
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </span>
               </div>
             </div>
             
-            <div class="absolute inset-0 -z-10 bg-gradient-to-r from-indigo-500/0 via-indigo-500/0 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div class="absolute inset-0 -z-10 bg-gradient-to-r from-brand-blue/0 via-brand-blue/0 to-brand-blue/[0.03] opacity-0 group-hover:opacity-100 transition-opacity" />
           </a>
         ))}
       </div>
 
       {/* Empty State */}
-      <div id="no-results" class="hidden py-20 text-center rounded-2xl border border-dashed border-white/10 bg-white/5">
-        <h3 class="text-xl font-bold text-white">No matches found</h3>
-        <p class="text-slate-400 mt-2 text-lg">Try adjusting your filters or search terms.</p>
-        <button id="clear-filters" class="mt-6 text-indigo-400 font-bold uppercase tracking-widest hover:text-indigo-300 transition-colors">
+      <div id="no-results" class="hidden py-32 text-center rounded-3xl border-2 border-dashed border-white/5 bg-white/[0.02]">
+        <h3 class="text-2xl font-black text-white uppercase tracking-tight">No matches found</h3>
+        <p class="text-white/40 mt-4 text-lg font-medium">Try adjusting your filters or search terms.</p>
+        <button id="clear-filters" class="mt-10 px-8 py-4 rounded-full border border-white/10 text-brand-blue font-black uppercase tracking-[0.2em] hover:bg-white/5 transition-all text-xs">
           Clear All Filters
         </button>
       </div>
 
-      <p class="mt-12 text-center text-slate-500 text-sm italic">
-        Job listings are synchronized weekly from manufacturer portals.
+      <p class="mt-16 text-center text-white/20 text-[10px] font-black uppercase tracking-[0.3em]">
+        Listings synchronized weekly from manufacturer portals.
       </p>
     </div>
   </div>
 
-  <section class="py-24 border-t border-white/10 bg-slate-900/20">
+  <section class="py-32 border-t border-white/5 bg-surface/20">
     <div class="mx-auto max-w-5xl px-6 text-center">
-      <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Not seeing your city?</h2>
-      <p class="mt-6 text-xl text-slate-400">
-        New roles are posted daily. Our program prepares you to be the top candidate the moment a role opens in your territory.
+      <h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8">Not seeing your city?</h2>
+      <p class="mt-6 text-xl text-white/50 font-medium max-w-3xl mx-auto">
+        Our program prepares you to be the top candidate the moment a role opens in your territory.
       </p>
-      <div class="mt-10 flex flex-wrap justify-center gap-4">
-        <a href="/apply" class="rounded-full bg-indigo-600 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-indigo-500 hover:scale-105 shadow-lg shadow-indigo-500/20">
+      <div class="mt-12 flex flex-wrap justify-center gap-6">
+        <a href="/apply" class="rounded-full bg-brand-blue px-10 py-5 text-xl font-black text-white transition-all hover:bg-brand-blue/90 hover:scale-105 shadow-xl shadow-brand-blue/20 uppercase tracking-widest">
           Start Your Transition
         </a>
-        <a href="/curriculum" class="rounded-full border border-white/10 bg-white/5 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-white/10">
+        <a href="/curriculum" class="rounded-full border border-white/10 bg-white/5 px-10 py-5 text-xl font-black text-white transition-all hover:bg-white/10 uppercase tracking-widest">
           View Curriculum
         </a>
       </div>

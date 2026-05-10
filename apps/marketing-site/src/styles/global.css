@@ -1,1 +1,37 @@
 @import "tailwindcss";
+
+@theme {
+  --color-brand-blue: #2223D3;
+  --color-brand-orange: #E93313;
+  --color-surface: #161618;
+  --color-background: #0A0A0B;
+  
+  --font-display: "Inter", "system-ui", "sans-serif";
+  --font-body: "Inter", "system-ui", "sans-serif";
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    background-color: var(--color-background);
+    color: white;
+  }
+
+  body {
+    @apply font-body antialiased selection:bg-brand-blue/30;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-surface/40 backdrop-blur-xl border border-white/10 rounded-2xl;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-white to-white/60;
+  }
+}

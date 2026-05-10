@@ -1,0 +1,89 @@
+---
+interface Props {
+  imageUrls: string[];
+}
+
+const { imageUrls } = Astro.props;
+---
+
+<div class="stop-motion-container relative w-full h-[300vh] bg-background">
+  <div class="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+    <canvas id="stop-motion-canvas" class="max-w-full max-h-full object-contain" data-images={JSON.stringify(imageUrls)}></canvas>
+    
+    <div class="absolute inset-0 flex items-center justify-center">
+        <div class="max-w-4xl px-6 text-center">
+            <slot />
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const canvas = document.getElementById('stop-motion-canvas') as HTMLCanvasElement;
+  if (canvas) {
+    const context = canvas.getContext('2d');
+    const container = document.querySelector('.stop-motion-container');
+    
+    // Get image URLs from data attribute or props passed through Astro
+    const imageUrls = JSON.parse(canvas.closest('[data-images]')?.getAttribute('data-images') || '[]');
+    
+    if (imageUrls.length > 0) {
+      const images: HTMLImageElement[] = [];
+      const sequence = { frame: 0 };
+
+      // Preload images
+      let loadedCount = 0;
+      imageUrls.forEach((url: string, index: number) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = () => {
+          loadedCount++;
+          if (loadedCount === imageUrls.length) {
+            initScroll();
+          }
+        };
+        images[index] = img;
+      });
+
+      function initScroll() {
+        if (!context || !container) return;
+        
+        // Set canvas size to first image size
+        canvas.width = images[0].width;
+        canvas.height = images[0].height;
+
+        render();
+
+        gsap.to(sequence, {
+          frame: imageUrls.length - 1,
+          snap: 'frame',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: container,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: true,
+          },
+          onUpdate: render
+        });
+      }
+
+      function render() {
+        if (!context) return;
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(images[sequence.frame], 0, 0);
+      }
+    }
+  }
+</script>
+
+<style>
+  .stop-motion-container {
+    /* Ensure the spacer is large enough for the scroll */
+  }
+</style>

@@ -12,7 +12,7 @@
     "test": "vitest run",
     "lint": "biome check .",
     "format": "biome format . --write",
-    "dev": "vitest",
+    "dev": "tsc --watch",
     "jobs": "tsx src/cli.ts"
   },
   "devDependencies": {

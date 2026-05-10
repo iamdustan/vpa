@@ -1,60 +1,63 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ScrollJourney from '../components/ScrollJourney.astro';
 import HeartRhythm from '../components/HeartRhythm.astro';
+import SplineHero from '../components/SplineHero.astro';
+import ScrollJourney from '../components/ScrollJourney.astro';
+import homeContent from '../content/home.json';
+
+const { heroTitle, heroSubtitle, splineSceneUrl } = homeContent;
 ---
 
 <BaseLayout title="Virtual Pacing Academy | Cardiac Medical Device Training" description="Transform your financial future with a high-impact career in MedTech. Hands-on education and 1-on-1 mentorship.">
-	
-	<HeartRhythm />
-	
-	{/* Section 1: Hero Hook */}
-	<section class="relative flex h-[95vh] items-center justify-center overflow-hidden px-6">
-		<div class="z-10 text-center max-w-5xl">
-			<h1 class="text-4xl md:text-7xl font-black tracking-tight text-white leading-[1.1]">
-				Transform your financial future with a <span class="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">high-impact career</span> in MedTech.
-			</h1>
-			<p class="mx-auto mt-8 max-w-3xl text-xl md:text-2xl text-slate-400 leading-relaxed">
-				Get the hands-on education and 1-on-1 mentorship you need to land an entry-level clinical specialist role—without quitting your day job.
-			</p>
-			<div class="mt-12 flex flex-wrap justify-center gap-6">
-				<a href="/apply" class="rounded-full bg-white px-10 py-5 text-xl font-bold text-slate-950 transition-all hover:scale-105 hover:bg-slate-100 shadow-[0_0_20px_rgba(255,255,255,0.2)] uppercase tracking-wide">
-					Apply Now
-				</a>
-				<a href="/curriculum" class="rounded-full border border-white/20 px-10 py-5 text-xl font-bold text-white transition-all hover:bg-white/5 uppercase tracking-wide">
-					Explore the Career
-				</a>
-			</div>
-		</div>
-		
-		<div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.15),transparent_70%)]"></div>
-	</section>
 
-	{/* The Narrative Scrollytelling Component */}
+	<HeartRhythm />
+
+	<SplineHero sceneUrl={splineSceneUrl}>
+		<h1 class="text-5xl md:text-8xl font-black tracking-tight text-white leading-[0.9] text-gradient uppercase">
+			{heroTitle}
+		</h1>
+		<p class="mx-auto mt-8 max-w-3xl text-xl md:text-2xl text-white/60 leading-relaxed font-medium">
+			{heroSubtitle}
+		</p>
+		<div class="mt-12 flex flex-wrap justify-center gap-6 pointer-events-auto">
+			<a href="/apply" class="rounded-full bg-brand-blue px-10 py-5 text-xl font-bold text-white transition-all hover:scale-105 hover:bg-brand-blue/90 shadow-lg shadow-brand-blue/20 uppercase tracking-widest">
+				Apply Now
+			</a>
+			<a href="/curriculum" class="rounded-full border border-white/20 px-10 py-5 text-xl font-bold text-white transition-all hover:bg-white/5 uppercase tracking-widest">
+				Explore Curriculum
+			</a>
+		</div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 pointer-events-none animate-bounce">
+            <span class="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Scroll to Explore</span>
+            <div class="w-px h-12 bg-gradient-to-b from-brand-blue to-transparent"></div>
+        </div>
+	</SplineHero>
+
+    {/* The New Segmented Scrollytelling Experience */}
 	<ScrollJourney />
 
 	{/* Secondary Content Sections */}
-	<section class="py-32 bg-slate-900/30">
+	<section class="py-32 bg-surface/10 border-t border-white/5">
 		<div class="mx-auto max-w-7xl px-6 lg:px-8">
-			<div class="grid gap-16 md:grid-cols-2 items-center">
+			<div class="grid gap-20 md:grid-cols-2 items-center">
 				<div>
-					<h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Our Mission</h2>
-					<p class="mt-6 text-xl text-slate-400 leading-relaxed">
+					<h2 class="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase mb-8">Our Mission</h2>
+					<p class="text-xl text-white/60 leading-relaxed font-medium">
 						We started during COVID-19 because we learned that asynchronous online learning was inefficient. 
 						It provides flexibility, but levels the playing field only when paired with veteran mentors who coach you every step of the way.
 					</p>
-					<a href="/curriculum" class="mt-10 inline-flex items-center gap-2 text-indigo-400 font-bold uppercase tracking-widest hover:text-indigo-300 transition-colors">
+					<a href="/curriculum" class="mt-12 inline-flex items-center gap-4 text-brand-blue font-black uppercase tracking-[0.2em] hover:text-brand-blue/80 transition-all text-sm">
 						Learn About Our Mission <span>&rarr;</span>
 					</a>
 				</div>
-				<div class="grid gap-6">
-					<div class="rounded-2xl border border-white/5 bg-white/5 p-8">
-						<h3 class="text-xl font-bold text-white">100+ Years Experience</h3>
-						<p class="mt-2 text-slate-400">Our mentors are industry veterans from Medtronic, Abbott, and Boston Scientific.</p>
+				<div class="grid gap-8">
+					<div class="glass-card p-10">
+						<h3 class="text-xl font-black text-white uppercase tracking-tight mb-2">100+ Years Experience</h3>
+						<p class="text-white/50 font-medium">Our mentors are industry veterans from Medtronic, Abbott, and Boston Scientific.</p>
 					</div>
-					<div class="rounded-2xl border border-white/5 bg-white/5 p-8 text-emerald-400">
-						<h3 class="text-xl font-bold">Diversity Focused</h3>
-						<p class="mt-2 text-slate-400">We are committed to lowering technical barriers and promoting inclusion in MedTech.</p>
+					<div class="glass-card p-10">
+						<h3 class="text-xl font-black text-brand-blue uppercase tracking-tight mb-2">Diversity Focused</h3>
+						<p class="text-white/50 font-medium">We are committed to lowering technical barriers and promoting inclusion in MedTech.</p>
 					</div>
 				</div>
 			</div>
@@ -62,12 +65,13 @@ import HeartRhythm from '../components/HeartRhythm.astro';
 	</section>
 
 	{/* Final CTA */}
-	<section class="py-32 border-t border-white/10">
+	<section class="py-40 border-t border-white/5 relative overflow-hidden">
+        <div class="absolute inset-0 bg-brand-blue/5 blur-[120px] -z-10"></div>
 		<div class="mx-auto max-w-5xl px-6 text-center">
-			<h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter">Ready to join the next cohort?</h2>
-			<p class="mt-8 text-xl text-slate-400">Scholarships are now available. Let's work together to bridge the gap.</p>
-			<div class="mt-12">
-				<a href="/apply" class="rounded-full bg-indigo-600 px-12 py-6 text-2xl font-bold text-white transition-all hover:bg-indigo-500 hover:scale-105 inline-block shadow-[0_0_30px_rgba(79,70,229,0.3)]">
+			<h2 class="text-5xl md:text-8xl font-black text-white tracking-tighter uppercase leading-[0.9]">Ready to <span class="text-gradient">Transition?</span></h2>
+			<p class="mt-10 text-xl md:text-2xl text-white/60 font-medium">Scholarships are now available. Let's work together to bridge the gap.</p>
+			<div class="mt-16">
+				<a href="/apply" class="rounded-full bg-brand-blue px-12 py-6 text-2xl font-black text-white transition-all hover:bg-brand-blue/90 hover:scale-105 inline-block shadow-2xl shadow-brand-blue/30 uppercase tracking-[0.2em]">
 					Apply for Next Cohort
 				</a>
 			</div>
