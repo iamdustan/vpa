@@ -68,6 +68,7 @@ const { imageUrls } = Astro.props;
             start: 'top top',
             end: 'bottom bottom',
             scrub: true,
+            snap: 1 / (imageUrls.length - 1)
           },
           onUpdate: render
         });
