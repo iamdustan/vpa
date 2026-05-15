@@ -21,7 +21,7 @@ const remainingTitle = titleParts.slice(2).join(' ');
 const titleChars = splitText(remainingTitle);
 ---
 
-<div class="relative w-full bg-page-bg" id="scrolly-journey-wrapper">
+<div class="relative w-full bg-page-bg overflow-hidden" id="scrolly-journey-wrapper">
   <div id="scrolly-journey-card-container" class="h-screen w-full flex items-end justify-center p-4 md:p-6 lg:p-10 overflow-hidden">
     
     <div class="w-full max-w-[1600px] h-[85vh] lg:h-[88vh] bg-background rounded-3xl lg:rounded-[40px] overflow-hidden flex flex-col relative shadow-2xl shadow-black/50 border border-white/5">
@@ -31,7 +31,7 @@ const titleChars = splitText(remainingTitle);
         <div class="w-full h-1/2 lg:h-full lg:w-[45%] p-8 md:p-12 lg:p-24 flex flex-col justify-center border-t lg:border-t-0 lg:border-r border-white/5 relative overflow-hidden">
           <div class="relative h-full w-full">
             
-            {/* Phase 0: Hero */}
+            {/* Phase 0: Foundation */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-100" id="phase-hero">
               <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-green mb-6 lg:mb-8">Virtual Pacing Academy</h2>
               <h1 class="text-3xl md:text-5xl lg:text-7xl font-black tracking-tighter text-white leading-[0.9] text-gradient uppercase flex flex-wrap">
@@ -49,7 +49,7 @@ const titleChars = splitText(remainingTitle);
               </p>
             </div>
 
-            {/* Phase 1: Career Impact (Why) */}
+            {/* Phase 1: Career Impact */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-why">
               <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6 lg:mb-8">Career Impact</h2>
               <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
@@ -60,7 +60,7 @@ const titleChars = splitText(remainingTitle);
               </p>
             </div>
 
-            {/* Phase 2: The Experience (How) */}
+            {/* Phase 2: The Experience */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-how">
               <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-yellow mb-6 lg:mb-8">The Experience</h2>
               <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
@@ -71,7 +71,7 @@ const titleChars = splitText(remainingTitle);
               </p>
             </div>
 
-            {/* Phase 3: Next Steps (CTA) */}
+            {/* Phase 3: Next Steps */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-cta">
               <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-green mb-6 lg:mb-8">Next Steps</h2>
               <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
@@ -136,7 +136,8 @@ const titleChars = splitText(remainingTitle);
         <div class="h-full w-full mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
           <div class="flex flex-col text-center md:text-left w-full md:w-auto">
               <span class="text-[8px] lg:text-[10px] font-black uppercase tracking-[0.2em] text-white/30">Journey Phase</span>
-              <span class="text-xs lg:text-sm font-black uppercase text-brand-green" id="journey-phase-label">The Foundation</span>          </div>
+              <span class="text-xs lg:text-sm font-black uppercase text-brand-green" id="journey-phase-label">The Foundation</span>
+          </div>
 
           <div class="flex flex-col md:flex-row gap-4 lg:gap-8 items-center w-full md:w-auto">
               <a href={`${import.meta.env.BASE_URL}curriculum`} class="text-[8px] lg:text-[10px] font-black uppercase tracking-widest text-white/70 hover:text-white transition-colors w-full md:w-auto text-center border border-white/10 md:border-none rounded-full px-6 py-3 md:p-0">Explore Curriculum</a>
@@ -147,8 +148,6 @@ const titleChars = splitText(remainingTitle);
 
     </div>
   </div>
-
-  <div class="h-[300vh] pointer-events-none"></div>
 </div>
 
 <script>
@@ -163,6 +162,17 @@ const titleChars = splitText(remainingTitle);
     const cardContainer = document.querySelector('#scrolly-journey-card-container');
     if (!wrapper || !cardContainer) return;
 
+    const phases = [
+        { id: 'hero', label: 'THE FOUNDATION', color: '#52cf95' },
+        { id: 'why', label: 'CAREER IMPACT', color: '#3B3CFF' },
+        { id: 'how', label: 'THE EXPERIENCE', color: '#FFE000' },
+        { id: 'cta', label: 'NEXT STEPS', color: '#52cf95' }
+    ];
+
+    const phaseLabel = document.querySelector('#journey-phase-label');
+    let currentPhaseIndex = 0;
+    let isNavigating = false;
+
     // Initial Flip Animation for Hero Title
     const flipChars = document.querySelectorAll('.flip-char .inner-char');
     gsap.from(flipChars, {
@@ -175,18 +185,9 @@ const titleChars = splitText(remainingTitle);
       delay: 0.5
     });
 
-    const phases = [
-        { id: 'hero', label: 'THE FOUNDATION', color: '#52cf95' },
-        { id: 'why', label: 'CAREER IMPACT', color: '#3B3CFF' },
-        { id: 'how', label: 'THE EXPERIENCE', color: '#FFE000' },
-        { id: 'cta', label: 'NEXT STEPS', color: '#52cf95' }
-    ];
-
-    const phaseLabel = document.querySelector('#journey-phase-label');
-    let currentPhaseIndex = 0;
-
     const updatePhaseLabel = (index) => {
         const { label, color } = phases[index];
+        if (!phaseLabel) return;
         
         phaseLabel.innerHTML = '';
         label.split('').forEach((char) => {
@@ -200,7 +201,7 @@ const titleChars = splitText(remainingTitle);
             }
             span.style.perspective = '1000px';
             const inner = span.querySelector('.inner-char');
-            inner.style.color = color;
+            if (inner instanceof HTMLElement) inner.style.color = color;
             phaseLabel.appendChild(span);
         });
 
@@ -236,25 +237,8 @@ const titleChars = splitText(remainingTitle);
         updatePhaseLabel(index);
     };
 
-    // Initialize the first label with animation characters
-    if (phaseLabel) {
-        const { label, color } = phases[0];
-        phaseLabel.innerHTML = '';
-        label.split('').forEach((char) => {
-            const span = document.createElement('span');
-            span.className = 'flip-char inline-block';
-            if (char === ' ') {
-                span.classList.add('mr-[0.2em]');
-                span.innerHTML = '<span class="inline-block inner-char">&nbsp;</span>';
-            } else {
-                span.innerHTML = `<span class="inline-block inner-char">${char}</span>`;
-            }
-            span.style.perspective = '1000px';
-            const inner = span.querySelector('.inner-char');
-            inner.style.color = color;
-            phaseLabel.appendChild(span);
-        });
-    }
+    // Initialize the first label
+    updatePhaseLabel(0);
 
     const st = ScrollTrigger.create({
         trigger: wrapper,
@@ -268,6 +252,7 @@ const titleChars = splitText(remainingTitle);
             ease: "power2.inOut"
         },
         onUpdate: (self) => {
+            if (isNavigating) return;
             const p = self.progress;
             let newIndex = 0;
             if (p > 0.83) newIndex = 3;
@@ -282,23 +267,34 @@ const titleChars = splitText(remainingTitle);
 
     // Keyboard Navigation
     window.addEventListener('keydown', (e) => {
-        // Only trigger if we are within the scroll journey area
-        if (!st.isActive) return;
+        if (!st.isActive || isNavigating) return;
 
+        let targetIndex = -1;
         if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
             if (currentPhaseIndex < phases.length - 1) {
-                e.preventDefault();
-                const targetProgress = (currentPhaseIndex + 1) / (phases.length - 1);
-                const targetScroll = st.start + (targetProgress * (st.end - st.start));
-                gsap.to(window, { scrollTo: targetScroll, duration: 0.5, ease: "power2.inOut" });
+                targetIndex = currentPhaseIndex + 1;
             }
         } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
             if (currentPhaseIndex > 0) {
-                e.preventDefault();
-                const targetProgress = (currentPhaseIndex - 1) / (phases.length - 1);
-                const targetScroll = st.start + (targetProgress * (st.end - st.start));
-                gsap.to(window, { scrollTo: targetScroll, duration: 0.5, ease: "power2.inOut" });
+                targetIndex = currentPhaseIndex - 1;
             }
+        }
+
+        if (targetIndex !== -1) {
+            e.preventDefault();
+            isNavigating = true;
+            const targetProgress = targetIndex / (phases.length - 1);
+            const targetScroll = st.start + (targetProgress * (st.end - st.start));
+            
+            gsap.to(window, { 
+                scrollTo: targetScroll, 
+                duration: 0.6, 
+                ease: "power2.inOut",
+                onComplete: () => {
+                    // Small delay to allow onUpdate to settle
+                    setTimeout(() => { isNavigating = false; }, 50);
+                }
+            });
         }
     });
   });
