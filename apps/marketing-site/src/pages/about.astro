@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="About Our Mission | Virtual Pacing Academy" description="Learn about the Virtual Pacing Academy mission to lower technical barriers and bridge the mentorship gap in the medical device industry.">
 	
+	<!-- Mission Section -->
 	<section class="py-32 flex items-center justify-center p-6 lg:p-12">
 		<div class="w-full max-w-[1600px] bg-background rounded-[40px] border border-white/5 p-12 lg:p-24 overflow-hidden relative">
             <div class="absolute inset-0 bg-brand-blue/5 blur-[120px] -z-10"></div>
@@ -11,20 +12,78 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 				<div>
 					<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Our Mission</h2>
 					<h3 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">We build the <br/><span class="text-gradient">Mentorship Bridge.</span></h3>
-					<p class="text-xl text-white/40 leading-relaxed font-medium max-w-xl">
-						We started during COVID-19 because we learned that asynchronous online learning was inefficient. 
-						It provides flexibility, but levels the playing field only when paired with veteran mentors.
-					</p>
+					<div class="space-y-6">
+						<p class="text-xl text-white/60 leading-relaxed font-medium max-w-xl">
+							The Virtual Pacing Academy started because we learned that asynchronous online learning was inefficient. It just doesn't work well on its own.
+						</p>
+						<p class="text-xl text-white/40 leading-relaxed font-medium max-w-xl">
+							Virtual learning provides flexibility and levels the playing field for anyone seeking to grow. That's why our model combines virtual efficiency with veteran mentors that coach you every step of the way.
+						</p>
+					</div>
 				</div>
 				<div class="grid gap-8">
-					<div class="glass-card p-10 bg-white/[0.02]">
+					<div class="glass-card p-10 bg-white/[0.02] border border-white/5 rounded-3xl">
 						<h3 class="text-xl font-black text-white uppercase tracking-tight mb-2">100+ Years Experience</h3>
 						<p class="text-white/30 font-medium">Our mentors are industry veterans from Medtronic, Abbott, and Boston Scientific.</p>
 					</div>
-					<div class="glass-card p-10 bg-white/[0.02]">
-						<h3 class="text-xl font-black text-brand-blue uppercase tracking-tight mb-2">Diversity Focused</h3>
-						<p class="text-white/30 font-medium">We are committed to lowering technical barriers and promoting inclusion in MedTech.</p>
+					<div class="glass-card p-10 bg-white/[0.02] border border-white/5 rounded-3xl">
+						<h3 class="text-xl font-black text-brand-blue uppercase tracking-tight mb-2">Partnership, Not a Drop</h3>
+						<p class="text-white/30 font-medium">This is not a content drop. We go on the journey with you. We only succeed when you succeed.</p>
 					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Team Section -->
+	<section class="py-32 flex items-center justify-center p-6 lg:p-12">
+		<div class="w-full max-w-[1600px]">
+			<div class="mb-20">
+				<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6 text-center">The Mentors</h2>
+				<h3 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9] text-center">Veteran Guidance.</h3>
+			</div>
+			
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{[
+					{ name: "Shawn Campbell", role: "Founder & Lead Mentor", bio: "Industry veteran with deep expertise in cardiac medical devices and clinical education." },
+					{ name: "Clinical Specialist", role: "Mentor", bio: "Experienced professional dedicated to bridging the gap between theory and clinical practice." },
+					{ name: "EP Specialist", role: "Mentor", bio: "Mapping and electrophysiology expert focused on advanced clinical training." }
+				].map(member => (
+					<div class="glass-card p-8 bg-white/[0.02] border border-white/5 rounded-[32px] hover:border-brand-blue/30 transition-colors">
+						<div class="w-20 h-20 rounded-full bg-brand-blue/20 mb-6 flex items-center justify-center">
+							<span class="text-brand-blue text-2xl font-black">{member.name[0]}</span>
+						</div>
+						<h4 class="text-2xl font-black text-white uppercase tracking-tight mb-1">{member.name}</h4>
+						<p class="text-brand-blue text-xs font-black uppercase tracking-widest mb-4">{member.role}</p>
+						<p class="text-white/40 leading-relaxed font-medium">{member.bio}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Reviews Section -->
+	<section class="py-32 flex items-center justify-center p-6 lg:p-12 bg-white/[0.02]">
+		<div class="w-full max-w-[1600px]">
+			<div class="grid lg:grid-cols-2 gap-20 items-center">
+				<div>
+					<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Success Stories</h2>
+					<h3 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">What our <br/>students say.</h3>
+					<p class="text-xl text-white/40 leading-relaxed font-medium max-w-xl">
+						Our graduates have gone on to careers at the world's leading medical device companies.
+					</p>
+				</div>
+				<div class="space-y-6">
+					{[
+						{ text: "The mentorship was the difference maker. I wouldn't have landed my role without the clinical insights from my coach.", author: "Clinical Specialist @ Medtronic" },
+						{ text: "The flexibility of the virtual modules allowed me to learn while working, and the weekly check-ins kept me on track.", author: "CRM Representative @ Abbott" }
+					].map(review => (
+						<div class="glass-card p-8 bg-background border border-white/10 rounded-3xl relative">
+							<div class="text-6xl text-brand-blue/20 font-serif absolute top-4 right-8">"</div>
+							<p class="text-lg text-white/70 italic mb-6 relative z-10 leading-relaxed">{review.text}</p>
+							<p class="text-xs font-black uppercase tracking-[0.2em] text-brand-blue">{review.author}</p>
+						</div>
+					))}
 				</div>
 			</div>
 		</div>
@@ -39,7 +98,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 				<a href={`${import.meta.env.BASE_URL}apply`} class="rounded-full bg-white px-12 py-6 text-2xl font-black text-slate-950 transition-all hover:scale-105 inline-block shadow-2xl uppercase tracking-[0.2em]">
 					Join the Mission
 				</a>
-
 			</div>
 		</div>
 	</section>
