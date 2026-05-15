@@ -168,14 +168,15 @@ const { className = "" } = Astro.props;
     pathPoints.forEach((pt, i) => {
       if (i === 0) return;
       
-      // Speed up the final stretch (index 6) for a snappier feel
-      const duration = i === pathPoints.length - 1 ? 0.8 : 0.1;
+      // Even faster final stretch with acceleration (power2.in)
+      const duration = i === pathPoints.length - 1 ? 0.6 : 0.1;
+      const ease = i === pathPoints.length - 1 ? "power2.in" : "none";
       
       tl.to(lightState, {
         x: pt.x,
         y: pt.y,
         duration: duration,
-        ease: "none"
+        ease: ease
       });
       
       // Single flare effect at the spike (index 2)
@@ -194,7 +195,7 @@ const { className = "" } = Astro.props;
         tl.to(lightState, { 
           radius: 0.28, 
           duration: 0.2 
-        }, "-=0.8");
+        }, "-=0.6");
       }
     });
     
