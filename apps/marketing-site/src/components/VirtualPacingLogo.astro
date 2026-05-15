@@ -56,6 +56,7 @@ const { className = "" } = Astro.props;
       vec3 bgColor = vec3(0.047, 0.121, 0.149);
       float colorDist = distance(color.rgb, bgColor);
       
+      // Calculate luminosity to identify the white text
       float luminosity = dot(color.rgb, vec3(0.299, 0.587, 0.114));
       float alpha = smoothstep(0.05, 0.15, colorDist) * smoothstep(0.01, 0.08, luminosity);
 
@@ -70,12 +71,15 @@ const { className = "" } = Astro.props;
       
       vec3 baseColor = color.rgb;
       if (u_isLightMode > 0.5) {
-        // In light mode, we want the logo text (which is white) to be dark
-        // but preserve the cyan light effect
-        baseColor = vec3(0.1, 0.1, 0.1); 
+        // Only darken pixels that were originally white/very bright
+        // This preserves the brand green/blue colors in the logo itself
+        float whiteThreshold = smoothstep(0.7, 0.9, luminosity);
+        baseColor = mix(color.rgb, vec3(0.1, 0.1, 0.1), whiteThreshold);
       }
       
-      vec3 illuminated = baseColor + (lightColor * light * u_lightIntensity * alpha);
+      // Apply illumination. In light mode, we slightly reduce intensity so it doesn't wash out the dark text
+      float intensity = u_isLightMode > 0.5 ? u_lightIntensity * 0.7 : u_lightIntensity;
+      vec3 illuminated = baseColor + (lightColor * light * intensity * alpha);
       
       gl_FragColor = vec4(illuminated, alpha);
     }
