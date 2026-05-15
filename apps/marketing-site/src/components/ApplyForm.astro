@@ -33,9 +33,9 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
             <label class="block text-xs font-black uppercase tracking-widest text-white/40">Registration Interest *</label>
             <button type="button" class="change-selection-btn hidden text-[10px] font-black uppercase tracking-widest text-brand-blue hover:text-white transition-colors">Change</button>
           </div>
-          <div class="options-wrapper space-y-2 transition-all duration-500 ease-in-out">
+          <div class="options-wrapper space-y-2 transition-all duration-500 ease-in-out origin-top">
             {REGISTRATION_OPTIONS.map(option => (
-              <label class="radio-label flex items-start gap-3 p-4 rounded-2xl bg-white/5 border border-white/5 cursor-pointer hover:bg-white/10 transition-all duration-300 group overflow-hidden">
+              <label class="radio-label flex items-start gap-3 p-4 rounded-2xl bg-white/5 border border-white/5 cursor-pointer hover:bg-white/10 transition-all duration-500 group overflow-hidden">
                 <input
                   type="radio"
                   name="registration"
@@ -50,28 +50,46 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">Track Interest *</label>
-            <select
-              name="track"
-              required
-              class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-brand-blue transition-colors appearance-none"
-            >
-              <option value="" disabled selected>Select a track</option>
-              {TRACK_OPTIONS.map(opt => <option value={opt}>{opt}</option>)}
-            </select>
+          <div class="radio-group-container" data-group="track">
+            <div class="flex justify-between items-center mb-3">
+              <label class="block text-xs font-black uppercase tracking-widest text-white/40">Track Interest *</label>
+              <button type="button" class="change-selection-btn hidden text-[10px] font-black uppercase tracking-widest text-brand-blue hover:text-white transition-colors">Change</button>
+            </div>
+            <div class="options-wrapper space-y-2 transition-all duration-500 ease-in-out origin-top">
+              {TRACK_OPTIONS.map(opt => (
+                <label class="radio-label flex items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/5 cursor-pointer hover:bg-white/10 transition-all duration-500 group overflow-hidden">
+                  <input
+                    type="radio"
+                    name="track"
+                    value={opt}
+                    required
+                    class="accent-brand-blue shrink-0"
+                  />
+                  <span class="text-xs font-bold text-white/60 group-hover:text-white">{opt}</span>
+                </label>
+              ))}
+            </div>
           </div>
 
-          <div>
-            <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">Willing to Relocate? *</label>
-            <select
-              name="relocate"
-              required
-              class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-brand-blue transition-colors appearance-none"
-            >
-              <option value="" disabled selected>Select option</option>
-              {RELOCATE_OPTIONS.map(opt => <option value={opt}>{opt}</option>)}
-            </select>
+          <div class="radio-group-container" data-group="relocate">
+            <div class="flex justify-between items-center mb-3">
+              <label class="block text-xs font-black uppercase tracking-widest text-white/40">Willing to Relocate? *</label>
+              <button type="button" class="change-selection-btn hidden text-[10px] font-black uppercase tracking-widest text-brand-blue hover:text-white transition-colors">Change</button>
+            </div>
+            <div class="options-wrapper space-y-2 transition-all duration-500 ease-in-out origin-top">
+              {RELOCATE_OPTIONS.map(opt => (
+                <label class="radio-label flex items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/5 cursor-pointer hover:bg-white/10 transition-all duration-500 group overflow-hidden">
+                  <input
+                    type="radio"
+                    name="relocate"
+                    value={opt}
+                    required
+                    class="accent-brand-blue shrink-0"
+                  />
+                  <span class="text-xs font-bold text-white/60 group-hover:text-white">{opt}</span>
+                </label>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -80,9 +98,9 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
             <label class="block text-xs font-black uppercase tracking-widest text-white/40">Experience / Background *</label>
             <button type="button" class="change-selection-btn hidden text-[10px] font-black uppercase tracking-widest text-brand-blue hover:text-white transition-colors">Change</button>
           </div>
-          <div class="options-wrapper grid grid-cols-1 md:grid-cols-3 gap-3 transition-all duration-500 ease-in-out">
+          <div class="options-wrapper grid grid-cols-1 md:grid-cols-3 gap-3 transition-all duration-500 ease-in-out origin-top">
             {EXPERIENCE_OPTIONS.map(option => (
-              <label class="radio-label flex items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/5 cursor-pointer hover:bg-white/10 transition-all duration-300 group overflow-hidden">
+              <label class="radio-label flex items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/5 cursor-pointer hover:bg-white/10 transition-all duration-500 group overflow-hidden">
                 <input
                   type="radio"
                   name="experience"
@@ -204,6 +222,28 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
   </div>
 </div>
 
+<style>
+  .radio-label {
+    max-height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .radio-label.collapsed {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-width: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+  }
+  .options-wrapper.is-collapsed {
+    gap: 0 !important;
+  }
+</style>
+
 <script is:inline define:vars={{ endpoint, id }}>
   const container = document.getElementById(`${id}-container`);
   const form = document.getElementById(id);
@@ -223,10 +263,19 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
     inputs.forEach(input => {
       input.addEventListener('change', () => {
         if (input.checked) {
+          // Add collapsing class to wrapper
+          wrapper.classList.add('is-collapsed');
+          
           // Collapse effect
           labels.forEach(label => {
             if (!label.contains(input)) {
-              label.classList.add('hidden');
+              label.classList.add('collapsed');
+              // Delay removal from layout to allow animation
+              setTimeout(() => {
+                if (label.classList.contains('collapsed')) {
+                  label.style.display = 'none';
+                }
+              }, 500);
             } else {
               label.classList.remove('bg-white/5', 'hover:bg-white/10');
               label.classList.add('bg-brand-blue/10', 'border-brand-blue/30');
@@ -234,6 +283,7 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
           });
           
           if (wrapper.classList.contains('grid')) {
+            wrapper.dataset.oldCols = 'md:grid-cols-3';
             wrapper.classList.remove('md:grid-cols-3');
           }
           
@@ -243,15 +293,21 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
     });
 
     changeBtn.addEventListener('click', () => {
+      wrapper.classList.remove('is-collapsed');
+      
       labels.forEach(label => {
-        label.classList.remove('hidden', 'bg-brand-blue/10', 'border-brand-blue/30');
-        label.classList.add('bg-white/5', 'hover:bg-white/10');
+        label.style.display = '';
+        // Small delay to trigger transition
+        requestAnimationFrame(() => {
+          label.classList.remove('collapsed', 'bg-brand-blue/10', 'border-brand-blue/30');
+          label.classList.add('bg-white/5', 'hover:bg-white/10');
+        });
         const input = label.querySelector('input');
         input.checked = false;
       });
 
-      if (wrapper.classList.contains('grid')) {
-        wrapper.classList.add('md:grid-cols-3');
+      if (wrapper.dataset.oldCols) {
+        wrapper.classList.add(wrapper.dataset.oldCols);
       }
 
       changeBtn.classList.add('hidden');
