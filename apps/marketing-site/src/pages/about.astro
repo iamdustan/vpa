@@ -36,53 +36,89 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	</section>
 
 	<!-- Team Section -->
-	<section class="py-32 flex items-center justify-center p-6 lg:p-12">
+	<section class="py-32 flex flex-col items-center justify-center p-6 lg:p-12">
 		<div class="w-full max-w-[1600px]">
 			<div class="mb-20">
 				<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6 text-center">The Mentors</h2>
 				<h3 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9] text-center">Veteran Guidance.</h3>
 			</div>
 			
-			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+			<div class="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-12 no-scrollbar px-4 lg:px-0">
 				{[
 					{ 
 						name: "Shawn Campbell", 
 						role: "Founder", 
+						image: `${import.meta.env.BASE_URL}team/shawn-campbell.jpg`,
 						bio: "An international subject matter expert with 16 years of experience training industry professionals on complex device topics." 
 					},
 					{ 
 						name: "Lauren Condon", 
 						role: "Instructor", 
+						image: `${import.meta.env.BASE_URL}team/lauren-condon.jpg`,
 						bio: "A Principal Clinical Specialist and engineer with 14 years of experience mentoring new hires at Medtronic." 
 					},
 					{ 
 						name: "Martin Reilly", 
 						role: "Instructor", 
+						image: `${import.meta.env.BASE_URL}team/martin-reilly.jpg`,
 						bio: "An IBHRE-certified industry veteran who has trained over 40 Clinical Specialists during his 21-year career." 
 					},
 					{ 
 						name: "Mary Smith", 
 						role: "Senior Clinical Specialist", 
+						image: `${import.meta.env.BASE_URL}team/mary-smith.jpg`,
 						bio: "A triple-certified (CCDS, RCES, RCIS) expert with 14 years of experience in cardiac care and interventional cardiology." 
 					},
 					{ 
 						name: "Pam Elrod", 
 						role: "Technical Field Engineer", 
+						image: `${import.meta.env.BASE_URL}team/pam-elrod.png`,
 						bio: "Our most experienced mentor, bringing over four decades of cardiac nursing and Medtronic technical field engineering expertise." 
 					}
-				].map(member => (
-					<div class="glass-card p-8 bg-white/[0.02] border border-white/5 rounded-[32px] hover:border-brand-blue/30 transition-colors">
-						<div class="w-20 h-20 rounded-full bg-brand-blue/20 mb-6 flex items-center justify-center">
-							<span class="text-brand-blue text-2xl font-black">{member.name[0]}</span>
+				].map((member, index) => (
+					<div 
+						class="snap-center shrink-0 w-[300px] md:w-[400px] relative group"
+					>
+						{/* Constant Staggered Pulse */}
+						<div 
+							class="absolute -inset-4 bg-brand-blue/5 rounded-[48px] blur-2xl animate-pulse-slow pointer-events-none" 
+							style={`animation-delay: ${index * 0.8}s`}
+						></div>
+						
+						{/* Hover Highlight */}
+						<div class="absolute -inset-1 bg-brand-blue/20 rounded-[36px] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+						
+						<div class="relative glass-card p-8 bg-white/[0.02] border border-white/5 rounded-[32px] hover:border-brand-blue/30 transition-all duration-500 h-full flex flex-col">
+							<div class="w-full aspect-[4/5] rounded-2xl overflow-hidden mb-8 bg-brand-blue/10 grayscale group-hover:grayscale-0 transition-all duration-700">
+								<img src={member.image} alt={member.name} class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
+							</div>
+							<h4 class="text-2xl font-black text-white uppercase tracking-tight mb-1">{member.name}</h4>
+							<p class="text-brand-blue text-xs font-black uppercase tracking-widest mb-6">{member.role}</p>
+							<p class="text-white/40 leading-relaxed font-medium text-sm flex-grow">{member.bio}</p>
 						</div>
-						<h4 class="text-2xl font-black text-white uppercase tracking-tight mb-1">{member.name}</h4>
-						<p class="text-brand-blue text-xs font-black uppercase tracking-widest mb-4">{member.role}</p>
-						<p class="text-white/40 leading-relaxed font-medium">{member.bio}</p>
 					</div>
 				))}
 			</div>
 		</div>
 	</section>
+
+	<style>
+		.no-scrollbar::-webkit-scrollbar {
+			display: none;
+		}
+		.no-scrollbar {
+			-ms-overflow-style: none;
+			scrollbar-width: none;
+		}
+		
+		@keyframes pulse-slow {
+			0%, 100% { opacity: 0.1; transform: scale(1); }
+			50% { opacity: 0.3; transform: scale(1.05); }
+		}
+		.animate-pulse-slow {
+			animation: pulse-slow 4s infinite ease-in-out;
+		}
+	</style>
 
 	<!-- Reviews Section -->
 	<section class="py-32 flex items-center justify-center p-6 lg:p-12 bg-white/[0.02]">
