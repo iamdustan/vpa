@@ -49,20 +49,20 @@ const titleChars = splitText(remainingTitle);
               </p>
             </div>
 
-            {/* Phase 1: Why */}
+            {/* Phase 1: Career Impact (Why) */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-why">
-              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-green mb-6 lg:mb-8">The Why</h2>
+              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6 lg:mb-8">Career Impact</h2>
               <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
-                Land the <br/><span class="text-brand-green">Dream Job.</span>
+                Land the <br/><span class="text-brand-blue">Dream Job.</span>
               </h3>
               <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
                 From the first rhythm to your first day in the OR, we guide you to a career with purpose, impact, and security.
               </p>
             </div>
 
-            {/* Phase 2: How */}
+            {/* Phase 2: The Experience (How) */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-how">
-              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-yellow mb-6 lg:mb-8">The How</h2>
+              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-yellow mb-6 lg:mb-8">The Experience</h2>
               <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
                 Mentorship <br/><span class="text-brand-yellow">is the key.</span>
               </h3>
@@ -71,17 +71,17 @@ const titleChars = splitText(remainingTitle);
               </p>
             </div>
 
-            {/* Phase 3: CTA */}
+            {/* Phase 3: Next Steps (CTA) */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-cta">
-              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6 lg:mb-8">Next Steps</h2>
+              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-green mb-6 lg:mb-8">Next Steps</h2>
               <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
-                Start your <br/><span class="text-brand-blue">Journey Today.</span>
+                Start your <br/><span class="text-brand-green">Journey Today.</span>
               </h3>
               <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
                 The medical device industry is waiting. Take the first step toward your new career.
               </p>
               <div class="mt-10 flex flex-wrap gap-4">
-                  <a href={`${import.meta.env.BASE_URL}apply`} class="px-8 py-4 rounded-full bg-brand-blue text-xs font-black uppercase tracking-widest hover:bg-brand-blue/90 transition-all shadow-xl shadow-brand-blue/20">Apply Now</a>
+                  <a href={`${import.meta.env.BASE_URL}apply`} class="px-8 py-4 rounded-full bg-brand-green text-xs font-black uppercase tracking-widest hover:bg-brand-green/90 transition-all shadow-xl shadow-brand-green/20 text-white">Apply Now</a>
               </div>
             </div>
 
@@ -104,7 +104,7 @@ const titleChars = splitText(remainingTitle);
                     <div class="text-center relative">
                         <div class="text-7xl md:text-9xl mb-4 md:mb-8 opacity-20 blur-sm absolute inset-0 translate-y-4">🏆</div>
                         <div class="text-7xl md:text-9xl relative">🏆</div>
-                        <div class="mt-4 md:mt-8 text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-brand-green">Success Attained</div>
+                        <div class="mt-4 md:mt-8 text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-brand-blue">Success Attained</div>
                     </div>
                 </div>
 
@@ -122,7 +122,7 @@ const titleChars = splitText(remainingTitle);
 
                 <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-cta">
                     <div class="w-32 h-32 md:w-48 md:h-48 rounded-full border border-white/5 flex items-center justify-center relative">
-                        <div class="absolute inset-0 border border-brand-blue/20 rounded-full animate-ping"></div>
+                        <div class="absolute inset-0 border border-brand-green/20 rounded-full animate-ping"></div>
                         <div class="w-16 md:w-24 h-px bg-white/20 rotate-45"></div>
                         <div class="w-16 md:w-24 h-px bg-white/20 -rotate-45"></div>
                     </div>
@@ -136,7 +136,7 @@ const titleChars = splitText(remainingTitle);
         <div class="h-full w-full mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
           <div class="flex flex-col text-center md:text-left w-full md:w-auto">
               <span class="text-[8px] lg:text-[10px] font-black uppercase tracking-[0.2em] text-white/30">Journey Phase</span>
-              <span class="text-xs lg:text-sm font-black uppercase text-brand-green" id="journey-phase-label">Introduction</span>          </div>
+              <span class="text-xs lg:text-sm font-black uppercase text-brand-green" id="journey-phase-label">The Foundation</span>          </div>
 
           <div class="flex flex-col md:flex-row gap-4 lg:gap-8 items-center w-full md:w-auto">
               <a href={`${import.meta.env.BASE_URL}curriculum`} class="text-[8px] lg:text-[10px] font-black uppercase tracking-widest text-white/70 hover:text-white transition-colors w-full md:w-auto text-center border border-white/10 md:border-none rounded-full px-6 py-3 md:p-0">Explore Curriculum</a>
@@ -192,10 +192,10 @@ const titleChars = splitText(remainingTitle);
     });
 
     const phases = [
-        { label: 'INTRODUCTION', color: '#52cf95' },
-        { label: 'THE WHY', color: '#52cf95' },
-        { label: 'THE HOW', color: '#FFE000' },
-        { label: 'GET STARTED', color: '#3B3CFF' }
+        { label: 'THE FOUNDATION', color: '#52cf95' },
+        { label: 'CAREER IMPACT', color: '#3B3CFF' },
+        { label: 'THE EXPERIENCE', color: '#FFE000' },
+        { label: 'NEXT STEPS', color: '#52cf95' }
     ];
 
     const phaseLabel = document.querySelector('#journey-phase-label');
