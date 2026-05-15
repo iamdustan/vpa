@@ -19,9 +19,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	<section class="pb-32 flex items-center justify-center p-6 lg:p-12">
 		<div class="w-full max-w-[1600px] grid gap-8 lg:grid-cols-3">
 			{[
-				{ title: "Foundations", icon: "1", desc: "Core cardiac anatomy, electrophysiology, and the fundamentals of medical device technology." },
-				{ title: "Advanced Pacing", icon: "2", desc: "Deep-dive into CRM devices, from sensing and pacing to complex EGM interpretation." },
-				{ title: "Clinical Mastery", icon: "3", desc: "EP mapping, procedural support, and the professional skills needed to excel in the industry." }
+				{ title: "Basic Pacing", icon: "01", desc: "16-week foundation taking you from zero knowledge to performing basic device checks and troubleshooting." },
+				{ title: "Advanced Pacing", icon: "02", desc: "8-week intensive focusing on complex troubleshooting, leadless pacing, and conduction system pacing." },
+				{ title: "CCDS Exam Prep", icon: "03", desc: "6-week rigorous preparation for the IBHRE Certified Cardiac Device Specialist exam." }
 			].map(item => (
 				<div class="glass-card p-10 bg-white/[0.02] border border-white/5 rounded-[32px] relative overflow-hidden group hover:border-brand-blue/30 transition-colors">
 					<div class="text-6xl font-black text-white/5 absolute -top-4 -right-4 group-hover:text-brand-blue/10 transition-colors">{item.icon}</div>
@@ -32,23 +32,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		</div>
 	</section>
 
-	<!-- Detailed Modules -->
+	<!-- Detailed Programs -->
 	<section class="py-32 flex items-center justify-center p-6 lg:p-12 bg-white/[0.02]">
 		<div class="w-full max-w-[1600px]">
 			<div class="grid gap-20">
-				<!-- Module 1 -->
+				<!-- Basic Pacing -->
 				<div class="grid lg:grid-cols-2 gap-12 items-start">
 					<div>
-						<h3 class="text-3xl font-black text-white uppercase tracking-tight mb-6">Phase 1: Cardiac Foundations</h3>
+						<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Program 01</h2>
+						<h3 class="text-3xl font-black text-white uppercase tracking-tight mb-6">Basic Pacing Certification</h3>
 						<p class="text-lg text-white/50 leading-relaxed font-medium mb-8">
-							Before we touch devices, we master the environment. You'll learn the language of the clinic and the science of the heart.
+							Designed for entry-level staff or career-shifters with zero prior knowledge of cardiac devices. This 16-week program builds the absolute foundations.
 						</p>
 						<ul class="space-y-4">
 							{[
-								"Advanced Cardiac Anatomy & Physiology",
-								"ECG Interpretation & Arrhythmia Recognition",
-								"Introduction to Cardiac Rhythm Management",
-								"Clinical Environment & Sterile Technique"
+								"Anatomy and Physiology of the Heart",
+								"Fundamentals of Sensing and Pacing",
+								"Basic Device Checks and Interpretation",
+								"Clinical Workflow & Sterile Technique",
+								"Mentorship throughout the duration",
+								"Permanent access to VPA content"
 							].map(item => (
 								<li class="flex items-center gap-3 text-white/70 font-medium">
 									<div class="w-1.5 h-1.5 rounded-full bg-brand-blue"></div>
@@ -58,28 +61,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 						</ul>
 					</div>
 					<div class="glass-card p-8 bg-background border border-white/10 rounded-3xl">
-						<div class="aspect-video bg-brand-blue/10 rounded-2xl flex items-center justify-center mb-6">
-							<span class="text-brand-blue font-black text-xs uppercase tracking-[0.2em]">Clinical Simulation Module</span>
+						<div class="aspect-video bg-brand-blue/10 rounded-2xl flex flex-col items-center justify-center mb-6 p-12 text-center">
+							<p class="text-brand-blue font-black text-xs uppercase tracking-[0.2em] mb-4">Competency Showcase</p>
+							<p class="text-white/60 text-sm">Graduates demonstrate full competency in performing basic clinical device evaluations.</p>
 						</div>
-						<p class="text-sm text-white/40 italic">"The foundations phase ensured I wasn't just memorizing device settings, but actually understanding the 'why' behind the therapy."</p>
+						<p class="text-sm text-white/40 italic">"The Basic program took me from knowing nothing to feeling confident in the clinic."</p>
 					</div>
 				</div>
 
 				<div class="h-px bg-white/5"></div>
 
-				<!-- Module 2 -->
+				<!-- Advanced Pacing -->
 				<div class="grid lg:grid-cols-2 gap-12 items-start">
 					<div class="lg:order-2">
-						<h3 class="text-3xl font-black text-white uppercase tracking-tight mb-6">Phase 2: Advanced CRM</h3>
+						<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Program 02</h2>
+						<h3 class="text-3xl font-black text-white uppercase tracking-tight mb-6">Advanced Pacing Certification</h3>
 						<p class="text-lg text-white/50 leading-relaxed font-medium mb-8">
-							The core of the academy. We dive deep into the technology from every major manufacturer, including Medtronic, Abbott, and Boston Scientific.
+							An 8-week intensive designed for those ready to become self-sufficient in complex clinical environments. Build on foundation concepts to master advanced technology.
 						</p>
 						<ul class="space-y-4">
 							{[
-								"Sensing, Pacing & Capture Thresholds",
-								"ICD Therapy & Tachyarrhythmia Management",
-								"CRT & Heart Failure Device Optimization",
-								"Complex Troubleshooting & EGM Analysis"
+								"Leadless Pacing (e.g., Micra AV)",
+								"Conduction System Pacing",
+								"Complex EGM Troubleshooting",
+								"Lead Dislodgement Case Studies",
+								"Advanced ICD and CRT Management",
+								"Mentorship & Troubleshooting Mastery"
 							].map(item => (
 								<li class="flex items-center gap-3 text-white/70 font-medium">
 									<div class="w-1.5 h-1.5 rounded-full bg-brand-blue"></div>
@@ -89,28 +96,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 						</ul>
 					</div>
 					<div class="glass-card p-8 bg-background border border-white/10 rounded-3xl lg:order-1">
-						<div class="aspect-video bg-brand-blue/10 rounded-2xl flex items-center justify-center mb-6">
-							<span class="text-brand-blue font-black text-xs uppercase tracking-[0.2em]">Device Programming Workshop</span>
+						<div class="aspect-video bg-brand-blue/10 rounded-2xl flex flex-col items-center justify-center mb-6 p-12 text-center">
+							<p class="text-brand-blue font-black text-xs uppercase tracking-[0.2em] mb-4">Advanced Case Study</p>
+							<p class="text-white/60 text-sm">Mastering the identification of complex lead issues and advanced algorithm optimization.</p>
 						</div>
-						<p class="text-sm text-white/40 italic">"Weekly 1-on-1 sessions with mentors who have done thousands of implants in the field."</p>
+						<p class="text-sm text-white/40 italic">"Focusing on Leadless and CSP was exactly what I needed to advance my career."</p>
 					</div>
 				</div>
 
 				<div class="h-px bg-white/5"></div>
 
-				<!-- Module 3 -->
+				<!-- CCDS Prep -->
 				<div class="grid lg:grid-cols-2 gap-12 items-start">
 					<div>
-						<h3 class="text-3xl font-black text-white uppercase tracking-tight mb-6">Phase 3: Clinical Career Path</h3>
+						<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Program 03</h2>
+						<h3 class="text-3xl font-black text-white uppercase tracking-tight mb-6">CCDS Exam Preparation</h3>
 						<p class="text-lg text-white/50 leading-relaxed font-medium mb-8">
-							Bridging the gap to the industry. We focus on IBHRE CCDS certification and the professional skills needed to land the role.
+							Prepare for the IBHRE Certified Cardiac Device Specialist exam—the "Mount Everest" of cardiac device tests—with a modeled 6-week study program.
 						</p>
 						<ul class="space-y-4">
 							{[
-								"IBHRE CCDS Exam Preparation",
-								"EP Mapping & NavX/Carto Fundamentals",
-								"Physician Interaction & Case Communication",
-								"Career Placement & Interview Mastery"
+								"Modeled after official IBHRE study programs",
+								"Concept mastery through mentor support",
+								"Comprehensive CRM and EP coverage",
+								"Mock exams and structured review",
+								"Focus on critical test-taking strategies"
 							].map(item => (
 								<li class="flex items-center gap-3 text-white/70 font-medium">
 									<div class="w-1.5 h-1.5 rounded-full bg-brand-blue"></div>
@@ -120,10 +130,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 						</ul>
 					</div>
 					<div class="glass-card p-8 bg-background border border-white/10 rounded-3xl">
-						<div class="aspect-video bg-brand-blue/10 rounded-2xl flex items-center justify-center mb-6">
-							<span class="text-brand-blue font-black text-xs uppercase tracking-[0.2em]">Career Placement Strategy</span>
+						<div class="aspect-video bg-brand-blue/10 rounded-2xl flex flex-col items-center justify-center mb-6 p-12 text-center">
+							<p class="text-brand-blue font-black text-xs uppercase tracking-[0.2em] mb-4">Exam Mastery</p>
+							<p class="text-white/60 text-sm">Rigorous concept validation to ensure you are prepared for the industry's highest certification.</p>
 						</div>
-						<p class="text-sm text-white/40 italic">"The CCDS prep was incredibly structured. I felt fully prepared going into the exam and the interviews."</p>
+						<p class="text-xs text-white/30 italic">* VPA does not guarantee a passing score on the official IBHRE exam.</p>
+					</div>
+				</div>
+
+				<div class="h-px bg-white/5"></div>
+
+				<!-- Placement -->
+				<div class="grid lg:grid-cols-2 gap-12 items-center bg-brand-blue/5 p-12 rounded-[40px] border border-brand-blue/10">
+					<div>
+						<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Clinic Solutions</h2>
+						<h3 class="text-3xl font-black text-white uppercase tracking-tight mb-6">Device Technician Placement</h3>
+						<p class="text-lg text-white/50 leading-relaxed font-medium mb-8">
+							Solve immediate staffing shortages. We place VPA graduates directly into clinics to act as on-site mentors, helping you train and onboard your own staff.
+						</p>
+						<a href="https://tally.so/r/n0pE6v" class="inline-block text-brand-blue font-black uppercase tracking-widest hover:text-white transition-colors">Inquire About Placement &rarr;</a>
+					</div>
+					<div class="text-center">
+						<p class="text-5xl font-black text-white uppercase tracking-tighter mb-4">Staffing <br/>Solved.</p>
+						<p class="text-white/40 font-medium">Extremely flexible logistical and cost models for busy clinics.</p>
 					</div>
 				</div>
 			</div>
