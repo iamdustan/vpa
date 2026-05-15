@@ -23,9 +23,43 @@ const isHome = Astro.url.pathname === import.meta.env.BASE_URL || Astro.url.path
 		<meta name="description" content={description} />
 	</head>
 	<body class="bg-page-bg text-primary antialiased selection:bg-brand-blue/30">
+		<script is:inline>
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+					return 'light';
+				}
+				return 'dark';
+			})();
+
+			if (theme === 'light') {
+				document.documentElement.setAttribute('data-theme', 'light');
+			} else {
+				document.documentElement.setAttribute('data-theme', 'dark');
+			}
+
+			window.localStorage.setItem('theme', theme);
+		</script>
 		<script>
 			import { initPostHog } from '../lib/analytics';
 			initPostHog();
+
+			const handleToggleClick = () => {
+				const element = document.documentElement;
+				const isLight = element.getAttribute('data-theme') === 'light';
+				const newTheme = isLight ? 'dark' : 'light';
+				element.setAttribute('data-theme', newTheme);
+				localStorage.setItem('theme', newTheme);
+			};
+
+			document.getElementById('theme-toggle')?.addEventListener('click', handleToggleClick);
+			document.addEventListener('astro:after-swap', () => {
+				const theme = localStorage.getItem('theme');
+				if (theme) document.documentElement.setAttribute('data-theme', theme);
+				document.getElementById('theme-toggle')?.addEventListener('click', handleToggleClick);
+			});
 		</script>
 		<nav class="fixed top-0 z-50 w-full px-0 md:px-6 pt-0 pb-2 md:pb-4 pointer-events-none">
 			<div class="mx-auto flex max-w-[1600px] flex-col lg:flex-row items-center justify-between gap-0 pointer-events-auto">
@@ -39,9 +73,19 @@ const isHome = Astro.url.pathname === import.meta.env.BASE_URL || Astro.url.path
 					<a href={`${import.meta.env.BASE_URL}admissions`} class="text-[10px] md:text-xs font-black uppercase tracking-[0.1em] md:tracking-[0.2em] text-secondary transition-colors hover:text-primary">Admissions</a>
 					<a href={`${import.meta.env.BASE_URL}jobs`} class="text-[10px] md:text-xs font-black uppercase tracking-[0.1em] md:tracking-[0.2em] text-secondary transition-colors hover:text-primary">Industry Roles</a>
 					<a href={`${import.meta.env.BASE_URL}apply`} class="text-[10px] md:text-xs font-black text-brand-blue uppercase tracking-widest hover:text-primary transition-colors">Apply Now</a>
+
+					<button id="theme-toggle" class="p-2 rounded-full hover:bg-primary/5 transition-colors border border-primary/10" aria-label="Toggle theme">
+						<svg class="w-4 h-4 text-secondary dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707.707M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />
+						</svg>
+						<svg class="w-4 h-4 text-secondary hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+						</svg>
+					</button>
 				</div>
 			</div>
 		</nav>
+
 		<main class={isHome ? "" : "pt-24 md:pt-32"}>
 			<slot />
 		</main>

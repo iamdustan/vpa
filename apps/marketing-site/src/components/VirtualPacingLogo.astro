@@ -224,5 +224,11 @@ const { className = "" } = Astro.props;
 <style>
   .logo-container {
     filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.05));
+    transition: filter 0.3s ease;
+  }
+
+  :root[data-theme='light'] .logo-container canvas {
+    filter: invert(1);
+    mix-blend-mode: multiply;
   }
 </style>
