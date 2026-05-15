@@ -206,16 +206,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 						Our graduates have transitioned from diverse backgrounds into high-impact careers at the world's leading medical device companies.
 					</p>
 					
-					<!-- Review Progress Dots -->
+					<!-- Review Progress Dots (Clickable) -->
 					<div class="mt-12 flex gap-3">
 						{[0, 1, 2, 3, 4].map((_, i) => (
-							<div class={`review-dot h-1.5 rounded-full transition-all duration-500 bg-white/${i === 0 ? '40' : '10'} ${i === 0 ? 'w-8' : 'w-4'}`} data-index={i}></div>
+							<button 
+								class={`review-dot h-1.5 rounded-full transition-all duration-500 cursor-pointer ${i === 0 ? 'w-8 bg-white/40' : 'w-4 bg-white/10'}`} 
+								data-index={i}
+								aria-label={`Go to review ${i + 1}`}
+							></button>
 						))}
 					</div>
 				</div>
 
-				<div class="relative group">
-					<div id="review-scroll" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing">
+				<div class="relative h-[400px] md:h-[350px] overflow-hidden">
+					<div id="review-window" class="relative h-full w-full">
 						{[
 							{ 
 								name: "Dan Arellano", 
@@ -247,12 +251,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 								text: "I cannot say enough good things about VPA and how it’s changed my life, my confidence and me as a person. The support system is unlike any other educational program I've experienced.", 
 								author: "Clinical Specialist" 
 							}
-						].map((review) => (
-							<div class="snap-center shrink-0 w-full transition-all duration-700 review-card">
-								<div class="glass-card p-12 bg-background border border-white/10 rounded-[40px] relative mx-2 h-full">
+						].map((review, index) => (
+							<div 
+								class="review-slide absolute inset-0 w-full h-full transition-all duration-700 ease-in-out opacity-0 pointer-events-none translate-y-8"
+								data-index={index}
+							>
+								<div class="glass-card p-10 md:p-12 bg-background border border-white/10 rounded-[40px] h-full flex flex-col justify-center">
 									<div class="flex items-center gap-6 mb-8">
 										{review.image && (
-											<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-blue/30">
+											<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-blue/30 shrink-0">
 												<img src={review.image} alt={review.name} class="w-full h-full object-cover" />
 											</div>
 										)}
@@ -262,7 +269,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 										</div>
 									</div>
 									<div class="text-6xl text-brand-blue/10 font-serif absolute top-12 right-12">"</div>
-									<p class="text-xl text-white/70 italic relative z-10 leading-relaxed">
+									<p class="text-lg md:text-xl text-white/70 italic relative z-10 leading-relaxed">
 										{review.text}
 									</p>
 								</div>
@@ -275,17 +282,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	</section>
 
 	<script>
-		const reviewContainer = document.getElementById('review-scroll');
-		const reviewDots = document.querySelectorAll('.review-dot');
-		const reviewCards = document.querySelectorAll('.review-card');
+		let currentIndex = 0;
+		const slides = document.querySelectorAll('.review-slide');
+		const dots = document.querySelectorAll('.review-dot');
 		let isUserInteracting = false;
 		let scrollInterval: ReturnType<typeof setInterval>;
 
-		const updateReviewDots = () => {
-			if (!reviewContainer) return;
-			const index = Math.round(reviewContainer.scrollLeft / reviewContainer.clientWidth);
-			
-			reviewDots.forEach((dot, i) => {
+		const goToSlide = (index: number) => {
+			slides.forEach((slide, i) => {
+				const s = slide as HTMLElement;
+				if (i === index) {
+					s.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-8', '-translate-y-8');
+					s.classList.add('opacity-100', 'translate-y-0');
+				} else {
+					s.classList.remove('opacity-100', 'translate-y-0');
+					s.classList.add('opacity-0', 'pointer-events-none');
+					// If it was before, slide it up, if after, slide it down
+					if (i < index) s.classList.add('-translate-y-8');
+					else s.classList.add('translate-y-8');
+				}
+			});
+
+			dots.forEach((dot, i) => {
 				if (i === index) {
 					dot.classList.add('w-8', 'bg-white/40');
 					dot.classList.remove('w-4', 'bg-white/10');
@@ -294,44 +312,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 					dot.classList.add('w-4', 'bg-white/10');
 				}
 			});
+			
+			currentIndex = index;
+		};
 
-			reviewCards.forEach((card, i) => {
-				if (i === index) {
-					card.classList.remove('opacity-40', 'scale-95');
-					card.classList.add('opacity-100', 'scale-100');
-				} else {
-					card.classList.add('opacity-40', 'scale-95');
-					card.classList.remove('opacity-100', 'scale-100');
-				}
-			});
+		const nextSlide = () => {
+			if (isUserInteracting) return;
+			const next = (currentIndex + 1) % slides.length;
+			goToSlide(next);
 		};
 
 		const startAutoScroll = () => {
-			scrollInterval = setInterval(() => {
-				if (!isUserInteracting && reviewContainer) {
-					const nextScroll = (reviewContainer.scrollLeft + reviewContainer.clientWidth + 10) >= reviewContainer.scrollWidth 
-						? 0 
-						: reviewContainer.scrollLeft + reviewContainer.clientWidth;
-					
-					reviewContainer.scrollTo({ left: nextScroll, behavior: 'smooth' });
-				}
-			}, 15000);
+			if (scrollInterval) clearInterval(scrollInterval);
+			scrollInterval = setInterval(nextSlide, 15000);
 		};
 
-		reviewContainer?.addEventListener('scroll', updateReviewDots);
+		dots.forEach((dot, i) => {
+			dot.addEventListener('click', () => {
+				isUserInteracting = true;
+				clearInterval(scrollInterval);
+				goToSlide(i);
+			});
+		});
+
 		// Initialize
-		updateReviewDots();
-		
-		const stopInteraction = () => {
+		goToSlide(0);
+		startAutoScroll();
+
+		// Stop interaction on container touch/click
+		const windowEl = document.getElementById('review-window');
+		windowEl?.addEventListener('mousedown', () => {
 			isUserInteracting = true;
 			clearInterval(scrollInterval);
-		};
-
-		reviewContainer?.addEventListener('mousedown', stopInteraction);
-		reviewContainer?.addEventListener('touchstart', stopInteraction, { passive: true });
-		reviewContainer?.addEventListener('wheel', stopInteraction, { passive: true });
-
-		startAutoScroll();
+		});
+		windowEl?.addEventListener('touchstart', () => {
+			isUserInteracting = true;
+			clearInterval(scrollInterval);
+		}, { passive: true });
 	</script>
 
 	<section class="pb-32 flex items-center justify-center p-6 lg:p-12">
