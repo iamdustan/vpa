@@ -305,13 +305,19 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
     changeBtn.addEventListener('click', () => {
       wrapper.classList.remove('is-collapsed');
       
+      // First, show all labels but keep them in 'collapsed' state visually
       labels.forEach(label => {
         label.style.display = '';
-        // Small delay to trigger transition
-        requestAnimationFrame(() => {
-          label.classList.remove('collapsed', 'bg-brand-blue/10', 'border-brand-blue/30');
-          label.classList.add('bg-white/5', 'hover:bg-white/10');
-        });
+      });
+
+      // Force a reflow to ensure the browser recognizes they are now 'display: block' (or whatever they were)
+      // but still have the 'collapsed' class applied.
+      void container.offsetHeight;
+
+      // Now remove the collapsed classes to trigger the expansion animation
+      labels.forEach(label => {
+        label.classList.remove('collapsed', 'bg-brand-blue/10', 'border-brand-blue/30');
+        label.classList.add('bg-white/5', 'hover:bg-white/10');
         const input = label.querySelector('input');
         input.checked = false;
       });
