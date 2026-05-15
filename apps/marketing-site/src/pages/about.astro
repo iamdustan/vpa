@@ -45,9 +45,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 			
 			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 				{[
-					{ name: "Shawn Campbell", role: "Founder & Lead Mentor", bio: "Industry veteran with deep expertise in cardiac medical devices and clinical education." },
-					{ name: "Clinical Specialist", role: "Mentor", bio: "Experienced professional dedicated to bridging the gap between theory and clinical practice." },
-					{ name: "EP Specialist", role: "Mentor", bio: "Mapping and electrophysiology expert focused on advanced clinical training." }
+					{ 
+						name: "Shawn Campbell", 
+						role: "Founder", 
+						bio: "An international subject matter expert with 16 years of experience training industry professionals on complex device topics." 
+					},
+					{ 
+						name: "Lauren Condon", 
+						role: "Instructor", 
+						bio: "A Principal Clinical Specialist and engineer with 14 years of experience mentoring new hires at Medtronic." 
+					},
+					{ 
+						name: "Martin Reilly", 
+						role: "Instructor", 
+						bio: "An IBHRE-certified industry veteran who has trained over 40 Clinical Specialists during his 21-year career." 
+					},
+					{ 
+						name: "Mary Smith", 
+						role: "Senior Clinical Specialist", 
+						bio: "A triple-certified (CCDS, RCES, RCIS) expert with 14 years of experience in cardiac care and interventional cardiology." 
+					},
+					{ 
+						name: "Pam Elrod", 
+						role: "Technical Field Engineer", 
+						bio: "Our most experienced mentor, bringing over four decades of cardiac nursing and Medtronic technical field engineering expertise." 
+					}
 				].map(member => (
 					<div class="glass-card p-8 bg-white/[0.02] border border-white/5 rounded-[32px] hover:border-brand-blue/30 transition-colors">
 						<div class="w-20 h-20 rounded-full bg-brand-blue/20 mb-6 flex items-center justify-center">
