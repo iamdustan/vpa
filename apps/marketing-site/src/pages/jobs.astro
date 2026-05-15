@@ -10,27 +10,29 @@ const companies = ['All', ...new Set(jobs.map(j => j.company))].sort();
 ---
 
 <BaseLayout 
-  title="Active Career Opportunities | Virtual Pacing Academy" 
-  description="Explore the latest clinical specialist and field representative roles from top medical device manufacturers like Medtronic, Abbott, and Boston Scientific."
+title="Industry Roles & Market Watch | Virtual Pacing Academy" 
+description="Explore the latest clinical specialist and field representative roles from top medical device manufacturers like Medtronic, Abbott, and Boston Scientific."
 >
-  <div class="relative overflow-hidden pt-24 pb-32">
-    {/* Background Decorative Element */}
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 -z-10 w-full max-w-7xl h-full opacity-10 pointer-events-none">
-      <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-brand-blue rounded-full blur-[150px]" />
-      <div class="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-brand-yellow rounded-full blur-[120px]" />
+<div class="relative overflow-hidden pt-24 pb-32">
+  {/* Background Decorative Element */}
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 -z-10 w-full max-w-7xl h-full opacity-10 pointer-events-none">
+    <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-brand-blue rounded-full blur-[150px]" />
+    <div class="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-brand-yellow rounded-full blur-[120px]" />
+  </div>
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center mb-20">
+      <h2 class="text-xs font-black uppercase tracking-[0.4em] text-brand-blue mb-4">Market Watch</h2>
+      <h1 class="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9] uppercase mb-8">
+        Industry <span class="text-gradient">Roles</span>
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-white/50 leading-relaxed font-medium max-w-2xl mx-auto">
+        These are examples of the clinical specialist and field representative roles our graduates are prepared for at top manufacturers.
+      </p>
+      <p class="mt-4 text-xs font-black uppercase tracking-widest text-brand-blue/60">
+        Note: These are external career opportunities at industry partners, not positions within VPA.
+      </p>
     </div>
-
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto max-w-3xl text-center mb-20">
-        <h2 class="text-xs font-black uppercase tracking-[0.4em] text-brand-blue mb-4">Market Watch</h2>
-        <h1 class="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9] uppercase mb-8">
-          Active <span class="text-gradient">Career Openings</span>
-        </h1>
-        <p class="mt-6 text-lg md:text-xl text-white/50 leading-relaxed font-medium">
-          Real-time tracking of Clinical Specialist and Field Representative roles across the industry leaders.
-        </p>
-      </div>
-
       {/* Filters Header */}
       <div class="sticky top-20 z-40 glass-card p-6 mb-12">
         <div class="flex flex-col lg:flex-row gap-6 items-end">
