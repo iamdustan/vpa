@@ -196,31 +196,128 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	</style>
 
 	<!-- Reviews Section -->
-	<section class="py-32 flex items-center justify-center p-6 lg:p-12 bg-white/[0.02]">
-		<div class="w-full max-w-[1600px]">
+	<section class="py-32 flex flex-col items-center justify-center p-6 lg:p-12 bg-white/[0.02] relative overflow-hidden">
+		<div class="w-full max-w-[1600px] relative">
 			<div class="grid lg:grid-cols-2 gap-20 items-center">
 				<div>
 					<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Success Stories</h2>
 					<h3 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">What our <br/>students say.</h3>
 					<p class="text-xl text-white/40 leading-relaxed font-medium max-w-xl">
-						Our graduates have gone on to careers at the world's leading medical device companies.
+						Our graduates have transitioned from diverse backgrounds into high-impact careers at the world's leading medical device companies.
 					</p>
+					
+					<!-- Review Progress Dots -->
+					<div class="mt-12 flex gap-3">
+						{[0, 1, 2, 3, 4].map((_, i) => (
+							<div class={`review-dot h-1.5 rounded-full transition-all duration-500 bg-white/${i === 0 ? '40' : '10'} ${i === 0 ? 'w-8' : 'w-4'}`} data-index={i}></div>
+						))}
+					</div>
 				</div>
-				<div class="space-y-6">
-					{[
-						{ text: "The mentorship was the difference maker. I wouldn't have landed my role without the clinical insights from my coach.", author: "Clinical Specialist @ Medtronic" },
-						{ text: "The flexibility of the virtual modules allowed me to learn while working, and the weekly check-ins kept me on track.", author: "CRM Representative @ Abbott" }
-					].map(review => (
-						<div class="glass-card p-8 bg-background border border-white/10 rounded-3xl relative">
-							<div class="text-6xl text-brand-blue/20 font-serif absolute top-4 right-8">"</div>
-							<p class="text-lg text-white/70 italic mb-6 relative z-10 leading-relaxed">{review.text}</p>
-							<p class="text-xs font-black uppercase tracking-[0.2em] text-brand-blue">{review.author}</p>
-						</div>
-					))}
+
+				<div class="relative group">
+					<div id="review-scroll" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing">
+						{[
+							{ 
+								name: "Dan Arellano", 
+								image: `${import.meta.env.BASE_URL}reviews/dan-arellano.jpg`,
+								text: "Enrolling in VPA allowed me to learn hands-on pacing concepts within the confines of a busy life. Coupling this teaching with my experience, I was able to secure an offer in the competitive CRM field.", 
+								author: "Clinical Specialist" 
+							},
+							{ 
+								name: "Joshua Meyer", 
+								image: `${import.meta.env.BASE_URL}reviews/joshua-meyer.jpg`,
+								text: "The independent lessons followed by 1-on-1 meetings made me confident I was learning exactly what I needed to know. VPA goes above and beyond to provide all the resources necessary for success.", 
+								author: "Field Representative" 
+							},
+							{ 
+								name: "Kristie Delgado", 
+								image: `${import.meta.env.BASE_URL}reviews/kristie-delgado.jpg`,
+								text: "As an applicant undergoing a career change after 20 years in the workforce, I know without a doubt that I would not have this opportunity if not for VPA. The flexibility allowed me to learn while working full time.", 
+								author: "Clinical Specialist" 
+							},
+							{ 
+								name: "Ali Alshaher", 
+								image: `${import.meta.env.BASE_URL}reviews/ali-alshaher.jpg`,
+								text: "I'm way ahead of the curve for new hires. The depth of the curriculum and the quality of the mentorship truly prepares you for the clinical environment from day one.", 
+								author: "CRM Specialist" 
+							},
+							{ 
+								name: "Laura Brunet", 
+								image: `${import.meta.env.BASE_URL}team/shawn-campbell.jpg`, // Placeholder if no unique image
+								text: "I cannot say enough good things about VPA and how it’s changed my life, my confidence and me as a person. The support system is unlike any other educational program I've experienced.", 
+								author: "Clinical Specialist" 
+							}
+						].map((review) => (
+							<div class="snap-center shrink-0 w-full">
+								<div class="glass-card p-12 bg-background border border-white/10 rounded-[40px] relative mx-2">
+									<div class="flex items-center gap-6 mb-8">
+										<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-blue/30">
+											<img src={review.image} alt={review.name} class="w-full h-full object-cover" />
+										</div>
+										<div>
+											<h4 class="text-xl font-black text-white uppercase tracking-tight">{review.name}</h4>
+											<p class="text-xs font-black uppercase tracking-[0.2em] text-brand-blue">{review.author}</p>
+										</div>
+									</div>
+									<div class="text-6xl text-brand-blue/10 font-serif absolute top-12 right-12">"</div>
+									<p class="text-xl text-white/70 italic relative z-10 leading-relaxed">
+										{review.text}
+									</p>
+								</div>
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+
+	<script>
+		const reviewContainer = document.getElementById('review-scroll');
+		const reviewDots = document.querySelectorAll('.review-dot');
+		let isUserInteracting = false;
+		let scrollInterval: ReturnType<typeof setInterval>;
+
+		const updateReviewDots = () => {
+			if (!reviewContainer) return;
+			const index = Math.round(reviewContainer.scrollLeft / reviewContainer.clientWidth);
+			
+			reviewDots.forEach((dot, i) => {
+				if (i === index) {
+					dot.classList.add('w-8', 'bg-white/40');
+					dot.classList.remove('w-4', 'bg-white/10');
+				} else {
+					dot.classList.remove('w-8', 'bg-white/40');
+					dot.classList.add('w-4', 'bg-white/10');
+				}
+			});
+		};
+
+		const startAutoScroll = () => {
+			scrollInterval = setInterval(() => {
+				if (!isUserInteracting && reviewContainer) {
+					const nextScroll = (reviewContainer.scrollLeft + reviewContainer.clientWidth) >= reviewContainer.scrollWidth 
+						? 0 
+						: reviewContainer.scrollLeft + reviewContainer.clientWidth;
+					
+					reviewContainer.scrollTo({ left: nextScroll, behavior: 'smooth' });
+				}
+			}, 15000);
+		};
+
+		reviewContainer?.addEventListener('scroll', updateReviewDots);
+		
+		const stopInteraction = () => {
+			isUserInteracting = true;
+			clearInterval(scrollInterval);
+		};
+
+		reviewContainer?.addEventListener('mousedown', stopInteraction);
+		reviewContainer?.addEventListener('touchstart', stopInteraction, { passive: true });
+		reviewContainer?.addEventListener('wheel', stopInteraction, { passive: true });
+
+		startAutoScroll();
+	</script>
 
 	<section class="pb-32 flex items-center justify-center p-6 lg:p-12">
 		<div class="w-full max-w-[1600px] bg-brand-blue rounded-[40px] p-20 lg:p-32 text-center relative overflow-hidden shadow-2xl shadow-brand-blue/20">
