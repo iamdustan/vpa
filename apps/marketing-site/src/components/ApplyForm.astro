@@ -116,36 +116,9 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
       </div>
     </div>
 
-    <!-- Section 2: Location Info -->
+    <!-- Section 2: Contact Info -->
     <div class="glass-card p-8 lg:p-12 space-y-8">
-      <h2 class="text-2xl font-black text-brand-blue uppercase tracking-widest border-b border-white/5 pb-4">2. Location</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">City *</label>
-          <input
-            type="text"
-            name="city"
-            required
-            placeholder="e.g. Dallas"
-            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-blue transition-colors"
-          />
-        </div>
-        <div>
-          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">State *</label>
-          <input
-            type="text"
-            name="state"
-            required
-            placeholder="e.g. TX"
-            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-blue transition-colors"
-          />
-        </div>
-      </div>
-    </div>
-
-    <!-- Section 3: Contact Info -->
-    <div class="glass-card p-8 lg:p-12 space-y-8">
-      <h2 class="text-2xl font-black text-brand-blue uppercase tracking-widest border-b border-white/5 pb-4">3. Contact Information</h2>
+      <h2 class="text-2xl font-black text-brand-blue uppercase tracking-widest border-b border-white/5 pb-4">2. Contact Information</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">First Name *</label>
@@ -200,6 +173,64 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
           placeholder="Tell us a bit more about your goals..."
           class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-blue transition-colors"
         ></textarea>
+      </div>
+    </div>
+
+    <!-- Section 3: Location Info -->
+    <div class="glass-card p-8 lg:p-12 space-y-8">
+      <h2 class="text-2xl font-black text-brand-blue uppercase tracking-widest border-b border-white/5 pb-4">3. Location</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">Address Line 1</label>
+          <input
+            type="text"
+            name="address1"
+            placeholder="123 Main St"
+            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-blue transition-colors"
+          />
+        </div>
+        <div>
+          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">Address Line 2</label>
+          <input
+            type="text"
+            name="address2"
+            placeholder="Apt 4B"
+            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-blue transition-colors"
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">City *</label>
+          <input
+            type="text"
+            name="city"
+            required
+            placeholder="e.g. Dallas"
+            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-blue transition-colors"
+          />
+        </div>
+        <div>
+          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">State *</label>
+          <input
+            type="text"
+            name="state"
+            required
+            placeholder="e.g. TX"
+            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-blue transition-colors"
+          />
+        </div>
+        <div>
+          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">ZIP Code</label>
+          <input
+            type="text"
+            name="zip"
+            placeholder="75201"
+            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-blue transition-colors"
+          />
+        </div>
       </div>
     </div>
 
