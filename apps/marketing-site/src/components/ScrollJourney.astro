@@ -33,7 +33,7 @@ const titleChars = splitText(remainingTitle);
             
             {/* Phase 0: Hero */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-100" id="phase-hero">
-              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6 lg:mb-8">Welcome to VPA</h2>
+              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-green mb-6 lg:mb-8">Welcome to VPA</h2>
               <h1 class="text-3xl md:text-5xl lg:text-7xl font-black tracking-tighter text-white leading-[0.9] text-gradient uppercase flex flex-wrap">
                 <span class="mr-[0.2em]">{firstWord}</span>
                 <span class="flex flip-container">
@@ -51,7 +51,7 @@ const titleChars = splitText(remainingTitle);
 
             {/* Phase 1: Problem */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-problem">
-              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6 lg:mb-8">The Problem</h2>
+              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-green mb-6 lg:mb-8">The Problem</h2>
               <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
                 Education <br/><span class="text-gradient">is broken.</span>
               </h3>
@@ -133,7 +133,7 @@ const titleChars = splitText(remainingTitle);
         <div class="h-full w-full mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
           <div class="flex flex-col text-center md:text-left w-full md:w-auto">
               <span class="text-[8px] lg:text-[10px] font-black uppercase tracking-[0.2em] text-white/30">Journey Phase</span>
-              <span class="text-xs lg:text-sm font-black uppercase text-brand-blue" id="journey-phase-label">Introduction</span>          </div>
+              <span class="text-xs lg:text-sm font-black uppercase text-brand-green" id="journey-phase-label">Introduction</span>          </div>
 
           <div class="flex flex-col md:flex-row gap-4 lg:gap-8 items-center w-full md:w-auto">
               <a href={`${import.meta.env.BASE_URL}curriculum`} class="text-[8px] lg:text-[10px] font-black uppercase tracking-widest text-white/70 hover:text-white transition-colors w-full md:w-auto text-center border border-white/10 md:border-none rounded-full px-6 py-3 md:p-0">Explore Curriculum</a>
@@ -190,7 +190,7 @@ const titleChars = splitText(remainingTitle);
 
     const phases = [
         { label: 'INTRODUCTION', color: '#52cf95' },
-        { label: 'THE PROBLEM', color: '#52cf95' },
+        { label: 'THE PROBLEM', color: '#3B3CFF' },
         { label: 'THE SOLUTION', color: '#FFE000' },
         { label: 'THE OUTCOME', color: '#34d399' }
     ];
