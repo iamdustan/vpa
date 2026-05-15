@@ -16,8 +16,8 @@ const splitText = (text: string) => {
 };
 
 const titleParts = heroTitle.split(' ');
-const firstWord = titleParts[0]; // Usually "The"
-const remainingTitle = titleParts.slice(1).join(' ');
+const firstWord = `${titleParts[0]} ${titleParts[1]}`;
+const remainingTitle = titleParts.slice(2).join(' ');
 const titleChars = splitText(remainingTitle);
 ---
 
@@ -33,7 +33,7 @@ const titleChars = splitText(remainingTitle);
             
             {/* Phase 0: Hero */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-100" id="phase-hero">
-              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-green mb-6 lg:mb-8">Welcome to VPA</h2>
+              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-green mb-6 lg:mb-8">Virtual Pacing Academy</h2>
               <h1 class="text-3xl md:text-5xl lg:text-7xl font-black tracking-tighter text-white leading-[0.9] text-gradient uppercase flex flex-wrap">
                 <span class="mr-[0.2em]">{firstWord}</span>
                 <span class="flex flip-container">
@@ -49,37 +49,40 @@ const titleChars = splitText(remainingTitle);
               </p>
             </div>
 
-            {/* Phase 1: Problem */}
-            <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-problem">
-              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6 lg:mb-8">The Problem</h2>
+            {/* Phase 1: Why */}
+            <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-why">
+              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-green mb-6 lg:mb-8">The Why</h2>
               <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
-                Education <br/><span class="text-gradient">is broken.</span>
+                Land the <br/><span class="text-brand-green">Dream Job.</span>
               </h3>
               <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
-                Traditional schools cost $30k and take a year. Standard online courses leave you isolated. 
+                From the first rhythm to your first day in the OR, we guide you to a career with purpose, impact, and security.
               </p>
             </div>
 
-            {/* Phase 2: Solution */}
-            <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-solution">
-              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-yellow mb-6 lg:mb-8">The Solution</h2>
+            {/* Phase 2: How */}
+            <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-how">
+              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-yellow mb-6 lg:mb-8">The How</h2>
               <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
                 Mentorship <br/><span class="text-brand-yellow">is the key.</span>
               </h3>
               <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
-                We pair you with industry veterans who coach you through every single step of your transition.
+                Skip the "content drops." We pair you with industry veterans who coach you through every step of your transition.
               </p>
             </div>
 
-            {/* Phase 3: Outcome */}
-            <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-outcome">
-              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-emerald-400 mb-6 lg:mb-8">The Outcome</h2>
+            {/* Phase 3: CTA */}
+            <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-cta">
+              <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6 lg:mb-8">Next Steps</h2>
               <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
-                Land the <br/><span class="text-emerald-400">Dream Job.</span>
+                Start your <br/><span class="text-brand-blue">Journey Today.</span>
               </h3>
               <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
-                From the first rhythm to your first day in the OR, we guide you to a career with purpose.
+                The medical device industry is waiting. Take the first step toward your new career.
               </p>
+              <div class="mt-10 flex flex-wrap gap-4">
+                  <a href={`${import.meta.env.BASE_URL}apply`} class="px-8 py-4 rounded-full bg-brand-blue text-xs font-black uppercase tracking-widest hover:bg-brand-blue/90 transition-all shadow-xl shadow-brand-blue/20">Apply Now</a>
+              </div>
             </div>
 
           </div>
@@ -97,15 +100,15 @@ const titleChars = splitText(remainingTitle);
             </div>
 
             <div class="absolute inset-0 flex items-center justify-center p-6 lg:p-20">
-                <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-problem">
-                    <div class="w-32 h-32 md:w-48 md:h-48 rounded-full border border-white/5 flex items-center justify-center relative">
-                        <div class="absolute inset-0 border border-brand-blue/20 rounded-full animate-ping"></div>
-                        <div class="w-16 md:w-24 h-px bg-white/20 rotate-45"></div>
-                        <div class="w-16 md:w-24 h-px bg-white/20 -rotate-45"></div>
+                <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-why">
+                    <div class="text-center relative">
+                        <div class="text-7xl md:text-9xl mb-4 md:mb-8 opacity-20 blur-sm absolute inset-0 translate-y-4">🏆</div>
+                        <div class="text-7xl md:text-9xl relative">🏆</div>
+                        <div class="mt-4 md:mt-8 text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-brand-green">Success Attained</div>
                     </div>
                 </div>
 
-                <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-solution">
+                <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-how">
                     <div class="flex items-center gap-4 md:gap-12">
                         <div class="w-16 h-16 md:w-24 md:h-24 rounded-2xl md:rounded-3xl bg-brand-yellow/10 border border-brand-yellow/30 flex items-center justify-center font-black text-brand-yellow uppercase text-[8px] md:text-xs">Student</div>
                         <div class="w-6 md:w-12 h-px bg-white/10 relative">
@@ -117,11 +120,11 @@ const titleChars = splitText(remainingTitle);
                     </div>
                 </div>
 
-                <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-outcome">
-                    <div class="text-center relative">
-                        <div class="text-7xl md:text-9xl mb-4 md:mb-8 opacity-20 blur-sm absolute inset-0 translate-y-4">🏆</div>
-                        <div class="text-7xl md:text-9xl relative">🏆</div>
-                        <div class="mt-4 md:mt-8 text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-emerald-400">Success Attained</div>
+                <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-cta">
+                    <div class="w-32 h-32 md:w-48 md:h-48 rounded-full border border-white/5 flex items-center justify-center relative">
+                        <div class="absolute inset-0 border border-brand-blue/20 rounded-full animate-ping"></div>
+                        <div class="w-16 md:w-24 h-px bg-white/20 rotate-45"></div>
+                        <div class="w-16 md:w-24 h-px bg-white/20 -rotate-45"></div>
                     </div>
                 </div>
             </div>
@@ -190,9 +193,9 @@ const titleChars = splitText(remainingTitle);
 
     const phases = [
         { label: 'INTRODUCTION', color: '#52cf95' },
-        { label: 'THE PROBLEM', color: '#3B3CFF' },
-        { label: 'THE SOLUTION', color: '#FFE000' },
-        { label: 'THE OUTCOME', color: '#34d399' }
+        { label: 'THE WHY', color: '#52cf95' },
+        { label: 'THE HOW', color: '#FFE000' },
+        { label: 'GET STARTED', color: '#3B3CFF' }
     ];
 
     const phaseLabel = document.querySelector('#journey-phase-label');
@@ -253,38 +256,38 @@ const titleChars = splitText(remainingTitle);
         });
     }
 
-    // Section 0: Hero -> Phase 1: Problem
+    // Section 0: Hero -> Phase 1: Why
     tl.to('#phase-hero', { opacity: 0, y: -40, duration: 1 }, 0);
     tl.to('#visual-hero', { opacity: 0, scale: 1.1, duration: 1 }, 0);
     
-    tl.to('#phase-problem', { opacity: 1, pointerEvents: 'auto', y: 0, duration: 1, onStart: () => {
+    tl.to('#phase-why', { opacity: 1, pointerEvents: 'auto', y: 0, duration: 1, onStart: () => {
         updatePhaseLabel(1);
     }, onReverseComplete: () => {
         updatePhaseLabel(0);
     }}, 0);
-    tl.to('#visual-problem', { opacity: 1, scale: 1, duration: 1 }, 0);
+    tl.to('#visual-why', { opacity: 1, scale: 1, duration: 1 }, 0);
 
-    // Phase 1 -> Phase 2: Solution
-    tl.to('#phase-problem', { opacity: 0, y: -40, duration: 1 }, 1.5);
-    tl.to('#visual-problem', { opacity: 0, scale: 0.8, duration: 1 }, 1.5);
+    // Phase 1 -> Phase 2: How
+    tl.to('#phase-why', { opacity: 0, y: -40, duration: 1 }, 1.5);
+    tl.to('#visual-why', { opacity: 0, scale: 0.8, duration: 1 }, 1.5);
     
-    tl.to('#phase-solution', { opacity: 1, pointerEvents: 'auto', y: 0, duration: 1, onStart: () => {
+    tl.to('#phase-how', { opacity: 1, pointerEvents: 'auto', y: 0, duration: 1, onStart: () => {
         updatePhaseLabel(2);
     }, onReverseComplete: () => {
         updatePhaseLabel(1);
     }}, 1.5);
-    tl.to('#visual-solution', { opacity: 1, scale: 1, duration: 1 }, 1.5);
+    tl.to('#visual-how', { opacity: 1, scale: 1, duration: 1 }, 1.5);
 
-    // Phase 2 -> Phase 3: Outcome
-    tl.to('#phase-solution', { opacity: 0, y: -40, duration: 1 }, 3);
-    tl.to('#visual-solution', { opacity: 0, scale: 0.8, duration: 1 }, 3);
+    // Phase 2 -> Phase 3: CTA
+    tl.to('#phase-how', { opacity: 0, y: -40, duration: 1 }, 3);
+    tl.to('#visual-how', { opacity: 0, scale: 0.8, duration: 1 }, 3);
 
-    tl.to('#phase-outcome', { opacity: 1, pointerEvents: 'auto', y: 0, duration: 1, onStart: () => {
+    tl.to('#phase-cta', { opacity: 1, pointerEvents: 'auto', y: 0, duration: 1, onStart: () => {
         updatePhaseLabel(3);
     }, onReverseComplete: () => {
         updatePhaseLabel(2);
     }}, 3);
-    tl.to('#visual-outcome', { opacity: 1, scale: 1, duration: 1 }, 3);
+    tl.to('#visual-cta', { opacity: 1, scale: 1, duration: 1 }, 3);
 
     tl.to({}, { duration: 1 });
   });
