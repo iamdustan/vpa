@@ -1,18 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeartRhythm from '../components/HeartRhythm.astro';
 import ScrollJourney from '../components/ScrollJourney.astro';
 import homeContent from '../content/home.json';
 
-const { heroTitle, heroSubtitle, splineSceneUrl } = homeContent;
+const { heroTitle, heroSubtitle } = homeContent;
 ---
 
 <BaseLayout title="Virtual Pacing Academy | Cardiac Medical Device Training" description="Transform your financial future with a high-impact career in MedTech. Hands-on education and 1-on-1 mentorship.">
 
-	<HeartRhythm />
-
 	<ScrollJourney 
-        sceneUrl={splineSceneUrl} 
         heroTitle={heroTitle} 
         heroSubtitle={heroSubtitle} 
     />

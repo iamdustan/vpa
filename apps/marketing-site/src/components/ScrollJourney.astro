@@ -1,11 +1,10 @@
 ---
 interface Props {
-  sceneUrl: string;
   heroTitle: string;
   heroSubtitle: string;
 }
 
-const { sceneUrl, heroTitle, heroSubtitle } = Astro.props;
+const { heroTitle, heroSubtitle } = Astro.props;
 
 // Helper to split text for character animations
 const splitText = (text: string) => {
@@ -89,14 +88,67 @@ const titleChars = splitText(remainingTitle);
         </div>
 
         <div class="flex-1 relative bg-surface/10 flex items-center justify-center overflow-hidden">
+            {/* Phase 0: The Foundation - Clinical Monitor Background */}
             <div class="visual-phase absolute inset-0 opacity-100" id="visual-hero">
-                <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.59/build/spline-viewer.js"></script>
-                <spline-viewer 
-                    url={sceneUrl} 
-                    events-target="global" 
-                    loading-library="lazy"
-                    class="w-full h-full"
-                ></spline-viewer>
+                <div class="absolute inset-0 p-8 lg:p-12 overflow-hidden">
+                    <div class="w-full h-full relative border border-brand-green/10 rounded-2xl bg-brand-green/[0.02]">
+                        {/* Clinical Monitoring Grid */}
+                        <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(#52cf95 1px, transparent 1px), linear-gradient(90deg, #52cf95 1px, transparent 1px); background-size: 20px 20px;"></div>
+                        
+                        {/* Monitoring Header */}
+                        <div class="absolute top-4 left-6 right-6 flex justify-between items-start font-mono text-[8px] tracking-[0.2em] text-brand-green/60 uppercase">
+                            <div class="flex flex-col gap-1">
+                                <span class="text-brand-green font-black">Lead II // Sensing</span>
+                                <span>Gain: 10mm/mV</span>
+                            </div>
+                            <div class="text-right flex flex-col gap-1">
+                                <span>Mode: VVI // 60 BPM</span>
+                                <span class="text-brand-green font-black" id="monitor-clock">00:00:00</span>
+                            </div>
+                        </div>
+
+                        {/* Waveform Area */}
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-full h-48 lg:h-64" viewBox="0 0 800 200" preserveAspectRatio="none">
+                                <defs>
+                                    <clipPath id="monitor-clip">
+                                        <rect id="monitor-clip-rect" x="0" y="0" width="0" height="200" />
+                                    </clipPath>
+                                    
+                                    <linearGradient id="scan-gradient" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0%" stop-color="#52cf95" stop-opacity="0" />
+                                        <stop offset="60%" stop-color="#52cf95" stop-opacity="0.1" />
+                                        <stop offset="100%" stop-color="#52cf95" stop-opacity="0.4" />
+                                    </linearGradient>
+
+                                    {/* Bloom effect for the leading edge */}
+                                    <filter id="wave-bloom">
+                                        <feGaussianBlur stdDeviation="2" result="blur" />
+                                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                    </filter>
+                                </defs>
+
+                                <path id="monitor-wave" d="M0,100 L100,100 L110,80 L125,120 L135,100 L250,100 L260,30 L280,170 L300,100 L450,100 L460,85 L475,115 L485,100 L600,100 L610,30 L630,170 L650,100 L800,100" stroke="#52cf95" stroke-width="2" fill="none" class="opacity-30" />
+                                
+                                <g clip-path="url(#monitor-clip)">
+                                    <path id="monitor-wave-active" d="M0,100 L100,100 L110,80 L125,120 L135,100 L250,100 L260,30 L280,170 L300,100 L450,100 L460,85 L475,115 L485,100 L600,100 L610,30 L630,170 L650,100 L800,100" stroke="#52cf95" stroke-width="3" fill="none" class="drop-shadow-[0_0_12px_rgba(82,207,149,0.6)]" filter="url(#wave-bloom)" />
+                                </g>
+                                
+                                {/* Scanning line - Positioned to lead the reveal */}
+                                <rect id="monitor-scan" x="-80" y="0" width="80" height="200" fill="url(#scan-gradient)" />
+                            </svg>
+                        </div>
+
+                        {/* Calibration Markers */}
+                        <div class="absolute bottom-6 left-6 right-6 flex justify-around opacity-30">
+                            {[...Array(5)].map((_, i) => (
+                                <div class="w-px h-8 bg-brand-green/40 relative">
+                                    <span class="absolute -top-4 left-1/2 -translate-x-1/2 font-mono text-[6px] text-brand-green">{i * 200}ms</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="absolute inset-0 flex items-center justify-center p-6 lg:p-20">
@@ -181,7 +233,7 @@ const titleChars = splitText(remainingTitle);
     let currentPhaseIndex = 0;
     let isNavigating = false;
 
-    // Initial Flip Animation for Hero Title
+    // Initial Flip Animation for Hero Title & HUD
     const flipChars = document.querySelectorAll('.flip-char .inner-char');
     gsap.from(flipChars, {
       rotateX: -90,
@@ -192,6 +244,62 @@ const titleChars = splitText(remainingTitle);
       ease: "back.out(1.7)",
       delay: 0.5
     });
+
+    const animateMedicalMonitor = () => {
+        const totalWidth = 800;
+        const scanWidth = 80;
+
+        // Unified animation for perfect synchronization in SVG space
+        gsap.to({}, {
+            duration: 4,
+            repeat: -1,
+            ease: "none",
+            overwrite: 'auto',
+            onUpdate: function() {
+                const progress = this.progress();
+                const x = progress * totalWidth;
+                
+                const scan = document.querySelector('#monitor-scan');
+                const clipRect = document.querySelector('#monitor-clip-rect');
+                
+                if (scan instanceof SVGElement) {
+                    // Position scan so its leading edge (right) is at x
+                    scan.setAttribute('x', (x - scanWidth).toString());
+                }
+                
+                if (clipRect instanceof SVGElement) {
+                    // Reveal exactly up to x
+                    clipRect.setAttribute('width', x.toString());
+                }
+            }
+        });
+
+        // Subtly pulse the active wave brightness
+        gsap.to('#monitor-wave-active', {
+            opacity: 0.8,
+            duration: 0.1,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+
+        // Running Clock
+        const clock = document.querySelector('#monitor-clock');
+        if (clock) {
+            let seconds = 0;
+            const updateClock = () => {
+                seconds++;
+                const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+                const secs = (seconds % 60).toString().padStart(2, '0');
+                const ms = Math.floor(Math.random() * 99).toString().padStart(2, '0');
+                clock.textContent = `00:${mins}:${secs}:${ms}`;
+            };
+            const clockInterval = setInterval(updateClock, 1000);
+            return () => clearInterval(clockInterval);
+        }
+    };
+
+    animateMedicalMonitor();
 
     const updatePhaseLabel = (index) => {
         const { label, color } = phases[index];
@@ -243,7 +351,9 @@ const titleChars = splitText(remainingTitle);
         gsap.to(`#visual-${next.id}`, { opacity: 1, scale: 1, duration: 0.8, delay: 0.1, overwrite: 'auto' });
 
         // Phase Specific Animations
-        if (next.id === 'why') {
+        if (next.id === 'hero') {
+            animateMedicalMonitor();
+        } else if (next.id === 'why') {
             gsap.fromTo('#ekg-line', 
                 { strokeDasharray: 1000, strokeDashoffset: 1000 }, 
                 { strokeDashoffset: 0, duration: 2, ease: "power2.out", delay: 0.2 }
@@ -344,10 +454,6 @@ const titleChars = splitText(remainingTitle);
 <style>
   .narrative-phase, .visual-phase {
     will-change: opacity, transform;
-  }
-  spline-viewer {
-    width: 100%;
-    height: 100%;
   }
   .inner-char {
     display: inline-block;
