@@ -1,17 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ApplyForm from '../components/ApplyForm.astro';
 ---
 
 <BaseLayout title="Apply Now | Virtual Pacing Academy" description="Start your journey into MedTech. Apply for the next Virtual Pacing Academy cohort.">
-	<section class="py-32 flex items-center justify-center p-6 lg:p-12">
-		<div class="w-full max-w-2xl bg-background rounded-[40px] border border-white/5 p-12 lg:p-24 text-center">
+	<section class="py-24 px-6 lg:p-12">
+		<div class="max-w-4xl mx-auto text-center">
 			<h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8">Apply for <br/><span class="text-gradient">Summer 2026</span></h1>
-			<p class="text-xl text-white/40 leading-relaxed font-medium mb-12">
+			<p class="text-xl text-white/40 leading-relaxed font-medium mb-16 max-w-2xl mx-auto">
 				Our application process is designed to find candidates with the right drive and aptitude for the MedTech industry.
 			</p>
-			<a href="https://tally.so/r/n0pE6v" class="rounded-full bg-brand-blue px-12 py-6 text-2xl font-black text-white transition-all hover:scale-105 inline-block shadow-2xl uppercase tracking-[0.2em]">
-				Open Application Form
-			</a>
+			
+			<ApplyForm />
 		</div>
 	</section>
 </BaseLayout>

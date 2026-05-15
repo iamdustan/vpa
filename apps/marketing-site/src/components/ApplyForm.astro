@@ -1,0 +1,301 @@
+---
+interface Props {
+  endpoint?: string;
+  id?: string;
+}
+
+const { endpoint = "", id = "apply-form" } = Astro.props;
+
+const REGISTRATION_OPTIONS = [
+  "I want to start a career as a Clinical Specialist or Clinical Mapping Specialist",
+  "I'm interested in the Scholarship offering.",
+  "I'm a manager seeking information on your Clinic Solutions Program.",
+  "I'd like to take the CCDS Practice Exam.",
+  "I'd like to be contacted to gain more information."
+];
+
+const TRACK_OPTIONS = ["Devices", "EP/Mapping", "Unsure"];
+
+const EXPERIENCE_OPTIONS = ["Healthcare/Patient Care", "Engineering/Technical", "None (I'm ready to learn)"];
+
+const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not possible for me!"];
+---
+
+<div id={`${id}-container`}>
+  <form id={id} class="space-y-8 text-left">
+    <!-- Section 1: Program Application Intro -->
+    <div class="glass-card p-8 lg:p-12 space-y-8">
+      <h2 class="text-2xl font-black text-brand-blue uppercase tracking-widest border-b border-white/5 pb-4">1. Program Application</h2>
+      
+      <div class="space-y-6">
+        <div class="radio-group-container" data-group="registration">
+          <div class="flex justify-between items-center mb-3">
+            <label class="block text-xs font-black uppercase tracking-widest text-white/40">Registration Interest *</label>
+            <button type="button" class="change-selection-btn hidden text-[10px] font-black uppercase tracking-widest text-brand-blue hover:text-white transition-colors">Change</button>
+          </div>
+          <div class="options-wrapper space-y-2 transition-all duration-500 ease-in-out">
+            {REGISTRATION_OPTIONS.map(option => (
+              <label class="radio-label flex items-start gap-3 p-4 rounded-2xl bg-white/5 border border-white/5 cursor-pointer hover:bg-white/10 transition-all duration-300 group overflow-hidden">
+                <input
+                  type="radio"
+                  name="registration"
+                  value={option}
+                  required
+                  class="mt-1 accent-brand-blue shrink-0"
+                />
+                <span class="text-sm font-medium text-white/80 group-hover:text-white">{option}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">Track Interest *</label>
+            <select
+              name="track"
+              required
+              class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-brand-blue transition-colors appearance-none"
+            >
+              <option value="" disabled selected>Select a track</option>
+              {TRACK_OPTIONS.map(opt => <option value={opt}>{opt}</option>)}
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">Willing to Relocate? *</label>
+            <select
+              name="relocate"
+              required
+              class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-brand-blue transition-colors appearance-none"
+            >
+              <option value="" disabled selected>Select option</option>
+              {RELOCATE_OPTIONS.map(opt => <option value={opt}>{opt}</option>)}
+            </select>
+          </div>
+        </div>
+
+        <div class="radio-group-container" data-group="experience">
+          <div class="flex justify-between items-center mb-3">
+            <label class="block text-xs font-black uppercase tracking-widest text-white/40">Experience / Background *</label>
+            <button type="button" class="change-selection-btn hidden text-[10px] font-black uppercase tracking-widest text-brand-blue hover:text-white transition-colors">Change</button>
+          </div>
+          <div class="options-wrapper grid grid-cols-1 md:grid-cols-3 gap-3 transition-all duration-500 ease-in-out">
+            {EXPERIENCE_OPTIONS.map(option => (
+              <label class="radio-label flex items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/5 cursor-pointer hover:bg-white/10 transition-all duration-300 group overflow-hidden">
+                <input
+                  type="radio"
+                  name="experience"
+                  value={option}
+                  required
+                  class="accent-brand-blue shrink-0"
+                />
+                <span class="text-xs font-bold text-white/60 group-hover:text-white">{option}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Location Info -->
+    <div class="glass-card p-8 lg:p-12 space-y-8">
+      <h2 class="text-2xl font-black text-brand-blue uppercase tracking-widest border-b border-white/5 pb-4">2. Location</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">City *</label>
+          <input
+            type="text"
+            name="city"
+            required
+            placeholder="e.g. Dallas"
+            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-blue transition-colors"
+          />
+        </div>
+        <div>
+          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">State *</label>
+          <input
+            type="text"
+            name="state"
+            required
+            placeholder="e.g. TX"
+            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-blue transition-colors"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Contact Info -->
+    <div class="glass-card p-8 lg:p-12 space-y-8">
+      <h2 class="text-2xl font-black text-brand-blue uppercase tracking-widest border-b border-white/5 pb-4">3. Contact Information</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">First Name *</label>
+          <input
+            type="text"
+            name="firstName"
+            required
+            placeholder="Jane"
+            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-blue transition-colors"
+          />
+        </div>
+        <div>
+          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">Last Name *</label>
+          <input
+            type="text"
+            name="lastName"
+            required
+            placeholder="Doe"
+            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-blue transition-colors"
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">Email Address *</label>
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="jane@example.com"
+            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-blue transition-colors"
+          />
+        </div>
+        <div>
+          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">Phone Number *</label>
+          <input
+            type="tel"
+            name="phone"
+            required
+            placeholder="(555) 000-0000"
+            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-blue transition-colors"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">How Else Can We Help?</label>
+        <textarea
+          name="additionalInfo"
+          rows="4"
+          placeholder="Tell us a bit more about your goals..."
+          class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-blue transition-colors"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center gap-4">
+      <button
+        type="submit"
+        class="submit-button w-full md:w-auto rounded-full bg-brand-blue px-16 py-6 text-2xl font-black text-white transition-all hover:scale-105 shadow-2xl uppercase tracking-[0.2em] disabled:opacity-50 disabled:hover:scale-100"
+      >
+        Submit Application
+      </button>
+      <p class="error-message hidden text-red-500 font-bold uppercase tracking-widest text-xs">Something went wrong. Please try again.</p>
+    </div>
+  </form>
+
+  <div class="success-message hidden glass-card p-12 text-center animate-in fade-in zoom-in duration-500">
+    <h2 class="text-3xl font-black text-white uppercase tracking-tighter mb-4">Awesome! We can't wait to work with you.</h2>
+    <p class="text-xl text-white/60 leading-relaxed font-medium">
+      One of our instructors will contact you by the end of the business day. If you sent this after hours, give us until tomorrow. Talk to you soon!
+    </p>
+  </div>
+</div>
+
+<script is:inline define:vars={{ endpoint, id }}>
+  const container = document.getElementById(`${id}-container`);
+  const form = document.getElementById(id);
+  const submitBtn = form.querySelector('.submit-button');
+  const errorMsg = form.querySelector('.error-message');
+  const successMsg = container.querySelector('.success-message');
+
+  // Logic for collapsing radio groups
+  const radioGroups = container.querySelectorAll('.radio-group-container');
+  
+  radioGroups.forEach(group => {
+    const wrapper = group.querySelector('.options-wrapper');
+    const labels = group.querySelectorAll('.radio-label');
+    const changeBtn = group.querySelector('.change-selection-btn');
+    const inputs = group.querySelectorAll('input[type="radio"]');
+
+    inputs.forEach(input => {
+      input.addEventListener('change', () => {
+        if (input.checked) {
+          // Collapse effect
+          labels.forEach(label => {
+            if (!label.contains(input)) {
+              label.classList.add('hidden');
+            } else {
+              label.classList.remove('bg-white/5', 'hover:bg-white/10');
+              label.classList.add('bg-brand-blue/10', 'border-brand-blue/30');
+            }
+          });
+          
+          if (wrapper.classList.contains('grid')) {
+            wrapper.classList.remove('md:grid-cols-3');
+          }
+          
+          changeBtn.classList.remove('hidden');
+        }
+      });
+    });
+
+    changeBtn.addEventListener('click', () => {
+      labels.forEach(label => {
+        label.classList.remove('hidden', 'bg-brand-blue/10', 'border-brand-blue/30');
+        label.classList.add('bg-white/5', 'hover:bg-white/10');
+        const input = label.querySelector('input');
+        input.checked = false;
+      });
+
+      if (wrapper.classList.contains('grid')) {
+        wrapper.classList.add('md:grid-cols-3');
+      }
+
+      changeBtn.classList.add('hidden');
+    });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    errorMsg.classList.add('hidden');
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      if (!endpoint) {
+        console.warn("No endpoint provided for ApplyForm");
+        // For development/demo purposes
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
+        return;
+      }
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        mode: 'no-cors', // Standard for Google Apps Script redirects
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      // Note: With no-cors, we won't get a "real" ok status, 
+      // but if it doesn't throw, it likely succeeded.
+      form.classList.add('hidden');
+      successMsg.classList.remove('hidden');
+    } catch (error) {
+      console.error("Form submission error:", error);
+      errorMsg.classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Application';
+    }
+  });
+</script>
