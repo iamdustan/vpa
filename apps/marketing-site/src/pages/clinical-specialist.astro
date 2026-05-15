@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="What is a Clinical Specialist? | Virtual Pacing Academy" description="Learn about the role of a Cardiac Clinical Specialist in the medical device industry and how VPA prepares you for this career.">
+	
+	<!-- Hero Section -->
+	<section class="py-32 flex items-center justify-center p-6 lg:p-12">
+		<div class="w-full max-w-[1600px] text-center">
+			<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Industry Education</h2>
+			<h1 class="text-5xl md:text-8xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.8]">The Clinical <br/><span class="text-gradient">Specialist.</span></h1>
+			<p class="text-xl text-white/40 leading-relaxed font-medium max-w-2xl mx-auto">
+				The backbone of the cardiac medical device industry. Bridging the gap between life-saving technology and patient care.
+			</p>
+		</div>
+	</section>
+
+	<!-- Role Definition -->
+	<section class="pb-32 flex items-center justify-center p-6 lg:p-12">
+		<div class="w-full max-w-[1600px] bg-background rounded-[40px] border border-white/5 p-12 lg:p-24 overflow-hidden relative">
+            <div class="absolute inset-0 bg-brand-blue/5 blur-[120px] -z-10"></div>
+			<div class="grid gap-20 lg:grid-cols-2 items-center">
+				<div>
+					<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Role Definition</h2>
+					<h3 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">Technical <br/>Expertise in <br/>the OR.</h3>
+					<div class="space-y-6">
+						<p class="text-xl text-white/60 leading-relaxed font-medium">
+							A Cardiac Clinical Specialist (or Field Clinical Representative) is the technical expert who supports physicians during the implantation and programming of cardiac devices like pacemakers and ICDs.
+						</p>
+						<p class="text-xl text-white/40 leading-relaxed font-medium">
+							You are the person the surgeon looks to when they need to know exactly how a device is performing or how to optimize it for a specific patient's needs.
+						</p>
+					</div>
+				</div>
+				<div class="grid gap-6">
+					{[
+						{ title: "Procedural Support", desc: "Assisting in the OR during device implants to ensure proper leads placement and device function." },
+						{ title: "Device Programming", desc: "Fine-tuning complex algorithms to maximize patient battery life and therapy effectiveness." },
+						{ title: "Physician Education", desc: "Keeping clinical staff updated on the latest technology and clinical trial data." }
+					].map(item => (
+						<div class="glass-card p-8 bg-white/[0.02] border border-white/5 rounded-3xl">
+							<h4 class="text-xl font-black text-white uppercase tracking-tight mb-2">{item.title}</h4>
+							<p class="text-white/30 font-medium">{item.desc}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Day in the Life -->
+	<section class="py-32 flex items-center justify-center p-6 lg:p-12 bg-white/[0.02]">
+		<div class="w-full max-w-[1600px]">
+			<div class="text-center mb-20">
+				<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Day to Day</h2>
+				<h3 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">A Dynamic Career.</h3>
+			</div>
+
+			<div class="grid md:grid-cols-4 gap-4">
+				{[
+					{ time: "07:00", task: "Arrive at Hospital", detail: "Check in with the EP Lab team and prep devices for the first case." },
+					{ time: "08:30", task: "OR Case Support", detail: "Provide real-time telemetry and testing during a pacemaker implant." },
+					{ time: "11:00", task: "Clinic Follow-ups", detail: "Run device checks for patients in the outpatient cardiology clinic." },
+					{ time: "14:00", task: "Troubleshooting", detail: "Consult on a complex remote monitoring alert with a physician." }
+				].map(item => (
+					<div class="glass-card p-8 bg-background border border-white/5 rounded-3xl">
+						<span class="text-brand-blue font-black text-xs uppercase tracking-widest mb-4 block">{item.time}</span>
+						<h4 class="text-lg font-black text-white uppercase tracking-tight mb-2">{item.task}</h4>
+						<p class="text-white/40 text-sm leading-relaxed font-medium">{item.detail}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Career Outlook -->
+	<section class="py-32 flex items-center justify-center p-6 lg:p-12">
+		<div class="w-full max-w-[1600px] grid lg:grid-cols-2 gap-20 items-center">
+			<div class="order-2 lg:order-1">
+				<div class="grid grid-cols-2 gap-4">
+					<div class="glass-card p-10 bg-brand-blue/10 border border-brand-blue/20 rounded-3xl text-center">
+						<p class="text-[4xl] font-black text-white">$100k+</p>
+						<p class="text-[10px] font-black uppercase tracking-widest text-brand-blue mt-2">Avg Potential</p>
+					</div>
+					<div class="glass-card p-10 bg-white/[0.02] border border-white/5 rounded-3xl text-center">
+						<p class="text-[4xl] font-black text-white">99%</p>
+						<p class="text-[10px] font-black uppercase tracking-widest text-white/40 mt-2">Stability</p>
+					</div>
+				</div>
+			</div>
+			<div class="order-1 lg:order-2">
+				<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Career Outlook</h2>
+				<h3 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">High Demand. High Impact.</h3>
+				<p class="text-xl text-white/40 leading-relaxed font-medium mb-8">
+					As the population ages, the demand for cardiac rhythm management technology continues to explode. Companies like Medtronic, Abbott, and Boston Scientific are constantly seeking trained clinical talent.
+				</p>
+				<ul class="space-y-4">
+					<li class="flex items-center gap-3 text-white/60 font-medium">
+						<div class="w-1.5 h-1.5 rounded-full bg-brand-blue"></div>
+						Recession-proof healthcare industry
+					</li>
+					<li class="flex items-center gap-3 text-white/60 font-medium">
+						<div class="w-1.5 h-1.5 rounded-full bg-brand-blue"></div>
+						Clear promotion paths to Sales or Management
+					</li>
+					<li class="flex items-center gap-3 text-white/60 font-medium">
+						<div class="w-1.5 h-1.5 rounded-full bg-brand-blue"></div>
+						Direct impact on patient life-expectancy
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<!-- VPA Advantage -->
+	<section class="py-32 flex items-center justify-center p-6 lg:p-12">
+		<div class="w-full max-w-[1600px] bg-brand-blue rounded-[40px] p-20 lg:p-32 text-center relative overflow-hidden shadow-2xl shadow-brand-blue/20">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
+			<h2 class="text-5xl md:text-8xl font-black text-white tracking-tighter uppercase leading-[0.8]">How VPA <br/>Gets You There.</h2>
+			<p class="mt-10 text-xl md:text-2xl text-white/70 font-medium max-w-2xl mx-auto">Our mentorship model is designed specifically to bridge the gap between "knowing" and "doing" in the clinical setting.</p>
+			<div class="mt-16 flex flex-wrap justify-center gap-6">
+				<a href={`${import.meta.env.BASE_URL}curriculum`} class="rounded-full bg-white px-12 py-6 text-2xl font-black text-slate-950 transition-all hover:scale-105 inline-block shadow-2xl uppercase tracking-[0.2em]">
+					Explore Curriculum
+				</a>
+				<a href={`${import.meta.env.BASE_URL}apply`} class="rounded-full bg-white/10 px-12 py-6 text-2xl font-black text-white transition-all hover:bg-white/20 inline-block uppercase tracking-[0.2em]">
+					Apply Now
+				</a>
+			</div>
+		</div>
+	</section>
+
+</BaseLayout>
