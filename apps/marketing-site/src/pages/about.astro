@@ -243,17 +243,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 							},
 							{ 
 								name: "Laura Brunet", 
-								image: `${import.meta.env.BASE_URL}team/shawn-campbell.jpg`, // Placeholder if no unique image
+								image: null,
 								text: "I cannot say enough good things about VPA and how it’s changed my life, my confidence and me as a person. The support system is unlike any other educational program I've experienced.", 
 								author: "Clinical Specialist" 
 							}
 						].map((review) => (
-							<div class="snap-center shrink-0 w-full">
-								<div class="glass-card p-12 bg-background border border-white/10 rounded-[40px] relative mx-2">
+							<div class="snap-center shrink-0 w-full transition-all duration-700 review-card">
+								<div class="glass-card p-12 bg-background border border-white/10 rounded-[40px] relative mx-2 h-full">
 									<div class="flex items-center gap-6 mb-8">
-										<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-blue/30">
-											<img src={review.image} alt={review.name} class="w-full h-full object-cover" />
-										</div>
+										{review.image && (
+											<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-blue/30">
+												<img src={review.image} alt={review.name} class="w-full h-full object-cover" />
+											</div>
+										)}
 										<div>
 											<h4 class="text-xl font-black text-white uppercase tracking-tight">{review.name}</h4>
 											<p class="text-xs font-black uppercase tracking-[0.2em] text-brand-blue">{review.author}</p>
@@ -275,6 +277,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	<script>
 		const reviewContainer = document.getElementById('review-scroll');
 		const reviewDots = document.querySelectorAll('.review-dot');
+		const reviewCards = document.querySelectorAll('.review-card');
 		let isUserInteracting = false;
 		let scrollInterval: ReturnType<typeof setInterval>;
 
@@ -291,12 +294,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 					dot.classList.add('w-4', 'bg-white/10');
 				}
 			});
+
+			reviewCards.forEach((card, i) => {
+				if (i === index) {
+					card.classList.remove('opacity-40', 'scale-95');
+					card.classList.add('opacity-100', 'scale-100');
+				} else {
+					card.classList.add('opacity-40', 'scale-95');
+					card.classList.remove('opacity-100', 'scale-100');
+				}
+			});
 		};
 
 		const startAutoScroll = () => {
 			scrollInterval = setInterval(() => {
 				if (!isUserInteracting && reviewContainer) {
-					const nextScroll = (reviewContainer.scrollLeft + reviewContainer.clientWidth) >= reviewContainer.scrollWidth 
+					const nextScroll = (reviewContainer.scrollLeft + reviewContainer.clientWidth + 10) >= reviewContainer.scrollWidth 
 						? 0 
 						: reviewContainer.scrollLeft + reviewContainer.clientWidth;
 					
@@ -306,6 +319,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		};
 
 		reviewContainer?.addEventListener('scroll', updateReviewDots);
+		// Initialize
+		updateReviewDots();
 		
 		const stopInteraction = () => {
 			isUserInteracting = true;
