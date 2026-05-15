@@ -1,0 +1,173 @@
+---
+interface Props {
+  endpoint?: string;
+  id?: string;
+}
+
+const { endpoint = "", id = "b2b-form" } = Astro.props;
+
+const STAFF_COUNT_OPTIONS = [
+  "1-2 Specialists",
+  "3-5 Specialists",
+  "5-10 Specialists",
+  "10+ (Enterprise/Batch)"
+];
+
+const TIMELINE_OPTIONS = [
+  "Immediate (Next 30 days)",
+  "Next 3-6 months",
+  "Planning for next year",
+  "Just exploring for now"
+];
+---
+
+<div id={`${id}-container`} class="w-full">
+  <form id={id} class="space-y-6 text-left">
+    <div class="glass-card p-8 lg:p-12 space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-black tracking-widest text-muted mb-3 uppercase">Company / Clinic Name *</label>
+          <input
+            type="text"
+            name="companyName"
+            required
+            placeholder="e.g. Heart Rhythm Clinic"
+            class="w-full bg-surface/50 border border-primary/10 rounded-2xl px-6 py-4 text-primary placeholder:text-muted/30 focus:outline-none focus:border-brand-blue transition-colors"
+          />
+        </div>
+        <div>
+          <label class="block text-xs font-black tracking-widest text-muted mb-3 uppercase">Contact Name *</label>
+          <input
+            type="text"
+            name="contactName"
+            required
+            placeholder="Jane Doe"
+            class="w-full bg-surface/50 border border-primary/10 rounded-2xl px-6 py-4 text-primary placeholder:text-muted/30 focus:outline-none focus:border-brand-blue transition-colors"
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-black tracking-widest text-muted mb-3 uppercase">Email Address *</label>
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="jane@company.com"
+            class="w-full bg-surface/50 border border-primary/10 rounded-2xl px-6 py-4 text-primary placeholder:text-muted/30 focus:outline-none focus:border-brand-blue transition-colors"
+          />
+        </div>
+        <div>
+          <label class="block text-xs font-black tracking-widest text-muted mb-3 uppercase">Phone Number *</label>
+          <input
+            type="tel"
+            name="phone"
+            required
+            placeholder="(555) 000-0000"
+            class="w-full bg-surface/50 border border-primary/10 rounded-2xl px-6 py-4 text-primary placeholder:text-muted/30 focus:outline-none focus:border-brand-blue transition-colors"
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="radio-group-container" data-group="staffNeeded">
+          <label class="block text-xs font-black tracking-widest text-muted mb-4 uppercase">Staffing Needs *</label>
+          <div class="options-wrapper space-y-2">
+            {STAFF_COUNT_OPTIONS.map(opt => (
+              <label class="flex items-center gap-3 p-4 rounded-2xl bg-surface/50 border border-primary/10 cursor-pointer hover:bg-surface/80 transition-all group">
+                <input type="radio" name="staffNeeded" value={opt} required class="accent-brand-blue shrink-0" />
+                <span class="text-sm font-medium text-secondary group-hover:text-primary">{opt}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div class="radio-group-container" data-group="timeline">
+          <label class="block text-xs font-black tracking-widest text-muted mb-4 uppercase">Timeline *</label>
+          <div class="options-wrapper space-y-2">
+            {TIMELINE_OPTIONS.map(opt => (
+              <label class="flex items-center gap-3 p-4 rounded-2xl bg-surface/50 border border-primary/10 cursor-pointer hover:bg-surface/80 transition-all group">
+                <input type="radio" name="timeline" value={opt} required class="accent-brand-blue shrink-0" />
+                <span class="text-sm font-medium text-secondary group-hover:text-primary">{opt}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-black tracking-widest text-muted mb-3 uppercase">Tell us about your requirements</label>
+        <textarea
+          name="message"
+          rows={4}
+          placeholder="How can VPA help solve your staffing challenges?"
+          class="w-full bg-surface/50 border border-primary/10 rounded-2xl px-6 py-4 text-primary placeholder:text-muted/30 focus:outline-none focus:border-brand-blue transition-colors"
+        ></textarea>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <button
+          type="submit"
+          class="submit-button w-full md:w-auto rounded-full bg-brand-blue px-10 py-4 text-lg font-black text-white transition-all hover:scale-105 shadow-xl uppercase tracking-[0.15em] disabled:opacity-50 disabled:hover:scale-100"
+        >
+          Request Information
+        </button>
+        <p class="error-message hidden text-red-500 font-bold uppercase tracking-widest text-xs mt-4">Something went wrong. Please try again.</p>
+      </div>
+    </div>
+  </form>
+
+  <div class="success-message hidden glass-card p-12 text-center animate-in fade-in zoom-in duration-500">
+    <h2 class="text-3xl font-black text-primary tracking-tighter mb-4">Request Received</h2>
+    <p class="text-xl text-secondary leading-relaxed font-medium">
+      Our solutions team will reach out to you within 24 hours to discuss your clinic's needs and how we can support your growth.
+    </p>
+  </div>
+</div>
+
+<script is:inline define:vars={{ endpoint, id }}>
+  const container = document.getElementById(`${id}-container`);
+  const form = document.getElementById(id);
+  const submitBtn = form?.querySelector('.submit-button');
+  const errorMsg = form?.querySelector('.error-message');
+  const successMsg = container?.querySelector('.success-message');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      errorMsg.classList.add('hidden');
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        if (!endpoint) {
+          console.warn("No endpoint provided for B2B Form");
+          await new Promise(resolve => setTimeout(resolve, 1500));
+          form.classList.add('hidden');
+          successMsg.classList.remove('hidden');
+          return;
+        }
+
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...data, type: 'B2B_INQUIRY' }),
+        });
+
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
+      } catch (error) {
+        console.error("B2B Submission error:", error);
+        errorMsg.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Request Information';
+      }
+    });
+  }
+</script>

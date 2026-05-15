@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ClinicSolutionsForm from '../components/ClinicSolutionsForm.astro';
+---
+
+<BaseLayout title="Clinic Solutions | Virtual Pacing Academy" description="Solve your clinic's staffing shortage with VPA's batch student sponsorships and direct technician placement.">
+	
+	<!-- Hero Section -->
+	<section class="py-24 px-6 lg:p-12 relative overflow-hidden">
+        {/* Background Decorative Element */}
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -z-10 w-full max-w-7xl h-full opacity-10 pointer-events-none">
+            <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-brand-blue rounded-full blur-[150px]" />
+            <div class="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-brand-green rounded-full blur-[120px]" />
+        </div>
+
+		<div class="max-w-4xl mx-auto text-center">
+			<h2 class="text-xs font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Partnership Opportunities</h2>
+			<h1 class="text-4xl md:text-7xl font-black text-primary tracking-tighter leading-[0.9] mb-8">
+				Staffing <span class="text-gradient">Solved.</span>
+			</h1>
+			<p class="text-xl text-muted leading-relaxed font-medium mb-16 max-w-2xl mx-auto">
+				VPA partners with medical centers and clinics to provide a reliable pipeline of highly-trained clinical specialists.
+			</p>
+			
+			<div class="max-w-3xl mx-auto">
+                <ClinicSolutionsForm />
+            </div>
+		</div>
+	</section>
+
+    <!-- Value Props -->
+    <section class="py-32 px-6 lg:p-12 bg-surface/5">
+        <div class="max-w-[1600px] mx-auto">
+            <div class="grid gap-12 lg:grid-cols-3">
+                <div class="glass-card p-10 space-y-6">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-blue/10 flex items-center justify-center text-brand-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-black text-primary tracking-tight">Batch Sponsorship</h3>
+                    <p class="text-secondary leading-relaxed font-medium">
+                        Secure your future workforce by sponsoring a cohort of students. We find the talent, you provide the clinical environment, and we deliver the expertise.
+                    </p>
+                </div>
+
+                <div class="glass-card p-10 space-y-6">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-green/10 flex items-center justify-center text-brand-green">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.040A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-black text-primary tracking-tight">Custom Curriculum</h3>
+                    <p class="text-secondary leading-relaxed font-medium">
+                        Tailor our 16-week foundation to your clinic's specific equipment and workflow, ensuring new hires are ready to contribute from day one.
+                    </p>
+                </div>
+
+                <div class="glass-card p-10 space-y-6">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-yellow/10 flex items-center justify-center text-brand-yellow">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-black text-primary tracking-tight">Rapid Deployment</h3>
+                    <p class="text-secondary leading-relaxed font-medium">
+                        Reduce time-to-competency for new staff. Our mentors provide the 1-on-1 guidance that standard manufacturer training often lacks.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Process -->
+    <section class="py-32 px-6 lg:p-12">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-black text-primary tracking-tighter text-center mb-20">The Partnership Journey</h2>
+            
+            <div class="space-y-12">
+                {[
+                    { step: "01", title: "Needs Assessment", desc: "We analyze your current staffing gaps and desired clinical competencies to design a training path." },
+                    { step: "02", title: "Talent Sourcing & Training", desc: "VPA recruits top-tier candidates and puts them through our rigorous 16-week clinical foundation." },
+                    { step: "03", title: "On-site Integration", desc: "Graduates are deployed to your facility with ongoing VPA mentorship to ensure a seamless transition." }
+                ].map((item, i) => (
+                    <div class="flex flex-col md:flex-row gap-8 items-start md:items-center p-8 glass-card">
+                        <div class="text-5xl font-black text-brand-blue opacity-20">{item.step}</div>
+                        <div>
+                            <h4 class="text-2xl font-black text-primary mb-2">{item.title}</h4>
+                            <p class="text-secondary font-medium">{item.desc}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+</BaseLayout>
