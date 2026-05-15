@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-blue: #3B3CFF;
+  --color-brand-blue: #5D5DFF; /* Brightened for contrast */
   --color-brand-yellow: #FFE000;
-  --color-brand-green: #52cf95;
-  --color-surface: #161618;
+  --color-brand-green: #64FFB4; /* Brightened for contrast */
+  --color-surface: #1E1E20; /* Slightly lighter for better definition */
   --color-background: #0A0A0B;
   --color-page-bg: #1A1A1C;
   
@@ -25,6 +25,11 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;
+  }
+
+  /* Improve default contrast for white/40 text which is often too dim */
+  .text-white\/40 {
+    @apply text-white/60;
   }
 }
 

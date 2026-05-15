@@ -25,12 +25,12 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
   <form id={id} class="space-y-8 text-left">
     <!-- Section 1: Program Application Intro -->
     <div class="glass-card p-8 lg:p-12 space-y-8">
-      <h2 class="text-2xl font-black text-brand-blue uppercase tracking-widest border-b border-white/5 pb-4">1. Program Application</h2>
+      <h2 class="text-2xl font-black text-brand-green tracking-tighter border-b border-white/5 pb-4">1. Program Application</h2>
       
       <div class="space-y-6">
         <div class="radio-group-container" data-group="registration">
           <div class="flex justify-between items-center mb-3">
-            <label class="block text-xs font-black uppercase tracking-widest text-white/40">Registration Interest *</label>
+            <label class="block text-xs font-black tracking-widest text-white/40 uppercase">Registration Interest *</label>
             <button type="button" class="change-selection-btn hidden text-[10px] font-black uppercase tracking-widest text-brand-blue hover:text-white transition-colors">Change</button>
           </div>
           <div class="options-wrapper space-y-2 transition-all duration-500 ease-in-out origin-top">
@@ -52,7 +52,7 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="radio-group-container" data-group="track">
             <div class="flex justify-between items-center mb-3">
-              <label class="block text-xs font-black uppercase tracking-widest text-white/40">Track Interest *</label>
+              <label class="block text-xs font-black tracking-widest text-white/40 uppercase">Track Interest *</label>
               <button type="button" class="change-selection-btn hidden text-[10px] font-black uppercase tracking-widest text-brand-blue hover:text-white transition-colors">Change</button>
             </div>
             <div class="options-wrapper space-y-2 transition-all duration-500 ease-in-out origin-top">
@@ -73,7 +73,7 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
 
           <div class="radio-group-container" data-group="relocate">
             <div class="flex justify-between items-center mb-3">
-              <label class="block text-xs font-black uppercase tracking-widest text-white/40">Willing to Relocate? *</label>
+              <label class="block text-xs font-black tracking-widest text-white/40 uppercase">Willing to Relocate? *</label>
               <button type="button" class="change-selection-btn hidden text-[10px] font-black uppercase tracking-widest text-brand-blue hover:text-white transition-colors">Change</button>
             </div>
             <div class="options-wrapper space-y-2 transition-all duration-500 ease-in-out origin-top">
@@ -95,7 +95,7 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
 
         <div class="radio-group-container" data-group="experience">
           <div class="flex justify-between items-center mb-3">
-            <label class="block text-xs font-black uppercase tracking-widest text-white/40">Experience / Background *</label>
+            <label class="block text-xs font-black tracking-widest text-white/40 uppercase">Experience / Background *</label>
             <button type="button" class="change-selection-btn hidden text-[10px] font-black uppercase tracking-widest text-brand-blue hover:text-white transition-colors">Change</button>
           </div>
           <div class="options-wrapper grid grid-cols-1 md:grid-cols-3 gap-3 transition-all duration-500 ease-in-out origin-top">
@@ -118,10 +118,10 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
 
     <!-- Section 2: Contact Info -->
     <div class="glass-card p-8 lg:p-12 space-y-8">
-      <h2 class="text-2xl font-black text-brand-blue uppercase tracking-widest border-b border-white/5 pb-4">2. Contact Information</h2>
+      <h2 class="text-2xl font-black text-brand-green tracking-tighter border-b border-white/5 pb-4">2. Contact Information</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">First Name *</label>
+          <label class="block text-xs font-black tracking-widest text-white/40 mb-3 uppercase">First Name *</label>
           <input
             type="text"
             name="firstName"
@@ -131,7 +131,7 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
           />
         </div>
         <div>
-          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">Last Name *</label>
+          <label class="block text-xs font-black tracking-widest text-white/40 mb-3 uppercase">Last Name *</label>
           <input
             type="text"
             name="lastName"
@@ -144,7 +144,7 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">Email Address *</label>
+          <label class="block text-xs font-black tracking-widest text-white/40 mb-3 uppercase">Email Address *</label>
           <input
             type="email"
             name="email"
@@ -154,7 +154,7 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
           />
         </div>
         <div>
-          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">Phone Number *</label>
+          <label class="block text-xs font-black tracking-widest text-white/40 mb-3 uppercase">Phone Number *</label>
           <input
             type="tel"
             name="phone"
@@ -166,7 +166,7 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
       </div>
 
       <div>
-        <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">How Else Can We Help?</label>
+        <label class="block text-xs font-black tracking-widest text-white/40 mb-3 uppercase">How Else Can We Help?</label>
         <textarea
           name="additionalInfo"
           rows="4"
@@ -178,11 +178,11 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
 
     <!-- Section 3: Location Info -->
     <div class="glass-card p-8 lg:p-12 space-y-8">
-      <h2 class="text-2xl font-black text-brand-blue uppercase tracking-widest border-b border-white/5 pb-4">3. Location</h2>
+      <h2 class="text-2xl font-black text-brand-green tracking-tighter border-b border-white/5 pb-4">3. Location</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">Address Line 1</label>
+          <label class="block text-xs font-black tracking-widest text-white/40 mb-3 uppercase">Address Line 1</label>
           <input
             type="text"
             name="address1"
@@ -191,7 +191,7 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
           />
         </div>
         <div>
-          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">Address Line 2</label>
+          <label class="block text-xs font-black tracking-widest text-white/40 mb-3 uppercase">Address Line 2</label>
           <input
             type="text"
             name="address2"
@@ -203,7 +203,7 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
-          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">City *</label>
+          <label class="block text-xs font-black tracking-widest text-white/40 mb-3 uppercase">City *</label>
           <input
             type="text"
             name="city"
@@ -213,7 +213,7 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
           />
         </div>
         <div>
-          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">State *</label>
+          <label class="block text-xs font-black tracking-widest text-white/40 mb-3 uppercase">State *</label>
           <input
             type="text"
             name="state"
@@ -223,7 +223,7 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
           />
         </div>
         <div>
-          <label class="block text-xs font-black uppercase tracking-widest text-white/40 mb-3">ZIP Code</label>
+          <label class="block text-xs font-black tracking-widest text-white/40 mb-3 uppercase">ZIP Code</label>
           <input
             type="text"
             name="zip"
