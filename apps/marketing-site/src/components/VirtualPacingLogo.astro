@@ -7,7 +7,7 @@ const { className = "" } = Astro.props;
 ---
 
 <div class={`relative inline-block ${className} group logo-container`} style="width: 160px; height: 78px;">
-  <canvas id="logo-canvas" class="block w-full h-full mix-blend-screen"></canvas>
+  <canvas id="logo-canvas" class="block w-full h-full mix-blend-screen transition-all duration-300"></canvas>
 </div>
 
 <script>
@@ -29,11 +29,11 @@ const { className = "" } = Astro.props;
     uniform vec2 u_lightPos;
     uniform float u_lightRadius;
     uniform float u_lightIntensity;
-    uniform vec2 u_aspectRatio; // [canvasAspect, imageAspect]
+    uniform vec2 u_aspectRatio; 
+    uniform float u_isLightMode;
     varying vec2 v_texCoord;
 
     void main() {
-      // Map UVs to maintain aspect ratio (like object-fit: contain)
       vec2 uv = v_texCoord;
       float canvasAspect = u_aspectRatio.x;
       float imageAspect = u_aspectRatio.y;
@@ -46,20 +46,16 @@ const { className = "" } = Astro.props;
         uv.y = (uv.y - 0.5) / scale + 0.5;
       }
 
-      // Hide pixels outside the image bounds
       if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) {
         discard;
       }
 
       vec4 color = texture2D(u_image, uv);
       
-      // BACKGROUND REMOVAL LOGIC
       // Target Color: #0c1f26 -> vec3(0.047, 0.121, 0.149)
       vec3 bgColor = vec3(0.047, 0.121, 0.149);
       float colorDist = distance(color.rgb, bgColor);
       
-      // Calculate alpha based on distance from background color
-      // Also use luminosity as a fallback (letters are bright)
       float luminosity = dot(color.rgb, vec3(0.299, 0.587, 0.114));
       float alpha = smoothstep(0.05, 0.15, colorDist) * smoothstep(0.01, 0.08, luminosity);
 
@@ -67,17 +63,38 @@ const { className = "" } = Astro.props;
         discard;
       }
       
-      // Calculate lighting distance in canvas space
       float dist = distance(v_texCoord, u_lightPos);
       float light = smoothstep(u_lightRadius, 0.0, dist);
       
       vec3 lightColor = vec3(0.13, 0.83, 0.93); 
-      // Only illuminate the logo content, not the background
-      vec3 illuminated = color.rgb + (lightColor * light * u_lightIntensity * alpha);
+      
+      vec3 baseColor = color.rgb;
+      if (u_isLightMode > 0.5) {
+        // In light mode, we want the logo text (which is white) to be dark
+        // but preserve the cyan light effect
+        baseColor = vec3(0.1, 0.1, 0.1); 
+      }
+      
+      vec3 illuminated = baseColor + (lightColor * light * u_lightIntensity * alpha);
       
       gl_FragColor = vec4(illuminated, alpha);
     }
   `;
+
+  let glGlobal: WebGLRenderingContext | null = null;
+  let uIsLightModeLoc: WebGLUniformLocation | null = null;
+
+  function updateTheme() {
+    if (!glGlobal || !uIsLightModeLoc) return;
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    glGlobal.uniform1f(uIsLightModeLoc, isLight ? 1.0 : 0.0);
+    
+    // Update canvas blend mode for light mode
+    const canvas = document.getElementById('logo-canvas') as HTMLCanvasElement;
+    if (canvas) {
+        canvas.style.mixBlendMode = isLight ? 'multiply' : 'screen';
+    }
+  }
 
   function initWebGL() {
     const canvas = document.getElementById('logo-canvas') as HTMLCanvasElement;
@@ -85,6 +102,7 @@ const { className = "" } = Astro.props;
 
     const gl = canvas.getContext('webgl');
     if (!gl) return;
+    glGlobal = gl;
 
     const image = new Image();
     image.crossOrigin = "anonymous";
@@ -147,63 +165,41 @@ const { className = "" } = Astro.props;
     const u_lightRadius = gl.getUniformLocation(program, "u_lightRadius");
     const u_lightIntensity = gl.getUniformLocation(program, "u_lightIntensity");
     const u_aspectRatio = gl.getUniformLocation(program, "u_aspectRatio");
+    uIsLightModeLoc = gl.getUniformLocation(program, "u_isLightMode");
+
+    updateTheme();
 
     const lightState = { x: 0.1, y: 0.5, intensity: 0, radius: 0.2 };
 
-    // Simplified EKG path points to prevent double-bouncing
     const pathPoints = [
       { x: 0.05, y: 0.52 },
       { x: 0.14, y: 0.65 },
-      { x: 0.18, y: 0.15 }, // The 'I' spike
+      { x: 0.18, y: 0.15 },
       { x: 0.22, y: 0.75 },
       { x: 0.30, y: 0.52 },
       { x: 0.35, y: 0.58 },
-      { x: 0.95, y: 0.58 }  // Final horizontal stretch
+      { x: 0.95, y: 0.58 }
     ];
 
     const tl = gsap.timeline({ repeat: -1, repeatDelay: 2.5 });
-    
     tl.to(lightState, { intensity: 1.5, duration: 0.3 });
-    
     pathPoints.forEach((pt, i) => {
       if (i === 0) return;
-      
-      // Even faster final stretch with acceleration (power2.in)
       const duration = i === pathPoints.length - 1 ? 0.6 : 0.1;
       const ease = i === pathPoints.length - 1 ? "power2.in" : "none";
-      
-      tl.to(lightState, {
-        x: pt.x,
-        y: pt.y,
-        duration: duration,
-        ease: ease
-      });
-      
-      // Single flare effect at the spike (index 2)
+      tl.to(lightState, { x: pt.x, y: pt.y, duration: duration, ease: ease });
       if (i === 2) {
-        tl.to(lightState, { 
-          radius: 0.32, 
-          intensity: 2.2, 
-          duration: 0.08, 
-          yoyo: true, 
-          repeat: 1 
-        }, "-=0.08");
+        tl.to(lightState, { radius: 0.32, intensity: 2.2, duration: 0.08, yoyo: true, repeat: 1 }, "-=0.08");
       }
-      
-      // Expand radius for the final text sweep
       if (i === pathPoints.length - 1) {
-        tl.to(lightState, { 
-          radius: 0.28, 
-          duration: 0.2 
-        }, "-=0.6");
+        tl.to(lightState, { radius: 0.28, duration: 0.2 }, "-=0.6");
       }
     });
-    
     tl.to(lightState, { intensity: 0, duration: 0.4 });
-    
     tl.to(lightState, { intensity: 0, duration: 0.6 });
 
     function draw() {
+      if (!gl) return;
       gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
       gl.useProgram(program);
       gl.uniform2f(u_lightPos, lightState.x, lightState.y);
@@ -219,16 +215,21 @@ const { className = "" } = Astro.props;
 
   initWebGL();
   document.addEventListener('astro:page-load', initWebGL);
+
+  // Re-sync theme uniform when toggle is clicked
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+        updateTheme();
+      }
+    });
+  });
+  observer.observe(document.documentElement, { attributes: true });
 </script>
 
 <style>
   .logo-container {
     filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.05));
     transition: filter 0.3s ease;
-  }
-
-  :root[data-theme='light'] .logo-container canvas {
-    filter: invert(1);
-    mix-blend-mode: multiply;
   }
 </style>
