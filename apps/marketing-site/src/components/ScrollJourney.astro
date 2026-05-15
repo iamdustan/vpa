@@ -15,9 +15,10 @@ const splitText = (text: string) => {
 };
 
 const titleParts = heroTitle.split(' ');
-const firstWord = `${titleParts[0]} ${titleParts[1]}`;
-const remainingTitle = titleParts.slice(2).join(' ');
-const titleChars = splitText(remainingTitle);
+const firstLine = `${titleParts[0]} ${titleParts[1]}`;
+const secondLine = titleParts.slice(2).join(' ');
+const line1Chars = splitText(firstLine);
+const line2Chars = splitText(secondLine);
 ---
 
 <div class="relative w-full bg-page-bg overflow-hidden" id="scrolly-journey-wrapper">
@@ -27,16 +28,22 @@ const titleChars = splitText(remainingTitle);
       
       <div class="flex-1 flex flex-col-reverse lg:flex-row min-h-0">
         
-        <div class="w-full h-1/2 lg:h-full lg:w-[45%] p-8 md:p-12 lg:p-24 flex flex-col justify-center border-t lg:border-t-0 lg:border-r border-white/5 relative overflow-hidden">
+        <div class="w-full h-1/2 lg:h-full lg:w-[55%] p-8 md:p-12 lg:p-20 xl:p-24 flex flex-col justify-center border-t lg:border-t-0 lg:border-r border-white/5 relative overflow-hidden">
           <div class="relative h-full w-full">
             
             {/* Phase 0: Foundation */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-100" id="phase-hero">
               <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-green mb-6 lg:mb-8">Virtual Pacing Academy</h2>
-              <h1 class="text-3xl md:text-5xl lg:text-7xl font-black tracking-tighter text-white leading-[0.9] text-gradient uppercase flex flex-wrap">
-                <span class="mr-[0.2em]">{firstWord}</span>
+              <h1 class="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter text-white leading-[0.9] text-gradient uppercase flex flex-col">
                 <span class="flex flip-container">
-                  {titleChars.map(({ char, isSpace }) => (
+                  {line1Chars.map(({ char, isSpace }) => (
+                    <span class={`flip-char inline-block ${isSpace ? 'mr-[0.2em]' : ''}`} style="perspective: 1000px;">
+                      <span class="inline-block inner-char">{char}</span>
+                    </span>
+                  ))}
+                </span>
+                <span class="flex flip-container">
+                  {line2Chars.map(({ char, isSpace }) => (
                     <span class={`flip-char inline-block ${isSpace ? 'mr-[0.2em]' : ''}`} style="perspective: 1000px;">
                       <span class="inline-block inner-char">{char}</span>
                     </span>
@@ -51,7 +58,7 @@ const titleChars = splitText(remainingTitle);
             {/* Phase 1: Career Impact */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-why">
               <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6 lg:mb-8">Career Impact</h2>
-              <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
+              <h3 class="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
                 Land the <br/><span class="text-brand-blue">Dream Job.</span>
               </h3>
               <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
@@ -62,7 +69,7 @@ const titleChars = splitText(remainingTitle);
             {/* Phase 2: The Experience */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-how">
               <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-yellow mb-6 lg:mb-8">The Experience</h2>
-              <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
+              <h3 class="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
                 Mentorship <br/><span class="text-brand-yellow">is the key.</span>
               </h3>
               <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
@@ -73,7 +80,7 @@ const titleChars = splitText(remainingTitle);
             {/* Phase 3: Next Steps */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-cta">
               <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-green mb-6 lg:mb-8">Next Steps</h2>
-              <h3 class="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
+              <h3 class="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
                 Start your <br/><span class="text-brand-green">Journey Today.</span>
               </h3>
               <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
