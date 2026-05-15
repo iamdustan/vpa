@@ -224,10 +224,16 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
 
 <style>
   .radio-label {
-    max-height: 200px;
+    max-height: 500px; /* Increased to accommodate multi-line text */
     opacity: 1;
     transform: translateY(0);
+    transition: all 500ms ease-in-out; /* Default for expand */
   }
+  
+  .is-collapsing .radio-label {
+    transition: all 300ms ease-in-out; /* Faster for collapse */
+  }
+
   .radio-label.collapsed {
     max-height: 0;
     opacity: 0;
@@ -239,6 +245,7 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
     transform: translateY(-10px);
     pointer-events: none;
   }
+  
   .options-wrapper.is-collapsed {
     gap: 0 !important;
   }
@@ -263,8 +270,8 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
     inputs.forEach(input => {
       input.addEventListener('change', () => {
         if (input.checked) {
-          // Add collapsing class to wrapper
-          wrapper.classList.add('is-collapsed');
+          // Add collapsing classes
+          wrapper.classList.add('is-collapsed', 'is-collapsing');
           
           // Collapse effect
           labels.forEach(label => {
@@ -275,7 +282,7 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
                 if (label.classList.contains('collapsed')) {
                   label.style.display = 'none';
                 }
-              }, 500);
+              }, 300); // Match fast collapse duration
             } else {
               label.classList.remove('bg-white/5', 'hover:bg-white/10');
               label.classList.add('bg-brand-blue/10', 'border-brand-blue/30');
@@ -288,6 +295,9 @@ const RELOCATE_OPTIONS = ["Yes, nationwide.", "Yes, around my state.", "Not poss
           }
           
           changeBtn.classList.remove('hidden');
+          
+          // Remove collapsing state after animation
+          setTimeout(() => wrapper.classList.remove('is-collapsing'), 300);
         }
       });
     });
