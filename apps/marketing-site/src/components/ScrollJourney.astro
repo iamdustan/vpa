@@ -100,31 +100,39 @@ const titleChars = splitText(remainingTitle);
             </div>
 
             <div class="absolute inset-0 flex items-center justify-center p-6 lg:p-20">
+                {/* Phase 1: Career Impact - EKG */}
                 <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-why">
-                    <div class="text-center relative">
-                        <div class="text-7xl md:text-9xl mb-4 md:mb-8 opacity-20 blur-sm absolute inset-0 translate-y-4">🏆</div>
-                        <div class="text-7xl md:text-9xl relative">🏆</div>
-                        <div class="mt-4 md:mt-8 text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-brand-blue">Success Attained</div>
+                    <div class="w-full max-w-lg aspect-[2/1] relative flex items-center justify-center">
+                        <svg class="w-full h-full" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path id="ekg-line" d="M0,100 L150,100 L160,80 L175,120 L185,100 L250,100 L265,20 L285,180 L305,100 L400,100" stroke="#3B3CFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="drop-shadow-[0_0_8px_rgba(59,60,255,0.5)]" />
+                        </svg>
                     </div>
                 </div>
 
+                {/* Phase 2: The Experience - Connecting Leads */}
                 <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-how">
-                    <div class="flex items-center gap-4 md:gap-12">
-                        <div class="w-16 h-16 md:w-24 md:h-24 rounded-2xl md:rounded-3xl bg-brand-yellow/10 border border-brand-yellow/30 flex items-center justify-center font-black text-brand-yellow uppercase text-[8px] md:text-xs">Student</div>
-                        <div class="w-6 md:w-12 h-px bg-white/10 relative">
-                            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-brand-yellow"></div>
+                    <div class="w-full max-w-lg aspect-square relative flex items-center justify-center">
+                        <div id="lead-left" class="absolute left-0 w-1/3 h-px bg-gradient-to-r from-transparent to-brand-yellow">
+                            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-brand-yellow shadow-[0_0_15px_#FFE000]"></div>
                         </div>
-                        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-brand-blue border-dashed animate-[spin_10s_linear_infinite] p-2">
-                            <div class="w-full h-full rounded-full bg-brand-blue/20 flex items-center justify-center font-black text-white uppercase text-[8px] md:text-[10px] text-center">Mentor</div>
+                        <div id="lead-right" class="absolute right-0 w-1/3 h-px bg-gradient-to-l from-transparent to-brand-yellow">
+                            <div class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-brand-yellow shadow-[0_0_15px_#FFE000]"></div>
                         </div>
+                        <div id="lead-spark" class="w-4 h-4 rounded-full bg-brand-yellow opacity-0 scale-0 shadow-[0_0_30px_#FFE000]"></div>
                     </div>
                 </div>
 
+                {/* Phase 3: Next Steps - Activation Node */}
                 <div class="visual-phase absolute inset-0 flex items-center justify-center opacity-0 scale-90" id="visual-cta">
-                    <div class="w-32 h-32 md:w-48 md:h-48 rounded-full border border-white/5 flex items-center justify-center relative">
-                        <div class="absolute inset-0 border border-brand-green/20 rounded-full animate-ping"></div>
-                        <div class="w-16 md:w-24 h-px bg-white/20 rotate-45"></div>
-                        <div class="w-16 md:w-24 h-px bg-white/20 -rotate-45"></div>
+                    <div class="relative w-48 h-48 flex items-center justify-center">
+                        <div id="node-outer" class="absolute inset-0 rounded-full border-2 border-brand-green/20"></div>
+                        <div id="node-middle" class="absolute inset-4 rounded-full border-2 border-brand-green/40"></div>
+                        <div id="node-inner" class="w-16 h-16 rounded-full bg-brand-green shadow-[0_0_40px_rgba(82,207,149,0.4)] flex items-center justify-center">
+                             <div class="w-8 h-8 rounded-full bg-white/20 animate-ping"></div>
+                        </div>
+                        <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+                            <circle id="node-sweep" cx="50" cy="50" r="48" fill="none" stroke="#52cf95" stroke-width="2" stroke-dasharray="301.59" stroke-dashoffset="301.59" stroke-linecap="round" />
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -233,6 +241,39 @@ const titleChars = splitText(remainingTitle);
         // Enter Next
         gsap.to(`#phase-${next.id}`, { opacity: 1, y: 0, duration: 0.8, pointerEvents: 'auto', delay: 0.1, overwrite: 'auto' });
         gsap.to(`#visual-${next.id}`, { opacity: 1, scale: 1, duration: 0.8, delay: 0.1, overwrite: 'auto' });
+
+        // Phase Specific Animations
+        if (next.id === 'why') {
+            gsap.fromTo('#ekg-line', 
+                { strokeDasharray: 1000, strokeDashoffset: 1000 }, 
+                { strokeDashoffset: 0, duration: 2, ease: "power2.out", delay: 0.2 }
+            );
+        } else if (next.id === 'how') {
+            gsap.fromTo('#lead-left', { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, ease: "back.out(1.7)", delay: 0.3 });
+            gsap.fromTo('#lead-right', { x: 50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, ease: "back.out(1.7)", delay: 0.3 });
+            gsap.to('#lead-spark', { 
+                scale: 4, 
+                opacity: 0.8, 
+                duration: 0.4, 
+                delay: 1, 
+                onComplete: () => {
+                    gsap.to('#lead-spark', { scale: 0, opacity: 0, duration: 0.3 });
+                }
+            });
+        } else if (next.id === 'cta') {
+            gsap.fromTo('#node-sweep', 
+                { strokeDashoffset: 301.59 }, 
+                { strokeDashoffset: 0, duration: 1.5, ease: "power1.inOut", delay: 0.4 }
+            );
+            gsap.to('#node-inner', { 
+                scale: 1.1, 
+                duration: 0.6, 
+                repeat: -1, 
+                yoyo: true, 
+                ease: "sine.inOut",
+                delay: 1.5
+            });
+        }
 
         updatePhaseLabel(index);
     };
