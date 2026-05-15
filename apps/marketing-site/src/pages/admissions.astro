@@ -8,8 +8,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	<section class="py-32 flex items-center justify-center p-6 lg:p-12">
 		<div class="w-full max-w-[1600px] text-center">
 			<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Admissions</h2>
-			<h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">An Investment <br/>in <span class="text-gradient">Your Future.</span></h1>
-			<p class="text-xl text-white/40 leading-relaxed font-medium max-w-2xl mx-auto">
+			<h1 class="text-4xl md:text-6xl font-black text-primary tracking-tighter mb-8 leading-[0.9]">An Investment <br/>in <span class="text-gradient">Your Future.</span></h1>
+			<p class="text-xl text-muted leading-relaxed font-medium max-w-2xl mx-auto">
 				We lower the barriers to entry in MedTech. Compare our model to traditional $30,000+ brick-and-mortar schools.
 			</p>
 		</div>
@@ -19,14 +19,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	<section class="pb-32 flex items-center justify-center p-6 lg:p-12">
 		<div class="w-full max-w-[1600px] grid gap-8 lg:grid-cols-2">
 			<!-- Tuition Card -->
-			<div class="glass-card p-12 lg:p-16 bg-white/[0.02] border border-white/5 rounded-[40px] relative overflow-hidden group">
+			<div class="glass-card p-12 lg:p-16 bg-surface/10 border border-primary/5 rounded-[40px] relative overflow-hidden group">
 				<div class="absolute top-0 right-0 p-8">
 					<span class="text-[10px] font-black uppercase tracking-widest text-brand-blue bg-brand-blue/10 px-4 py-2 rounded-full">Tuition</span>
 				</div>
-				<h3 class="text-4xl font-black text-white uppercase tracking-tight mb-4">The Academy</h3>
+				<h3 class="text-4xl font-black text-primary tracking-tight mb-4">The Academy</h3>
 				<div class="flex items-baseline gap-2 mb-8">
-					<span class="text-6xl font-black text-white">$9,990</span>
-					<span class="text-white/40 font-medium">USD</span>
+					<span class="text-6xl font-black text-primary">$9,990</span>
+					<span class="text-muted font-medium">USD</span>
 				</div>
 				<ul class="space-y-4 mb-12">
 					{[
@@ -35,13 +35,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 						"Clinical mapping training",
 						"Career placement support"
 					].map(item => (
-						<li class="flex items-center gap-3 text-white/60 font-medium">
+						<li class="flex items-center gap-3 text-secondary font-medium">
 							<svg class="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
 							{item}
 						</li>
 					))}
 				</ul>
-				<a href="https://tally.so/r/n0pE6v" class="block text-center py-6 bg-white text-slate-950 font-black uppercase tracking-widest rounded-2xl hover:bg-brand-blue hover:text-white transition-all">Start Application</a>
+				<a href="https://tally.so/r/n0pE6v" class="block text-center py-6 bg-primary text-background font-black uppercase tracking-widest rounded-2xl hover:bg-brand-blue hover:text-white transition-all">Start Application</a>
 			</div>
 
 			<!-- Scholarship Card -->
@@ -49,9 +49,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 				<div class="absolute top-0 right-0 p-8">
 					<span class="text-[10px] font-black uppercase tracking-widest text-brand-blue bg-brand-blue/10 px-4 py-2 rounded-full">Financial Aid</span>
 				</div>
-				<h3 class="text-4xl font-black text-white uppercase tracking-tight mb-6">Scholarships</h3>
-				<p class="text-xl text-white/60 leading-relaxed font-medium mb-10">
-					We are committed to making MedTech accessible. Our needs-based scholarships cover up to <span class="text-white font-bold">50% of the academy cost.</span>
+				<h3 class="text-4xl font-black text-primary tracking-tight mb-6">Scholarships</h3>
+				<p class="text-xl text-secondary leading-relaxed font-medium mb-10">
+					We are committed to making MedTech accessible. Our needs-based scholarships cover up to <span class="text-primary font-bold">50% of the academy cost.</span>
 				</p>
 
 				<div class="space-y-6 mb-12">
@@ -62,43 +62,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 							"Member of an underrepresented group",
 							"Non-technical clinical roles (EMT, Nurse, etc.)"
 						].map(item => (
-							<li class="flex items-center gap-3 text-white/60 font-medium text-sm">
+							<li class="flex items-center gap-3 text-secondary font-medium text-sm">
 								<div class="w-1.5 h-1.5 rounded-full bg-brand-blue"></div>
 								{item}
 							</li>
 						))}
 					</ul>
 				</div>
-				<p class="text-xs text-white/40 font-medium italic">Apply via the standard application form to be considered.</p>
+				<p class="text-xs text-muted font-medium italic">Apply via the standard application form to be considered.</p>
 			</div>
 		</div>
 	</section>
 
 	<!-- ROI Section -->
-	<section class="py-32 flex items-center justify-center p-6 lg:p-12 bg-white/[0.02]">
+	<section class="py-32 flex items-center justify-center p-6 lg:p-12 bg-surface/5">
 		<div class="w-full max-w-[1600px]">
 			<div class="text-center mb-20">
 				<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Return on Investment</h2>
-				<h3 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">The ROI Bridge.</h3>
+				<h3 class="text-4xl md:text-6xl font-black text-primary tracking-tighter mb-8 leading-[0.9]">The ROI Bridge.</h3>
 			</div>
 
 			<div class="grid md:grid-cols-3 gap-8">
-				<div class="glass-card p-10 bg-background border border-white/5 rounded-3xl text-center">
-					<p class="text-[10px] font-black uppercase tracking-widest text-white/40 mb-4">Avg. Starting Salary</p>
-					<p class="text-5xl font-black text-white">$85k - $105k</p>
+				<div class="glass-card p-10 bg-background border border-primary/5 rounded-3xl text-center">
+					<p class="text-[10px] font-black uppercase tracking-widest text-muted mb-4">Avg. Starting Salary</p>
+					<p class="text-5xl font-black text-primary">$85k - $105k</p>
 				</div>
-				<div class="glass-card p-10 bg-background border border-white/5 rounded-3xl text-center">
-					<p class="text-[10px] font-black uppercase tracking-widest text-white/40 mb-4">Time to Payoff</p>
+				<div class="glass-card p-10 bg-background border border-primary/5 rounded-3xl text-center">
+					<p class="text-[10px] font-black uppercase tracking-widest text-muted mb-4">Time to Payoff</p>
 					<p class="text-5xl font-black text-brand-blue">&lt; 6 Months</p>
 				</div>
-				<div class="glass-card p-10 bg-background border border-white/5 rounded-3xl text-center">
-					<p class="text-[10px] font-black uppercase tracking-widest text-white/40 mb-4">Industry Demand</p>
-					<p class="text-5xl font-black text-white">94% Growth</p>
+				<div class="glass-card p-10 bg-background border border-primary/5 rounded-3xl text-center">
+					<p class="text-[10px] font-black uppercase tracking-widest text-muted mb-4">Industry Demand</p>
+					<p class="text-5xl font-black text-primary">94% Growth</p>
 				</div>
 			</div>
 
 			<div class="mt-20 max-w-3xl mx-auto text-center">
-				<p class="text-2xl text-white/70 italic leading-relaxed font-medium">
+				<p class="text-2xl text-secondary italic leading-relaxed font-medium">
 					"Virtual Pacing Academy is the only way to get this level of training while continuing to work your current job."
 				</p>
 			</div>
@@ -109,14 +109,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	<section class="py-32 flex items-center justify-center p-6 lg:p-12">
 		<div class="w-full max-w-[1600px] grid lg:grid-cols-2 gap-8">
 			<div class="bg-brand-blue rounded-[40px] p-12 lg:p-20 relative overflow-hidden group">
-				<h3 class="text-4xl font-black text-white uppercase tracking-tight mb-4 relative z-10">See your future <br/>career.</h3>
+				<h3 class="text-4xl font-black text-white tracking-tight mb-4 relative z-10">See your future <br/>career.</h3>
 				<p class="text-white/70 text-lg font-medium mb-8 relative z-10">Explore the roles our graduates land at major medical device companies.</p>
 				<a href={`${import.meta.env.BASE_URL}jobs`} class="inline-block px-10 py-5 bg-white text-slate-950 font-black uppercase tracking-widest rounded-2xl hover:scale-105 transition-all relative z-10">View Industry Roles</a>
 			</div>
-			<div class="bg-white/[0.05] rounded-[40px] p-12 lg:p-20 border border-white/10 relative overflow-hidden group">
-				<h3 class="text-4xl font-black text-white uppercase tracking-tight mb-4 relative z-10">Still have <br/>questions?</h3>
-				<p class="text-white/40 text-lg font-medium mb-8 relative z-10">Our mentors are here to help you navigate your career transition.</p>
-				<a href="https://tally.so/r/n0pE6v" class="inline-block px-10 py-5 bg-white/10 text-white font-black uppercase tracking-widest rounded-2xl hover:bg-white/20 transition-all relative z-10">Get in Touch</a>
+			<div class="bg-surface/10 rounded-[40px] p-12 lg:p-20 border border-primary/10 relative overflow-hidden group">
+				<h3 class="text-4xl font-black text-primary tracking-tight mb-4 relative z-10">Still have <br/>questions?</h3>
+				<p class="text-muted text-lg font-medium mb-8 relative z-10">Our mentors are here to help you navigate your career transition.</p>
+				<a href="https://tally.so/r/n0pE6v" class="inline-block px-10 py-5 bg-primary/10 text-primary font-black uppercase tracking-widest rounded-2xl hover:bg-primary/20 transition-all relative z-10">Get in Touch</a>
 			</div>
 		</div>
 	</section>

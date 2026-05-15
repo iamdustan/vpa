@@ -8,8 +8,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	<section class="py-32 flex items-center justify-center p-6 lg:p-12">
 		<div class="w-full max-w-[1600px] text-center">
 			<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Industry Education</h2>
-			<h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">The Clinical <br/><span class="text-gradient">Specialist.</span></h1>
-			<p class="text-xl text-white/40 leading-relaxed font-medium max-w-2xl mx-auto">
+			<h1 class="text-4xl md:text-6xl font-black text-primary tracking-tighter mb-8 leading-[0.9]">The Clinical <br/><span class="text-gradient">Specialist.</span></h1>
+			<p class="text-xl text-muted leading-relaxed font-medium max-w-2xl mx-auto">
 				An entry-level professional role working for the "Big Four" cardiac device companies: Medtronic, Abbott, Boston Scientific, and Biotronik.
 			</p>
 		</div>
@@ -17,17 +17,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 	<!-- Role Definition -->
 	<section class="pb-32 flex items-center justify-center p-6 lg:p-12">
-		<div class="w-full max-w-[1600px] bg-background rounded-[40px] border border-white/5 p-12 lg:p-24 overflow-hidden relative">
+		<div class="w-full max-w-[1600px] bg-background rounded-[40px] border border-primary/5 p-12 lg:p-24 overflow-hidden relative">
             <div class="absolute inset-0 bg-brand-blue/5 blur-[120px] -z-10"></div>
 			<div class="grid gap-20 lg:grid-cols-2 items-center">
 				<div>
 					<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">The Role</h2>
-					<h3 class="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">Technical <br/>Support in <br/>the Clinic.</h3>
+					<h3 class="text-4xl md:text-5xl font-black text-primary tracking-tighter mb-8 leading-[0.9]">Technical <br/>Support in <br/>the Clinic.</h3>
 					<div class="space-y-6">
-						<p class="text-xl text-white/60 leading-relaxed font-medium">
+						<p class="text-xl text-secondary leading-relaxed font-medium">
 							Clinical Specialists provide technical expertise and support to physicians in the operating room during the implantation of life-saving devices.
 						</p>
-						<p class="text-xl text-white/40 leading-relaxed font-medium">
+						<p class="text-xl text-muted leading-relaxed font-medium">
 							You'll work directly within hospitals and clinics, managing the complex technology behind pacemakers, defibrillators, and resynchronization devices.
 						</p>
 					</div>
@@ -38,9 +38,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 						{ title: "Physician Support", desc: "Providing real-time technical expertise during device implants in the OR." },
 						{ title: "Clinical Environment", desc: "Working on-site at hospitals following clinical schedules and demands." }
 					].map(item => (
-						<div class="glass-card p-8 bg-white/[0.02] border border-white/5 rounded-3xl">
-							<h4 class="text-xl font-black text-white uppercase tracking-tight mb-2">{item.title}</h4>
-							<p class="text-white/30 font-medium">{item.desc}</p>
+						<div class="glass-card p-8 bg-surface/10 border border-primary/5 rounded-3xl">
+							<h4 class="text-xl font-black text-primary tracking-tight mb-2">{item.title}</h4>
+							<p class="text-muted font-medium">{item.desc}</p>
 						</div>
 					))}
 				</div>
@@ -49,32 +49,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	</section>
 
 	<!-- Career Outlook -->
-	<section class="py-32 flex items-center justify-center p-6 lg:p-12 bg-white/[0.02]">
+	<section class="py-32 flex items-center justify-center p-6 lg:p-12 bg-surface/5">
 		<div class="w-full max-w-[1600px] grid lg:grid-cols-2 gap-20 items-center">
 			<div class="order-2 lg:order-1">
 				<div class="grid grid-cols-2 gap-4">
 					<div class="glass-card p-10 bg-brand-blue/10 border border-brand-blue/20 rounded-3xl text-center">
-						<p class="text-4xl font-black text-white">$60k-$80k</p>
+						<p class="text-4xl font-black text-primary">$60k-$80k</p>
 						<p class="text-[10px] font-black uppercase tracking-widest text-brand-blue mt-2">Base Salary</p>
 					</div>
-					<div class="glass-card p-10 bg-white/[0.02] border border-white/5 rounded-3xl text-center">
-						<p class="text-4xl font-black text-white">6-12 mo</p>
-						<p class="text-[10px] font-black uppercase tracking-widest text-white/40 mt-2">Company Training</p>
+					<div class="glass-card p-10 bg-surface/10 border border-primary/5 rounded-3xl text-center">
+						<p class="text-4xl font-black text-primary">6-12 mo</p>
+						<p class="text-[10px] font-black uppercase tracking-widest text-muted mt-2">Company Training</p>
 					</div>
 				</div>
 			</div>
 			<div class="order-1 lg:order-2">
 				<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Career Outlook</h2>
-				<h3 class="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">Entry-Level Growth.</h3>
-				<p class="text-xl text-white/40 leading-relaxed font-medium mb-8">
+				<h3 class="text-4xl md:text-5xl font-black text-primary tracking-tighter mb-8 leading-[0.9]">Entry-Level Growth.</h3>
+				<p class="text-xl text-muted leading-relaxed font-medium mb-8">
 					Most companies provide significant proprietary training for new hires. Starting salaries typically range from $60,000 to $80,000 per year, excluding bonuses and benefits.
 				</p>
 				<ul class="space-y-4">
-					<li class="flex items-center gap-3 text-white/60 font-medium">
+					<li class="flex items-center gap-3 text-secondary font-medium">
 						<div class="w-1.5 h-1.5 rounded-full bg-brand-blue"></div>
 						Work with Medtronic, Abbott, Boston Scientific, or Biotronik
 					</li>
-					<li class="flex items-center gap-3 text-white/60 font-medium">
+					<li class="flex items-center gap-3 text-secondary font-medium">
 						<div class="w-1.5 h-1.5 rounded-full bg-brand-blue"></div>
 						High-demand technical role in a clinical setting
 					</li>
@@ -87,7 +87,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	<section class="py-32 flex items-center justify-center p-6 lg:p-12">
 		<div class="w-full max-w-[1600px] bg-brand-blue rounded-[40px] p-16 lg:p-24 text-center relative overflow-hidden shadow-2xl shadow-brand-blue/20">
             <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
-			<h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase leading-[0.9]">The VPA <br/>Advantage.</h2>
+			<h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter leading-[0.9]">The VPA <br/>Advantage.</h2>
 			<p class="mt-8 text-lg md:text-xl text-white/70 font-medium max-w-2xl mx-auto">VPA offers a remote alternative to traditional $30,000 schools, providing the same path in 1/2 the time and at 1/4 the cost.</p>
 			<div class="mt-12 flex flex-wrap justify-center gap-6">
 				<a href={`${import.meta.env.BASE_URL}curriculum`} class="rounded-full bg-white px-10 py-5 text-xl font-black text-slate-950 transition-all hover:scale-105 inline-block shadow-2xl uppercase tracking-[0.2em]">

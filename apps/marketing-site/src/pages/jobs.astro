@@ -20,13 +20,13 @@ description="Explore the latest clinical specialist and field representative rol
     <div class="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-brand-yellow rounded-full blur-[120px]" />
   </div>
 
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+  <div class="mx-auto max-max-w-7xl px-6 lg:px-8">
     <div class="mx-auto max-w-3xl text-center mb-20">
       <h2 class="text-xs font-black uppercase tracking-[0.4em] text-brand-blue mb-4">Market Watch</h2>
-      <h1 class="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9] uppercase mb-8">
+      <h1 class="text-5xl md:text-7xl font-black text-primary tracking-tighter leading-[0.9] mb-8">
         Industry <span class="text-gradient">Roles</span>
       </h1>
-      <p class="mt-6 text-lg md:text-xl text-white/50 leading-relaxed font-medium max-w-2xl mx-auto">
+      <p class="mt-6 text-lg md:text-xl text-muted leading-relaxed font-medium max-w-2xl mx-auto">
         These are examples of the clinical specialist and field representative roles our graduates are prepared for at top manufacturers.
       </p>
       <p class="mt-4 text-xs font-black uppercase tracking-widest text-brand-blue/60">
@@ -37,25 +37,25 @@ description="Explore the latest clinical specialist and field representative rol
       <div class="sticky top-20 z-40 glass-card p-6 mb-12">
         <div class="flex flex-col lg:flex-row gap-6 items-end">
           <div class="flex-1 w-full">
-            <label for="job-search" class="block text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-3">Search Roles</label>
+            <label for="job-search" class="block text-[10px] font-black uppercase tracking-[0.2em] text-muted mb-3">Search Roles</label>
             <input
               id="job-search"
               type="text"
               placeholder="Filter by title or location..."
-              class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-blue/50 transition-all font-medium placeholder:text-white/20"
+              class="w-full bg-surface/50 border border-primary/10 rounded-xl px-5 py-4 text-primary focus:outline-none focus:ring-2 focus:ring-brand-blue/50 transition-all font-medium placeholder:text-muted/30"
             />
           </div>
           
           <div class="w-full lg:w-64">
-            <label for="company-filter" class="block text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-3">Employer</label>
+            <label for="company-filter" class="block text-[10px] font-black uppercase tracking-[0.2em] text-muted mb-3">Employer</label>
             <div class="relative">
                 <select
                 id="company-filter"
-                class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-blue/50 transition-all appearance-none font-bold text-sm uppercase tracking-widest"
+                class="w-full bg-surface/50 border border-primary/10 rounded-xl px-5 py-4 text-primary focus:outline-none focus:ring-2 focus:ring-brand-blue/50 transition-all appearance-none font-bold text-sm uppercase tracking-widest"
                 >
-                {companies.map(c => <option value={c} class="bg-surface text-white">{c}</option>)}
+                {companies.map(c => <option value={c} class="bg-surface text-primary">{c}</option>)}
                 </select>
-                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/40">
+                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-muted">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
                     </svg>
@@ -64,17 +64,17 @@ description="Explore the latest clinical specialist and field representative rol
           </div>
 
           <div class="w-full lg:w-64">
-            <label for="sort-by" class="block text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-3">Sort By</label>
+            <label for="sort-by" class="block text-[10px] font-black uppercase tracking-[0.2em] text-muted mb-3">Sort By</label>
             <div class="relative">
                 <select
                 id="sort-by"
-                class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-blue/50 transition-all appearance-none font-bold text-sm uppercase tracking-widest"
+                class="w-full bg-surface/50 border border-primary/10 rounded-xl px-5 py-4 text-primary focus:outline-none focus:ring-2 focus:ring-brand-blue/50 transition-all appearance-none font-bold text-sm uppercase tracking-widest"
                 >
-                <option value="newest" class="bg-surface text-white">Newest First</option>
-                <option value="title" class="bg-surface text-white">Job Title</option>
-                <option value="company" class="bg-surface text-white">Company</option>
+                <option value="newest" class="bg-surface text-primary">Newest First</option>
+                <option value="title" class="bg-surface text-primary">Job Title</option>
+                <option value="company" class="bg-surface text-primary">Company</option>
                 </select>
-                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/40">
+                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-muted">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
                     </svg>
@@ -91,7 +91,7 @@ description="Explore the latest clinical specialist and field representative rol
             href={job.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="job-card group relative overflow-hidden glass-card p-8 transition-all hover:bg-white/[0.05] hover:border-white/20 hover:scale-[1.01]"
+            class="job-card group relative overflow-hidden glass-card p-8 transition-all hover:bg-surface hover:scale-[1.01]"
             data-company={job.company}
             data-title={job.title.toLowerCase()}
             data-location={job.location.toLowerCase()}
@@ -103,28 +103,28 @@ description="Explore the latest clinical specialist and field representative rol
                   <span class={`text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full border ${
                     job.company === 'Medtronic' ? 'border-brand-blue/30 text-brand-blue bg-brand-blue/10' :
                     job.company === 'Abbott' ? 'border-brand-yellow/30 text-brand-yellow bg-brand-yellow/10' :
-                    job.company === 'Boston Scientific' ? 'border-yellow-500/30 text-yellow-400 bg-yellow-500/10' :
-                    'border-emerald-500/30 text-emerald-400 bg-emerald-500/10'
+                    job.company === 'Boston Scientific' ? 'border-yellow-500/30 text-yellow-500 bg-yellow-500/10' :
+                    'border-brand-green/30 text-brand-green bg-brand-green/10'
                   }`}>
                     {job.company}
                   </span>
                   {job.datePosted && (
-                    <span class="text-[10px] font-black text-white/30 uppercase tracking-[0.15em]">
+                    <span class="text-[10px] font-black text-muted uppercase tracking-[0.15em]">
                       {job.datePosted}
                     </span>
                   )}
                 </div>
-                <h3 class="text-2xl font-black text-white group-hover:text-brand-blue transition-colors uppercase tracking-tight">
+                <h3 class="text-2xl font-black text-primary group-hover:text-brand-blue transition-colors tracking-tight">
                   {job.title}
                 </h3>
-                <p class="mt-2 text-white/50 font-bold uppercase text-xs tracking-widest">
+                <p class="mt-2 text-secondary font-bold uppercase text-xs tracking-widest">
                   {job.location || 'Remote / Field Based'}
                 </p>
               </div>
               
               <div class="flex items-center gap-6">
-                <div class="hidden md:block h-16 w-px bg-white/10" />
-                <span class="inline-flex items-center gap-3 rounded-full bg-brand-blue px-6 py-3 text-xs font-black text-white group-hover:bg-white group-hover:text-brand-blue transition-all uppercase tracking-widest">
+                <div class="hidden md:block h-16 w-px bg-primary/10" />
+                <span class="inline-flex items-center gap-3 rounded-full bg-brand-blue px-6 py-3 text-xs font-black text-white group-hover:bg-primary group-hover:text-brand-blue transition-all uppercase tracking-widest">
                   View Posting
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -139,31 +139,31 @@ description="Explore the latest clinical specialist and field representative rol
       </div>
 
       {/* Empty State */}
-      <div id="no-results" class="hidden py-32 text-center rounded-3xl border-2 border-dashed border-white/5 bg-white/[0.02]">
-        <h3 class="text-2xl font-black text-white uppercase tracking-tight">No matches found</h3>
-        <p class="text-white/40 mt-4 text-lg font-medium">Try adjusting your filters or search terms.</p>
-        <button id="clear-filters" class="mt-10 px-8 py-4 rounded-full border border-white/10 text-brand-blue font-black uppercase tracking-[0.2em] hover:bg-white/5 transition-all text-xs">
+      <div id="no-results" class="hidden py-32 text-center rounded-3xl border-2 border-dashed border-primary/5 bg-surface/50">
+        <h3 class="text-2xl font-black text-primary tracking-tight">No matches found</h3>
+        <p class="text-muted mt-4 text-lg font-medium">Try adjusting your filters or search terms.</p>
+        <button id="clear-filters" class="mt-10 px-8 py-4 rounded-full border border-primary/10 text-brand-blue font-black uppercase tracking-[0.2em] hover:bg-surface transition-all text-xs">
           Clear All Filters
         </button>
       </div>
 
-      <p class="mt-16 text-center text-white/20 text-[10px] font-black uppercase tracking-[0.3em]">
+      <p class="mt-16 text-center text-muted text-[10px] font-black uppercase tracking-[0.3em]">
         Listings synchronized weekly from manufacturer portals.
       </p>
     </div>
   </div>
 
-  <section class="py-32 border-t border-white/5 bg-surface/20">
+  <section class="py-32 border-t border-primary/10 bg-surface/20">
     <div class="mx-auto max-w-5xl px-6 text-center">
-      <h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8">Not seeing your city?</h2>
-      <p class="mt-6 text-xl text-white/50 font-medium max-w-3xl mx-auto">
+      <h2 class="text-4xl md:text-6xl font-black text-primary tracking-tighter mb-8">Not seeing your city?</h2>
+      <p class="mt-6 text-xl text-secondary font-medium max-w-3xl mx-auto">
         Our program prepares you to be the top candidate the moment a role opens in your territory.
       </p>
       <div class="mt-12 flex flex-wrap justify-center gap-6">
         <a href={`${import.meta.env.BASE_URL}apply`} class="rounded-full bg-brand-blue px-10 py-5 text-xl font-black text-white transition-all hover:bg-brand-blue/90 hover:scale-105 shadow-xl shadow-brand-blue/20 uppercase tracking-widest">
           Start Your Transition
         </a>
-        <a href={`${import.meta.env.BASE_URL}curriculum`} class="rounded-full border border-white/10 bg-white/5 px-10 py-5 text-xl font-black text-white transition-all hover:bg-white/10 uppercase tracking-widest">
+        <a href={`${import.meta.env.BASE_URL}curriculum`} class="rounded-full border border-primary/10 bg-surface/50 px-10 py-5 text-xl font-black text-primary transition-all hover:bg-surface uppercase tracking-widest">
           View Curriculum
         </a>
       </div>

@@ -6,29 +6,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	
 	<!-- Mission Section -->
 	<section class="py-32 flex items-center justify-center p-6 lg:p-12">
-		<div class="w-full max-w-[1600px] bg-background rounded-[40px] border border-white/5 p-12 lg:p-24 overflow-hidden relative">
+		<div class="w-full max-w-[1600px] bg-background rounded-[40px] border border-primary/5 p-12 lg:p-24 overflow-hidden relative">
             <div class="absolute inset-0 bg-brand-blue/5 blur-[120px] -z-10"></div>
 			<div class="grid gap-20 lg:grid-cols-2 items-center">
 				<div>
 					<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Our Mission</h2>
-					<h3 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">We build the <br/><span class="text-gradient">Mentorship Bridge.</span></h3>
+					<h3 class="text-4xl md:text-6xl font-black text-primary tracking-tighter mb-8 leading-[0.9]">We build the <br/><span class="text-gradient">Mentorship Bridge.</span></h3>
 					<div class="space-y-6">
-						<p class="text-xl text-white/60 leading-relaxed font-medium max-w-xl">
+						<p class="text-xl text-secondary leading-relaxed font-medium max-w-xl">
 							The Virtual Pacing Academy started because we learned that asynchronous online learning was inefficient. It just doesn't work well on its own.
 						</p>
-						<p class="text-xl text-white/40 leading-relaxed font-medium max-w-xl">
+						<p class="text-xl text-muted leading-relaxed font-medium max-w-xl">
 							Virtual learning provides flexibility and levels the playing field for anyone seeking to grow. That's why our model combines virtual efficiency with veteran mentors that coach you every step of the way.
 						</p>
 					</div>
 				</div>
 				<div class="grid gap-8">
-					<div class="glass-card p-10 bg-white/[0.02] border border-white/5 rounded-3xl">
-						<h3 class="text-xl font-black text-white uppercase tracking-tight mb-2">100+ Years Experience</h3>
-						<p class="text-white/30 font-medium">Our mentors are industry veterans from Medtronic, Abbott, and Boston Scientific.</p>
+					<div class="glass-card p-10 bg-surface/10 border border-primary/5 rounded-3xl">
+						<h3 class="text-xl font-black text-primary tracking-tight mb-2">100+ Years Experience</h3>
+						<p class="text-muted font-medium">Our mentors are industry veterans from Medtronic, Abbott, and Boston Scientific.</p>
 					</div>
-					<div class="glass-card p-10 bg-white/[0.02] border border-white/5 rounded-3xl">
-						<h3 class="text-xl font-black text-brand-blue uppercase tracking-tight mb-2">Partnership, Not a Drop</h3>
-						<p class="text-white/30 font-medium">This is not a content drop. We go on the journey with you. We only succeed when you succeed.</p>
+					<div class="glass-card p-10 bg-surface/10 border border-primary/5 rounded-3xl">
+						<h3 class="text-xl font-black text-brand-blue tracking-tight mb-2">Partnership, Not a Drop</h3>
+						<p class="text-muted font-medium">This is not a content drop. We go on the journey with you. We only succeed when you succeed.</p>
 					</div>
 				</div>
 			</div>
@@ -40,17 +40,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		<div class="w-full max-w-[1600px] relative">
 			<div class="mb-20">
 				<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6 text-center">The Mentors</h2>
-				<h3 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9] text-center">Veteran Guidance.</h3>
+				<h3 class="text-4xl md:text-6xl font-black text-primary tracking-tighter mb-8 leading-[0.9] text-center">Veteran Guidance.</h3>
 			</div>
 			
 			<!-- Scroll Controls -->
 			<div class="absolute top-1/2 -left-4 lg:-left-12 z-20 -translate-y-1/2 hidden md:block">
-				<button id="prev-mentor" class="p-4 rounded-full bg-white/5 border border-white/10 text-white hover:bg-brand-blue hover:border-brand-blue transition-all group">
+				<button id="prev-mentor" class="p-4 rounded-full bg-surface/50 border border-primary/10 text-primary hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-all group">
 					<svg class="w-6 h-6 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path></svg>
 				</button>
 			</div>
 			<div class="absolute top-1/2 -right-4 lg:-right-12 z-20 -translate-y-1/2 hidden md:block">
-				<button id="next-mentor" class="p-4 rounded-full bg-white/5 border border-white/10 text-white hover:bg-brand-blue hover:border-brand-blue transition-all group">
+				<button id="next-mentor" class="p-4 rounded-full bg-surface/50 border border-primary/10 text-primary hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-all group">
 					<svg class="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
 				</button>
 			</div>
@@ -105,13 +105,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 							{/* Hover Highlight */}
 							<div class="absolute -inset-1 bg-brand-blue/20 rounded-[36px] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 							
-							<div class="relative glass-card p-8 bg-white/[0.02] border border-white/5 rounded-[32px] hover:border-brand-blue/30 transition-all duration-500 h-full flex flex-col">
+							<div class="relative glass-card p-8 bg-surface/10 border border-primary/5 rounded-[32px] hover:border-brand-blue/30 transition-all duration-500 h-full flex flex-col">
 								<div class="w-full aspect-[4/5] rounded-2xl overflow-hidden mb-8 bg-brand-blue/10 grayscale group-hover:grayscale-0 transition-all duration-700">
 									<img src={member.image} alt={member.name} class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
 								</div>
-								<h4 class="text-2xl font-black text-white uppercase tracking-tight mb-1">{member.name}</h4>
+								<h4 class="text-2xl font-black text-primary tracking-tight mb-1">{member.name}</h4>
 								<p class="text-brand-blue text-xs font-black uppercase tracking-widest mb-6">{member.role}</p>
-								<p class="text-white/40 leading-relaxed font-medium text-sm flex-grow">{member.bio}</p>
+								<p class="text-muted leading-relaxed font-medium text-sm flex-grow">{member.bio}</p>
 							</div>
 						</div>
 					))}
@@ -121,7 +121,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 			<!-- Progress Indicator -->
 			<div class="mt-8 flex justify-center gap-3">
 				{[0, 1, 2, 3, 4].map((_, i) => (
-					<div class={`mentor-dot h-1.5 rounded-full transition-all duration-500 bg-white/${i === 0 ? '40' : '10'} ${i === 0 ? 'w-8' : 'w-4'}`} data-index={i}></div>
+					<div class={`mentor-dot h-1.5 rounded-full transition-all duration-500 bg-primary/${i === 0 ? '40' : '10'} ${i === 0 ? 'w-8' : 'w-4'}`} data-index={i}></div>
 				))}
 			</div>
 		</div>
@@ -139,11 +139,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 			
 			dots.forEach((dot, i) => {
 				if (i === index) {
-					dot.classList.add('w-8', 'bg-white/40');
-					dot.classList.remove('w-4', 'bg-white/10');
+					dot.classList.add('w-8', 'bg-primary/40');
+					dot.classList.remove('w-4', 'bg-primary/10');
 				} else {
-					dot.classList.remove('w-8', 'bg-white/40');
-					dot.classList.add('w-4', 'bg-white/10');
+					dot.classList.remove('w-8', 'bg-primary/40');
+					dot.classList.add('w-4', 'bg-primary/10');
 				}
 			});
 		};
@@ -196,13 +196,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	</style>
 
 	<!-- Reviews Section -->
-	<section class="py-32 flex flex-col items-center justify-center p-6 lg:p-12 bg-white/[0.02] relative overflow-hidden">
+	<section class="py-32 flex flex-col items-center justify-center p-6 lg:p-12 bg-surface/5 relative overflow-hidden">
 		<div class="w-full max-w-[1600px] relative">
 			<div class="grid lg:grid-cols-2 gap-20 items-center">
 				<div>
 					<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6">Success Stories</h2>
-					<h3 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">What our <br/>students say.</h3>
-					<p class="text-xl text-white/40 leading-relaxed font-medium max-w-xl">
+					<h3 class="text-4xl md:text-6xl font-black text-primary tracking-tighter mb-8 leading-[0.9]">What our <br/>students say.</h3>
+					<p class="text-xl text-muted leading-relaxed font-medium max-w-xl">
 						Our graduates have transitioned from diverse backgrounds into high-impact careers at the world's leading medical device companies.
 					</p>
 					
@@ -210,7 +210,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 					<div class="mt-12 flex gap-3">
 						{[0, 1, 2, 3, 4].map((_, i) => (
 							<button 
-								class={`review-dot h-1.5 rounded-full transition-all duration-500 cursor-pointer ${i === 0 ? 'w-8 bg-white/40' : 'w-4 bg-white/10'}`} 
+								class={`review-dot h-1.5 rounded-full transition-all duration-500 cursor-pointer ${i === 0 ? 'w-8 bg-primary/40' : 'w-4 bg-primary/10'}`} 
 								data-index={i}
 								aria-label={`Go to review ${i + 1}`}
 							></button>
@@ -256,7 +256,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 								class="review-slide absolute inset-0 w-full h-full transition-all duration-700 ease-in-out opacity-0 pointer-events-none translate-y-8"
 								data-index={index}
 							>
-								<div class="glass-card p-10 md:p-12 bg-background border border-white/10 rounded-[40px] h-full flex flex-col justify-center">
+								<div class="glass-card p-10 md:p-12 bg-background border border-primary/10 rounded-[40px] h-full flex flex-col justify-center">
 									<div class="flex items-center gap-6 mb-8">
 										{review.image && (
 											<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-blue/30 shrink-0">
@@ -264,12 +264,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 											</div>
 										)}
 										<div>
-											<h4 class="text-xl font-black text-white uppercase tracking-tight">{review.name}</h4>
+											<h4 class="text-xl font-black text-primary tracking-tight">{review.name}</h4>
 											<p class="text-xs font-black uppercase tracking-[0.2em] text-brand-blue">{review.author}</p>
 										</div>
 									</div>
 									<div class="text-6xl text-brand-blue/10 font-serif absolute top-12 right-12">"</div>
-									<p class="text-lg md:text-xl text-white/70 italic relative z-10 leading-relaxed">
+									<p class="text-lg md:text-xl text-secondary italic relative z-10 leading-relaxed">
 										{review.text}
 									</p>
 								</div>
@@ -305,11 +305,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 			dots.forEach((dot, i) => {
 				if (i === index) {
-					dot.classList.add('w-8', 'bg-white/40');
-					dot.classList.remove('w-4', 'bg-white/10');
+					dot.classList.add('w-8', 'bg-primary/40');
+					dot.classList.remove('w-4', 'bg-primary/10');
 				} else {
-					dot.classList.remove('w-8', 'bg-white/40');
-					dot.classList.add('w-4', 'bg-white/10');
+					dot.classList.remove('w-8', 'bg-primary/40');
+					dot.classList.add('w-4', 'bg-primary/10');
 				}
 			});
 			
@@ -354,7 +354,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	<section class="pb-32 flex items-center justify-center p-6 lg:p-12">
 		<div class="w-full max-w-[1600px] bg-brand-blue rounded-[40px] p-16 lg:p-24 text-center relative overflow-hidden shadow-2xl shadow-brand-blue/20">
             <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
-			<h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase leading-[0.9]">Ready to <br/>Start?</h2>
+			<h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter leading-[0.9]">Ready to <br/>Start?</h2>
 			<p class="mt-8 text-lg md:text-xl text-white/70 font-medium max-w-2xl mx-auto">Scholarships are now available. Let's work together to bridge the gap.</p>
 			<div class="mt-12">
 				<a href={`${import.meta.env.BASE_URL}apply`} class="rounded-full bg-white px-10 py-5 text-xl font-black text-slate-950 transition-all hover:scale-105 inline-block shadow-2xl uppercase tracking-[0.2em]">

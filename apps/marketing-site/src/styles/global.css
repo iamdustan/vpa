@@ -1,44 +1,76 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-blue: #5D5DFF; /* Brightened for contrast */
+  --color-brand-blue: #5D5DFF; 
   --color-brand-yellow: #FFE000;
-  --color-brand-green: #64FFB4; /* Brightened for contrast */
-  --color-surface: #1E1E20; /* Slightly lighter for better definition */
-  --color-background: #0A0A0B;
-  --color-page-bg: #1A1A1C;
-  
+  --color-brand-green: #64FFB4;
+
+  --color-surface: var(--surface);
+  --color-background: var(--background);
+  --color-page-bg: var(--page-bg);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
   --font-display: "Inter", "system-ui", "sans-serif";
   --font-body: "Inter", "system-ui", "sans-serif";
 }
 
 @layer base {
   :root {
+    --background: #0A0A0B;
+    --page-bg: #1A1A1C;
+    --surface: #1E1E20;
+    --text-primary: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-muted: rgba(255, 255, 255, 0.4);
+
     color-scheme: dark;
-    background-color: var(--color-background);
-    color: white;
+    background-color: var(--background);
+    color: var(--text-primary);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --background: #F8F9FA;
+      --page-bg: #FFFFFF;
+      --surface: #F0F2F5;
+      --text-primary: #1A1A1C;
+      --text-secondary: rgba(26, 26, 28, 0.7);
+      --text-muted: rgba(26, 26, 28, 0.5);
+
+      --color-brand-blue: #3B3CFF; /* Slightly deeper for light mode */
+      --color-brand-green: #059669; /* Slightly deeper for light mode */
+
+      color-scheme: light;
+    }
   }
 
   body {
     @apply font-body antialiased selection:bg-brand-blue/30;
+    background-color: var(--background);
+    color: var(--text-primary);
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;
   }
 
-  /* Improve default contrast for white/40 text which is often too dim */
-  .text-white\/40 {
-    @apply text-white/60;
-  }
+  /* Helper utilities for variable-based colors */
+  .text-primary { color: var(--text-primary); }
+  .text-secondary { color: var(--text-secondary); }
+  .text-muted { color: var(--text-muted); }
 }
 
 @layer components {
   .glass-card {
-    @apply bg-surface/40 backdrop-blur-xl border border-white/10 rounded-2xl;
+    @apply backdrop-blur-xl border rounded-2xl;
+    background-color: color-mix(in srgb, var(--surface) 40%, transparent);
+    border-color: color-mix(in srgb, var(--text-primary) 10%, transparent);
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-white to-white/60;
+    @apply bg-clip-text text-transparent bg-gradient-to-br;
+    background-image: linear-gradient(to bottom right, var(--text-primary), color-mix(in srgb, var(--text-primary) 60%, transparent));
   }
 }

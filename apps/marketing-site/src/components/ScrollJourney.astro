@@ -24,17 +24,17 @@ const line2Chars = splitText(secondLine);
 <div class="relative w-full bg-page-bg overflow-hidden" id="scrolly-journey-wrapper">
   <div id="scrolly-journey-card-container" class="h-screen w-full flex items-end justify-center p-4 md:p-6 lg:p-10 overflow-hidden">
     
-    <div class="w-full max-w-[1600px] h-[85vh] lg:h-[88vh] bg-background rounded-3xl lg:rounded-[40px] overflow-hidden flex flex-col relative shadow-2xl shadow-black/50 border border-white/5">
+    <div class="w-full max-w-[1600px] h-[85vh] lg:h-[88vh] bg-background rounded-3xl lg:rounded-[40px] overflow-hidden flex flex-col relative shadow-2xl shadow-black/50 border border-primary/5">
       
       <div class="flex-1 flex flex-col-reverse lg:flex-row min-h-0">
         
-        <div class="w-full h-1/2 lg:h-full lg:w-[55%] p-8 md:p-12 lg:p-20 xl:p-24 flex flex-col justify-center border-t lg:border-t-0 lg:border-r border-white/5 relative overflow-hidden">
+        <div class="w-full h-1/2 lg:h-full lg:w-[55%] p-8 md:p-12 lg:p-20 xl:p-24 flex flex-col justify-center border-t lg:border-t-0 lg:border-r border-primary/5 relative overflow-hidden">
           <div class="relative h-full w-full">
             
             {/* Phase 0: Foundation */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-100" id="phase-hero">
               <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-green mb-6 lg:mb-8">Virtual Pacing Academy</h2>
-              <h1 class="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter text-white leading-[0.9] text-gradient uppercase flex flex-col">
+              <h1 class="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter text-primary leading-[0.9] text-gradient flex flex-col">
                 <span class="flex flip-container">
                   {line1Chars.map(({ char, isSpace }) => (
                     <span class={`flip-char inline-block ${isSpace ? 'mr-[0.2em]' : ''}`} style="perspective: 1000px;">
@@ -50,7 +50,7 @@ const line2Chars = splitText(secondLine);
                   ))}
                 </span>
               </h1>
-              <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/50 font-medium leading-relaxed max-w-sm">
+              <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-muted font-medium leading-relaxed max-w-sm">
                 {heroSubtitle}
               </p>
             </div>
@@ -58,10 +58,10 @@ const line2Chars = splitText(secondLine);
             {/* Phase 1: Career Impact */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-why">
               <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-blue mb-6 lg:mb-8">Career Impact</h2>
-              <h3 class="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
+              <h3 class="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-primary leading-[0.9] tracking-tighter">
                 Land the <br/><span class="text-brand-blue">Dream Job.</span>
               </h3>
-              <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
+              <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-muted font-medium max-w-sm leading-relaxed">
                 From the first rhythm to your first day in the OR, we guide you to a career with purpose, impact, and security.
               </p>
             </div>
@@ -69,10 +69,10 @@ const line2Chars = splitText(secondLine);
             {/* Phase 2: The Experience */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-how">
               <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-yellow mb-6 lg:mb-8">The Experience</h2>
-              <h3 class="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
+              <h3 class="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-primary leading-[0.9] tracking-tighter">
                 Mentorship <br/><span class="text-brand-yellow">is the key.</span>
               </h3>
-              <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
+              <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-muted font-medium max-w-sm leading-relaxed">
                 Skip the "content drops." We pair you with industry veterans who coach you through every step of your transition.
               </p>
             </div>
@@ -80,10 +80,10 @@ const line2Chars = splitText(secondLine);
             {/* Phase 3: Next Steps */}
             <div class="narrative-phase absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none" id="phase-cta">
               <h2 class="text-[10px] lg:text-[11px] font-black uppercase tracking-[0.4em] text-brand-green mb-6 lg:mb-8">Next Steps</h2>
-              <h3 class="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
+              <h3 class="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-primary leading-[0.9] tracking-tighter">
                 Start your <br/><span class="text-brand-green">Journey Today.</span>
               </h3>
-              <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-white/40 font-medium max-w-sm leading-relaxed">
+              <p class="mt-6 lg:mt-10 text-sm md:text-lg lg:text-xl text-muted font-medium max-w-sm leading-relaxed">
                 The medical device industry is waiting. Take the first step toward your new career.
               </p>
               <div class="mt-10 flex flex-wrap gap-4">
@@ -199,16 +199,16 @@ const line2Chars = splitText(secondLine);
 
       </div>
 
-      <div class="h-auto lg:h-32 border-t border-white/5 bg-surface/20 px-6 py-4 lg:py-0 lg:px-20">
+      <div class="h-auto lg:h-32 border-t border-primary/5 bg-surface/20 px-6 py-4 lg:py-0 lg:px-20">
         <div class="h-full w-full mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
           <div class="flex flex-col text-center md:text-left w-full md:w-auto">
-              <span class="text-[8px] lg:text-[10px] font-black uppercase tracking-[0.2em] text-white/30">Journey Phase</span>
+              <span class="text-[8px] lg:text-[10px] font-black uppercase tracking-[0.2em] text-muted">Journey Phase</span>
               <span class="text-xs lg:text-sm font-black uppercase text-brand-green" id="journey-phase-label">The Foundation</span>
           </div>
 
           <div class="flex flex-col md:flex-row gap-4 lg:gap-8 items-center w-full md:w-auto">
-              <a href={`${import.meta.env.BASE_URL}curriculum`} class="text-[8px] lg:text-[10px] font-black uppercase tracking-widest text-white/70 hover:text-white transition-colors w-full md:w-auto text-center border border-white/10 md:border-none rounded-full px-6 py-3 md:p-0">Explore Curriculum</a>
-              <a href={`${import.meta.env.BASE_URL}apply`} class="w-full md:w-auto px-10 py-3 lg:py-4 rounded-full bg-brand-blue text-[8px] lg:text-[10px] font-black uppercase tracking-widest hover:bg-brand-blue/90 transition-all shadow-xl shadow-brand-blue/20 text-center">Apply Now</a>
+              <a href={`${import.meta.env.BASE_URL}curriculum`} class="text-[8px] lg:text-[10px] font-black uppercase tracking-widest text-secondary hover:text-primary transition-colors w-full md:w-auto text-center border border-primary/10 md:border-none rounded-full px-6 py-3 md:p-0">Explore Curriculum</a>
+              <a href={`${import.meta.env.BASE_URL}apply`} class="w-full md:w-auto px-10 py-3 lg:py-4 rounded-full bg-brand-blue text-[8px] lg:text-[10px] font-black uppercase tracking-widest hover:bg-brand-blue/90 transition-all shadow-xl shadow-brand-blue/20 text-center text-white">Apply Now</a>
           </div>
         </div>
       </div>
